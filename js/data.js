@@ -255,8 +255,8 @@ const GAMES_DATA = [
     ]
   },
   {
-    id: "all-themods",
-    title: "All themods",
+    id: "minecraft-all-the-mods-10",
+    title: "Minecraft: All The Mods 10",
     genre: "Sandbox / Modded / RPG",
     date: "2026-06-22",
     chooser: "BuChuDin",
