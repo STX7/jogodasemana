@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhores Jogos do Mês - Jogo da Semana</title>
+    <!-- Configuração de Tema Dinâmico (deve vir antes do Tailwind) -->
+    <script src="js/theme.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Folhas de Estilo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/melhores.css">
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- CABEÇALHO INJETADO DINAMICAMENTE -->
+    <div id="header-container"></div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-4 w-full flex-grow mt-8 space-y-8">
+        
+        <!-- HERO / APRESENTAÇÃO -->
+        <section class="bg-gradient-to-r from-yellow-900/20 to-brand-900/20 border border-yellow-800/20 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+            <div class="space-y-4 text-center md:text-left max-w-2xl">
+                <span class="bg-yellow-950/60 text-yellow-300 text-xs font-bold uppercase px-3 py-1 rounded-full border border-yellow-700/50 tracking-wider">
+                    <i class="fa-solid fa-trophy mr-1"></i> Hall da Fama
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                    Os Melhores Jogos <br class="hidden sm:inline"><span class="text-yellow-400">De Cada Mês</span>
+                </h1>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Classificação mensal baseada nas avaliações do grupo. Descubra quais títulos subiram ao pódio e ganharam medalhas de destaque durante as nossas semanas de jogatina.
+                </p>
+            </div>
+            <div class="hidden md:block shrink-0">
+                <i class="fa-solid fa-crown text-8xl text-yellow-400 animate-neon-glow"></i>
+            </div>
+        </section>
+
+        <!-- RANKING MENSAL INJETADO VIA MVC -->
+        <section id="best-games-container" class="space-y-8 min-h-[200px]">
+            <div class="flex items-center justify-center h-40">
+                <i class="fa-solid fa-spinner animate-spin text-2xl text-brand-500"></i>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ INJETADO DINAMICAMENTE -->
+    <div id="footer-container"></div>
+
+    <!-- SCRIPTS MVC EM ORDEM -->
+    <script src="js/data.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+
+</body>
+</html>

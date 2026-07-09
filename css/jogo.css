@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Jogo da Semana - Detalhes do Jogo (jogo.css)
+   Contém estilos exclusivos para a página de detalhes do jogo (jogo.html).
+   ========================================================================== */
+
+/* Transições de animação para o Modal Lightbox */
+#imageModal {
+  transition: opacity 0.3s ease;
+}
+
+#imageModal img {
+  transition: transform 0.3s ease;
+}
+
+/* Transição do controle do carrossel */
+#carouselTrack {
+  will-change: transform;
+}

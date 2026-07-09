@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Jogo da Semana - Página Inicial (index.css)
+   Contém estilos exclusivos para a página inicial (index.html).
+   ========================================================================== */
+
+/* Transição suave nas linhas da tabela de listagem */
+#games-list table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+/* Transição de zoom leve no avatar do chooser */
+#games-list table tbody tr:hover img {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}

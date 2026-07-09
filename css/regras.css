@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Jogo da Semana - Regras (regras.css)
+   Contém estilos exclusivos para a página regras.html.
+   ========================================================================== */
+
+/* Efeito de zoom suave ao passar o mouse sobre os cards de regras */
+#rules-container > div {
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+#rules-container > div:hover {
+  transform: translateY(-2px);
+}

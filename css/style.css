@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Jogo da Semana - Global Stylesheet (style.css)
+   Contém estilos compartilhados por todas as páginas do projeto.
+   ========================================================================== */
+
+/* Variáveis CSS padrão de fallback */
+:root {
+  --brand-color-400: #c084fc;
+  --brand-color-500: #a855f7;
+  --brand-color-600: #9333ea;
+  --brand-color-950: #3b0764;
+}
+
+/* Rolagem Suave Global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Customização da Barra de Rolagem (Scrollbar) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712; /* gray-950 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937; /* gray-800 */
+  border-radius: 5px;
+  border: 2px solid #030712; /* gray-950 */
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-color-500);
+}
+
+/* Customização da Seleção de Texto */
+::selection {
+  background-color: var(--brand-color-500);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--brand-color-500);
+  color: #ffffff;
+}

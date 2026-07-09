@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Projeto - Jogo da Semana</title>
+    <!-- Configuração de Tema Dinâmico (deve vir antes do Tailwind) -->
+    <script src="js/theme.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Folhas de Estilo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sobre.css">
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- CABEÇALHO INJETADO DINAMICAMENTE -->
+    <div id="header-container"></div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-4 w-full flex-grow mt-8 space-y-8">
+        
+        <!-- HERO / APRESENTAÇÃO -->
+        <section class="bg-gradient-to-r from-blue-950/20 to-brand-950/20 border border-brand-800/10 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+            <div class="space-y-4 text-center md:text-left max-w-2xl">
+                <span class="bg-brand-950/60 text-brand-300 text-xs font-bold uppercase px-3 py-1 rounded-full border border-brand-700/50 tracking-wider">
+                    <i class="fa-solid fa-circle-question mr-1"></i> Quem Somos
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                    Sobre O Nosso <br class="hidden sm:inline"><span class="text-brand-400">Projeto Gamer</span>
+                </h1>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Entenda como surgiu o Jogo da Semana, nossa missão de diminuir o backlog de jogos acumulados e as estatísticas gerais alcançadas pelo grupo até o momento.
+                </p>
+            </div>
+            <div class="hidden md:block shrink-0">
+                <i class="fa-solid fa-chart-pie text-8xl text-brand-500/30"></i>
+            </div>
+        </section>
+
+        <!-- SOBRE E DASHBOARD DE ESTATÍSTICAS -->
+        <section id="about-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Texto Descritivo -->
+            <div class="lg:col-span-2 bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
+                <h2 class="text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-brand-400"></i> História e Objetivo
+                </h2>
+                <p id="about-description" class="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                    Carregando descrição do projeto...
+                </p>
+            </div>
+
+            <!-- Dashboard de Estatísticas Dinâmicas -->
+            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
+                <h3 class="text-base font-bold text-white border-b border-gray-800 pb-3 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-chart-simple text-brand-400"></i> Estatísticas
+                </h3>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Total Jogos -->
+                    <div class="bg-gray-950/50 border border-gray-805 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Total de Jogos</p>
+                        <p id="stat-total-games" class="text-2xl font-black text-white">0</p>
+                    </div>
+                    
+                    <!-- Membros Ativos -->
+                    <div class="bg-gray-950/50 border border-gray-805 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Membros Ativos</p>
+                        <p id="stat-active-members" class="text-2xl font-black text-white">0</p>
+                    </div>
+
+                    <!-- Média Geral -->
+                    <div class="bg-gray-950/50 border border-gray-805 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Média de Notas</p>
+                        <p id="stat-avg-rating" class="text-base font-black text-yellow-500 flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-star text-yellow-500 text-xs"></i> 0.0
+                        </p>
+                    </div>
+
+                    <!-- Gênero Mais Jogado -->
+                    <div class="bg-gray-950/50 border border-gray-805 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Gênero Mais Jogado</p>
+                        <p id="stat-top-genre" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                    </div>
+
+                    <!-- Jogo Mais Jogado (Frequência) -->
+                    <div class="bg-gray-950/50 border border-gray-805 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Mais Escolhido</p>
+                        <p id="stat-most-played" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                    </div>
+
+                    <!-- Jogo com Mais Pessoas -->
+                    <div class="bg-brand-950/20 border border-brand-900/30 p-4 rounded-xl text-center space-y-1">
+                        <p class="text-[10px] text-brand-400 font-semibold uppercase tracking-wider">Mais Pessoas</p>
+                        <p id="stat-most-players" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                    </div>
+
+                    <!-- Pior Jogo Já Jogado -->
+                    <div class="bg-red-950/20 border border-red-900/30 p-4 rounded-xl text-center space-y-1 col-span-2">
+                        <p class="text-[10px] text-red-400 font-semibold uppercase tracking-wider">Pior Jogo Já Jogado</p>
+                        <p id="stat-worst-game" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ INJETADO DINAMICAMENTE -->
+    <div id="footer-container"></div>
+
+    <!-- SCRIPTS MVC EM ORDEM -->
+    <script src="js/data.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+
+</body>
+</html>
