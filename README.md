@@ -69,9 +69,14 @@ Site JOGO/
 │   └── controller.js        # Roteamento de URLs e escuta de eventos/inputs
 │
 ├── img/                     # Repositório de capturas e banners dos jogos
+│   ├── rust/                # Screenshots de Rust (Semana 1, Semana 5 e Semana 9)
+│   ├── left-4-dead-2/       # Screenshot de Left 4 Dead 2
+│   ├── counter-strike-2/    # Screenshot de Counter Strike 2
+│   ├── enshrouded/          # Screenshot de Enshrouded
+│   ├── rocket-league/       # Screenshot de Rocket League
+│   ├── minecraft-cobbleverse/ # Screenshot de Minecraft Cobbleverse
 │   ├── the-forest/          # 11 screenshots de The Forest
-│   ├── rust-3/              # 3 screenshots da sessão 3 de Rust
-│   ├── mecha-chamelon/      # 3 screenshots de Mecha Chamelon
+│   ├── mecha-chamelon/      # 10 screenshots de Mecha Chamelon (novas inclusas)
 │   └── devour/              # 3 screenshots de Devour
 │
 ├── index.html               # Página inicial (Listagem e Filtros)

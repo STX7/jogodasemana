@@ -16,8 +16,8 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Facepunch Studios",
     description: "A sobrevivência definitiva. Os jogadores precisam gerenciar recursos, construir bases e defender seus pertences contra invasões inimigas. Comentário marcante da semana: PQP!!!! RAIDARAM A BASE",
-    banner: "img/1.jpeg",
-    gallery: ["img/1.jpeg"],
+    banner: "img/rust/1.jpeg",
+    gallery: ["img/rust/1.jpeg"],
     videoUrl: "",
     comments: [
       {
@@ -40,8 +40,8 @@ const GAMES_DATA = [
     rating: 4.8,
     developer: "Valve",
     description: "Ação clássica cooperativa de tiro em primeira pessoa contra hordas de infectados. O trabalho em equipe é fundamental para a sobrevivência do grupo. Comentário marcante: Nunca deixe molotov na mão do BuChuDin",
-    banner: "img/2.jpg",
-    gallery: ["img/2.jpg"],
+    banner: "img/left-4-dead-2/2.jpg",
+    gallery: ["img/left-4-dead-2/2.jpg"],
     videoUrl: "",
     comments: [
       {
@@ -64,8 +64,8 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Valve",
     description: "O ápice do tiro tático competitivo 5v5. O clássico embate de terroristas contra contra-terroristas com gráficos e mecânicas atualizadas na Source 2. Comentário marcante: Perdemos para o Meu Pau, Microsoft Office Excel PRO 2003, Jalim Habei, Thilas Karu Otobah e JunimGameplay123",
-    banner: "img/3.jpeg",
-    gallery: ["img/3.jpeg"],
+    banner: "img/counter-strike-2/3.jpeg",
+    gallery: ["img/counter-strike-2/3.jpeg"],
     videoUrl: "",
     comments: [
       {
@@ -88,8 +88,8 @@ const GAMES_DATA = [
     rating: 2.0,
     developer: "Keen Games",
     description: "Desperte e enfrente a névoa corrompida neste RPG de ação e sobrevivência. Explore um reino vasto construindo bases monumentais e enfrentando chefes temíveis. Comentário marcante: Deu nem tempo de terminar a base e fui assediado",
-    banner: "img/4.jpeg",
-    gallery: ["img/4.jpeg"],
+    banner: "img/enshrouded/4.jpeg",
+    gallery: ["img/enshrouded/4.jpeg"],
     videoUrl: "",
     comments: [
       {
@@ -112,8 +112,8 @@ const GAMES_DATA = [
     rating: 4.5,
     developer: "Facepunch Studios",
     description: "Mais uma semana caótica de sobrevivência em Rust. Novas alianças, construções e tentativas frustradas de raidar bases inimigas. Comentário marcante: Amanhã a gente raida denovo (spoiler: fomos raidados)",
-    banner: "img/5.jfif",
-    gallery: ["img/5.jfif"],
+    banner: "img/rust/5.jfif",
+    gallery: ["img/rust/5.jfif"],
     videoUrl: "",
     comments: [
       {
@@ -136,8 +136,8 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Psyonix",
     description: "O esporte caótico definitivo. Partidas eletrizantes de futebol disputadas com carros movidos a jato. Acrobacias aéreas e competitividade de alto nível. Comentário marcante: Show de bola",
-    banner: "img/6.png",
-    gallery: ["img/6.png"],
+    banner: "img/rocket-league/6.png",
+    gallery: ["img/rocket-league/6.png"],
     videoUrl: "",
     comments: [
       {
@@ -160,8 +160,8 @@ const GAMES_DATA = [
     rating: 4.2,
     developer: "Mojang / Comunitário",
     description: "Uma jornada mágica onde Minecraft encontra o universo modificado de Pokémon. Capture, treine e enfrente criaturas fantásticas em um mundo infinito de blocos. Comentário marcante: Eu capturei um Pokemón Batman",
-    banner: "img/7.png",
-    gallery: ["img/7.png"],
+    banner: "img/minecraft-cobbleverse/7.png",
+    gallery: ["img/minecraft-cobbleverse/7.png"],
     videoUrl: "",
     comments: [
       {
@@ -226,11 +226,11 @@ const GAMES_DATA = [
     rating: 3.5,
     developer: "Facepunch Studios",
     description: "Mais uma semana caótica no deserto impiedoso de Rust, repleta de combates armados e intrigas na vizinhança. Comentários marcantes: A bala aqui não é perdida / Lugar tranquilo e super seguro.",
-    banner: "img/rust-3/RustS3 (1).jpeg",
+    banner: "img/rust/RustS3 (1).jpeg",
     gallery: [
-      "img/rust-3/RustS3 (1).jpeg",
-      "img/rust-3/RustS3 (2).jpeg",
-      "img/rust-3/RustS3 (3).jpeg"
+      "img/rust/RustS3 (1).jpeg",
+      "img/rust/RustS3 (2).jpeg",
+      "img/rust/RustS3 (3).jpeg"
     ],
     videoUrl: "",
     comments: [
@@ -283,8 +283,15 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Indie / Comunitário",
     description: "Batalhas caóticas de robôs mecânicos em arenas virtuais destrutíveis. Comentários marcantes: Bora fazer uma cópia desse jogo? / Assobia se for macho.",
-    banner: "img/mecha-chamelon/Mecha Chameleon (1).jpeg",
+    banner: "img/mecha-chamelon/image.webp",
     gallery: [
+      "img/mecha-chamelon/image.webp",
+      "img/mecha-chamelon/image (1).webp",
+      "img/mecha-chamelon/image (2).webp",
+      "img/mecha-chamelon/image (3).webp",
+      "img/mecha-chamelon/image (4).webp",
+      "img/mecha-chamelon/image (5).webp",
+      "img/mecha-chamelon/image (6).webp",
       "img/mecha-chamelon/Mecha Chameleon (1).jpeg",
       "img/mecha-chamelon/Mecha Chameleon (2).jpeg",
       "img/mecha-chamelon/Mecha Chameleon (3).jpeg"
