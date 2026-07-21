@@ -47,3 +47,54 @@ html {
   background-color: var(--brand-color-500);
   color: #ffffff;
 }
+
+/* ========== Animações de Carregamento ========== */
+
+/* Animação de shimmer para skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Animação de fade-in suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton loading */
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    #1f2937 0%,
+    #374151 50%,
+    #1f2937 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Skeleton loader - posicionado dentro do container pai */
+#skeleton-loader {
+  pointer-events: auto;
+}
+
+/* Fade-in para conteúdo principal */
+main {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Fade-in para seções */
+section {
+  animation: fadeIn 0.5s ease-out;
+}

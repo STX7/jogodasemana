@@ -40,8 +40,12 @@ class GameController {
       } else if (document.getElementById("about-container")) {
         this.initAboutPage();
       }
+
+      // 3. Esconde o skeleton loader após o conteúdo estar pronto
+      this.view.hideSkeleton();
     } catch (error) {
       console.error("Erro fatal durante a inicialização do Controller:", error);
+      this.view.hideSkeleton();
     }
   }
 

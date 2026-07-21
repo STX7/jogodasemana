@@ -8,6 +8,20 @@ class GameView {
     this.currentCarouselIndex = 0;
   }
 
+  /**
+   * Esconde o skeleton loader quando o conteúdo está pronto
+   */
+  hideSkeleton() {
+    const skeleton = document.getElementById("skeleton-loader");
+    if (skeleton) {
+      skeleton.style.transition = "opacity 0.3s ease-out";
+      skeleton.style.opacity = "0";
+      setTimeout(() => {
+        skeleton.style.display = "none";
+      }, 300);
+    }
+  }
+
   formatRating(rating) {
     return typeof rating === "number" && !isNaN(rating) ? rating.toFixed(1) : "—";
   }

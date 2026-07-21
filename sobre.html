@@ -20,7 +20,15 @@
     <div id="header-container"></div>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="max-w-6xl mx-auto px-4 w-full flex-grow mt-8 space-y-8">
+    <main class="max-w-6xl mx-auto px-4 w-full flex-grow mt-8 space-y-8 relative">
+        
+        <!-- SKELETON LOADER (aparece enquanto o conteúdo carrega) -->
+        <div id="skeleton-loader" class="absolute inset-0 bg-gray-950 z-50 flex items-center justify-center rounded-lg">
+            <div class="flex flex-col items-center gap-4">
+                <div class="w-12 h-12 rounded-full border-4 border-gray-800 border-t-brand-500 animate-spin"></div>
+                <p class="text-gray-500 text-sm font-medium">Carregando...</p>
+            </div>
+        </div>
         
         <!-- HERO / APRESENTAÇÃO -->
         <section class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
