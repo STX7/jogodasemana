@@ -324,7 +324,7 @@ const GAMES_DATA = [
     genre: "Coop / Terror / Sobrevivência",
     date: "2026-07-06",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "Gustvbr"],
+    participants: ["BuChuDin", "STX7", "gatólico","Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.7,
@@ -336,8 +336,56 @@ const GAMES_DATA = [
       "img/devour/Devour (2).jpeg",
       "img/devour/Devour (3).jpeg"
     ],
-    videoUrl: "",
+    videoUrl: "https://youtu.be/16OTjrPWUbQ",
     comments: []
+  },
+  {
+    id: "deadlock",
+    title: "Deadlock",
+    genre: "Hero Shooter / MOBA",
+    date: "2026-07-13",
+    chooser: "BuChuDin",
+    participants: ["BuChuDin", "STX7", "Gustvbr", "gatólico", "mamaco gelado", "pekonino", "Chicão da Massa"],
+    specialParticipants: [],
+    platform: "PC (Steam)",
+    rating: 4.7,
+    developer: "Valve",
+    description: "Deadlock é um jogo multijogador 6v6 de tiro em terceira pessoa com fortes elementos de MOBA (como rotas, tropas, torres, chefes e compra de itens), desenvolvido pela Valve. O jogo combina a ação rápida e o uso de habilidades dos hero shooters com a estratégia e a progressão de partidas de defesa de base, tudo ambientado em uma versão alternativa de Nova York com temática ocultista e fantasia urbana da década de 1930.",
+    banner: "img/deadlock/banner.png",
+    gallery: [],
+    videoUrl: "https://www.youtube.com/watch?v=-JtupkqFhuo&feature=youtu.be",
+    comments: [
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "É tipo Overwatch só que bom"
+      },
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "É legal, só falta aprender a farmar, montar build, conhecer o mapa, conhecer os heróis, melhorar a mira, micro, macro, rotação de wave, skill issues"
+      },
+      {
+        author: "Gustvbr",
+        avatarSeed: "Gustvbr",
+        time: "Final da Semana",
+        text: "Jogável"
+      },
+      {
+        author: "mamaco gelado",
+        avatarSeed: "mamaco gelado",
+        time: "Final da Semana",
+        text: "Muito bom, só que ainda tá no BETA"
+      },
+      {
+        author: "Chicão da Massa",
+        avatarSeed: "Chicão da Massa",
+        time: "Final da Semana",
+        text: "O que tá acontecendo?"
+      }
+    ]
   }
 ];
 
@@ -465,9 +513,10 @@ const ABOUT_INFO = {
       return coreMembers.size;
     },
     get averageRating() {
-      if (GAMES_DATA.length === 0) return 0;
-      const sum = GAMES_DATA.reduce((acc, g) => acc + g.rating, 0);
-      return (sum / GAMES_DATA.length).toFixed(2);
+      const ratedGames = GAMES_DATA.filter(g => typeof g.rating === "number" && !isNaN(g.rating));
+      if (ratedGames.length === 0) return "0.00";
+      const sum = ratedGames.reduce((acc, g) => acc + g.rating, 0);
+      return (sum / ratedGames.length).toFixed(2);
     },
     get primaryGenre() {
       if (GAMES_DATA.length === 0) return "Nenhum";
@@ -518,10 +567,11 @@ const ABOUT_INFO = {
       return bestGame ? `${bestGame.title} (${maxCount} pessoas)` : "Nenhum";
     },
     get worstGame() {
-      if (GAMES_DATA.length === 0) return "Nenhum";
+      const ratedGames = GAMES_DATA.filter(g => typeof g.rating === "number" && !isNaN(g.rating));
+      if (ratedGames.length === 0) return "Nenhum";
       let worst = null;
       let minRating = Infinity;
-      GAMES_DATA.forEach(g => {
+      ratedGames.forEach(g => {
         if (g.rating < minRating) {
           minRating = g.rating;
           worst = g;

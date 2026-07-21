@@ -23,18 +23,21 @@
     <main class="max-w-6xl mx-auto px-4 w-full flex-grow mt-8 space-y-8">
         
         <!-- HERO / APRESENTAÇÃO -->
-        <section class="bg-gradient-to-r from-brand-900/40 to-blue-900/20 border border-brand-800/30 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+        <section class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
             <div class="space-y-4 text-center md:text-left max-w-2xl">
-                <span class="bg-brand-900/80 text-brand-300 text-xs font-bold uppercase px-3 py-1 rounded-full border border-brand-700/50 tracking-wider">Histórico do Grupo</span>
-                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
-                    Nossos Jogos Jogados, <br class="hidden sm:inline"><span class="text-brand-400">Semana Após Semana</span>
+                <span class="inline-flex items-center gap-2 bg-brand-950/70 text-brand-300 text-xs font-bold uppercase px-3 py-1 rounded-full border border-brand-800/60 tracking-wider shadow-sm shadow-brand-500/10">
+                    <i class="fa-solid fa-gamepad text-[10px]"></i> Histórico do Grupo
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-black text-gray-100 leading-tight drop-shadow-sm">
+                    Nossos Jogos Jogados,<br class="hidden sm:inline"><span class="text-brand-300">Semana Após Semana</span>
                 </h1>
-                <p class="text-sm text-gray-400 leading-relaxed">
+                <p class="text-sm text-gray-400 leading-relaxed max-w-xl">
                     Acompanhe a lista de jogos escolhidos por membros do grupo. Cada segunda-feira marca um novo desafio, avaliações honestas (ou não tão honestas assim) e memórias salvas em capturas e gameplays.
                 </p>
             </div>
             <div class="hidden md:block shrink-0">
-                <i class="fa-solid fa-gamepad text-8xl text-brand-500/30 animate-pulse"></i>
+                <i class="fa-solid fa-gamepad text-8xl text-brand-400/30 transition-transform duration-300 group-hover:scale-105"></i>
             </div>
         </section>
 

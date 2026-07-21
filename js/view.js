@@ -8,6 +8,10 @@ class GameView {
     this.currentCarouselIndex = 0;
   }
 
+  formatRating(rating) {
+    return typeof rating === "number" && !isNaN(rating) ? rating.toFixed(1) : "—";
+  }
+
   /**
    * Injeta o cabeçalho e o rodapé padrão da aplicação.
    * Isso evita duplicação de HTML entre as páginas.
@@ -80,31 +84,36 @@ class GameView {
     const listContainer = document.getElementById("games-list");
     if (!listContainer) return;
 
-    if (games.length === 0) {
-      listContainer.innerHTML = `
-        <div class="bg-gray-900 rounded-xl border border-gray-800 p-8 text-center text-gray-400">
-          <i class="fa-regular fa-folder-open text-4xl text-gray-600 mb-3"></i>
-          <p>Nenhum jogo encontrado para os filtros selecionados.</p>
-        </div>
-      `;
-      return;
-    }
+    const targetRows = 10;
+    const visibleGames = Array.isArray(games) ? games.slice(0, targetRows) : [];
+    const fillerRows = Math.max(0, targetRows - visibleGames.length);
 
     let html = `
       <div class="overflow-x-auto bg-gray-900 rounded-xl border border-gray-800 shadow-xl">
-        <table class="w-full text-left border-collapse">
+        <table class="w-full text-left border-collapse table-fixed">
           <thead>
             <tr class="border-b border-gray-800 bg-gray-950/50 text-xs font-bold uppercase tracking-wider text-brand-400">
-              <th class="py-4 px-6">Jogo</th>
-              <th class="py-4 px-6">Quem Escolheu</th>
-              <th class="py-4 px-6">Data de Início</th>
-              <th class="py-4 px-6 text-right">Ação</th>
+              <th class="py-4 px-6 w-[50%]">Jogo</th>
+              <th class="py-4 px-6 w-[22%]">Quem Escolheu</th>
+              <th class="py-4 px-6 w-[14%]">Data de Início</th>
+              <th class="py-4 px-6 w-[14%] text-right">Ação</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-800 text-sm">
     `;
 
-    games.forEach((game, index) => {
+    if (visibleGames.length === 0) {
+      html += `
+        <tr class="h-16">
+          <td colspan="4" class="py-4 px-6 text-center text-gray-400">
+            <i class="fa-regular fa-folder-open text-2xl text-gray-600 mb-2 block"></i>
+            Nenhum jogo encontrado para os filtros selecionados.
+          </td>
+        </tr>
+      `;
+    }
+
+    visibleGames.forEach((game) => {
       // Formata a data (AAAA-MM-DD para DD/MM/AAAA)
       let formattedDate = game.date;
       if (game.date && game.date !== "Data inválida") {
@@ -114,30 +123,30 @@ class GameView {
 
       const ratingBadge = `
         <span class="ml-2 text-xs font-semibold bg-brand-950/60 text-brand-300 border border-brand-800/50 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
-          <i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> ${game.rating.toFixed(1)}
+          <i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> ${this.formatRating(game.rating)}
         </span>
       `;
 
       html += `
-        <tr class="hover:bg-gray-800/40 transition-colors group">
-          <td class="py-4 px-6 font-bold text-white">
-            <div class="flex items-center gap-3">
-              <a href="jogo.html?id=${game.id}" class="hover:text-brand-400 transition-colors flex items-center gap-1.5">
-                ${game.title}
+        <tr class="h-16 hover:bg-gray-800/40 transition-colors group">
+          <td class="h-16 py-4 px-6 font-bold text-white align-middle overflow-hidden">
+            <div class="flex items-center gap-3 min-w-0">
+              <a href="jogo.html?id=${game.id}" class="hover:text-brand-400 transition-colors flex items-center gap-1.5 min-w-0 max-w-full">
+                <span class="truncate block">${game.title}</span>
               </a>
               ${ratingBadge}
             </div>
           </td>
-          <td class="py-4 px-6 text-gray-300 font-medium">
-            <span class="inline-flex items-center gap-1.5">
+          <td class="h-16 py-4 px-6 text-gray-300 font-medium align-middle overflow-hidden">
+            <span class="inline-flex items-center gap-1.5 max-w-full truncate align-middle">
               <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${game.chooser}" class="w-5 h-5 rounded-md bg-brand-900/30 p-0.5" alt="Avatar">
-              ${game.chooser}
+              <span class="truncate">${game.chooser}</span>
             </span>
           </td>
-          <td class="py-4 px-6 text-gray-400 font-mono">
+          <td class="h-16 py-4 px-6 text-gray-400 font-mono align-middle whitespace-nowrap overflow-hidden text-ellipsis">
             ${formattedDate}
           </td>
-          <td class="py-4 px-6 text-right">
+          <td class="h-16 py-4 px-6 text-right align-middle whitespace-nowrap">
             <a href="jogo.html?id=${game.id}" class="inline-flex items-center gap-1.5 bg-gray-800 hover:bg-brand-600 hover:text-white text-gray-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-gray-700 hover:border-brand-500 transition-all">
               Detalhes <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
             </a>
@@ -145,6 +154,17 @@ class GameView {
         </tr>
       `;
     });
+
+    for (let i = 0; i < fillerRows; i++) {
+      html += `
+        <tr class="h-16">
+          <td class="h-16 py-4 px-6 text-transparent select-none align-middle">&nbsp;</td>
+          <td class="h-16 py-4 px-6 text-transparent select-none align-middle">&nbsp;</td>
+          <td class="h-16 py-4 px-6 text-transparent select-none align-middle">&nbsp;</td>
+          <td class="h-16 py-4 px-6 text-transparent select-none align-middle">&nbsp;</td>
+        </tr>
+      `;
+    }
 
     html += `
           </tbody>
@@ -236,22 +256,23 @@ class GameView {
   parseYoutubeEmbed(url) {
     if (!url) return null;
     try {
+      const normalizedUrl = /^https?:\/\//i.test(url) ? url : `https://${url}`;
       let videoId = null;
       // Casos do link padrão: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-      if (url.includes("youtube.com/watch")) {
-        const urlParams = new URLSearchParams(new URL(url).search);
+      if (normalizedUrl.includes("youtube.com/watch")) {
+        const urlParams = new URLSearchParams(new URL(normalizedUrl).search);
         videoId = urlParams.get("v");
       }
       // Casos do link encurtado: https://youtu.be/dQw4w9WgXcQ
-      else if (url.includes("youtu.be/")) {
-        const parts = url.split("youtu.be/");
+      else if (normalizedUrl.includes("youtu.be/")) {
+        const parts = normalizedUrl.split("youtu.be/");
         if (parts.length > 1) {
           videoId = parts[1].split(/[?#]/)[0];
         }
       }
       // Casos do link embed direto: https://www.youtube.com/embed/dQw4w9WgXcQ
-      else if (url.includes("youtube.com/embed/")) {
-        const parts = url.split("youtube.com/embed/");
+      else if (normalizedUrl.includes("youtube.com/embed/")) {
+        const parts = normalizedUrl.split("youtube.com/embed/");
         if (parts.length > 1) {
           videoId = parts[1].split(/[?#]/)[0];
         }
@@ -352,7 +373,10 @@ class GameView {
     if (techDev) techDev.textContent = game.developer;
     if (techPlatform) techPlatform.textContent = game.platform;
     if (techRating) {
-      techRating.innerHTML = `<i class="fa-solid fa-star text-yellow-500 text-xs"></i> ${game.rating.toFixed(1)} / 5.0`;
+      const formattedRating = this.formatRating(game.rating);
+      techRating.innerHTML = formattedRating === "—"
+        ? `<i class="fa-solid fa-star text-yellow-500 text-xs"></i> Sem avaliação`
+        : `<i class="fa-solid fa-star text-yellow-500 text-xs"></i> ${formattedRating} / 5.0`;
     }
 
     // 7. Descrição
@@ -645,7 +669,7 @@ class GameView {
             </div>
             <div class="flex items-center gap-4 self-stretch sm:self-auto justify-between border-t border-gray-800/40 sm:border-0 pt-2 sm:pt-0">
               <span class="text-xs text-brand-400 font-medium px-2 py-0.5 bg-brand-950/30 border border-brand-900/30 rounded-md">${game.genre.split(" / ")[0]}</span>
-              <span class="text-sm font-bold text-yellow-500 flex items-center gap-1"><i class="fa-solid fa-star"></i> ${game.rating.toFixed(1)}</span>
+              <span class="text-sm font-bold text-yellow-500 flex items-center gap-1"><i class="fa-solid fa-star"></i> ${this.formatRating(game.rating)}</span>
             </div>
           </div>
         `;
@@ -669,8 +693,9 @@ class GameView {
     
     rules.forEach(rule => {
       const card = document.createElement("div");
-      card.className = "bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-brand-500/20 transition-all duration-300 flex gap-4";
+      card.className = "group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-5 hover:border-brand-500/30 transition-all duration-300 flex gap-4 shadow-lg";
       card.innerHTML = `
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
         <div class="w-10 h-10 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 font-black text-sm shrink-0">
           0${rule.number}
         </div>

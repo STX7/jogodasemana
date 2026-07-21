@@ -28,12 +28,12 @@ class GameModel {
       participants: Array.isArray(game.participants) ? game.participants : [],
       specialParticipants: Array.isArray(game.specialParticipants) ? game.specialParticipants : [],
       platform: game.platform || "Não especificada",
-      rating: typeof game.rating === 'number' && !isNaN(game.rating) ? game.rating : 0.0,
+      rating: typeof game.rating === 'number' && !isNaN(game.rating) ? game.rating : null,
       developer: game.developer || "Independente",
       description: game.description || "Sem descrição disponível.",
       banner: game.banner || "https://picsum.photos/id/1067/1920/1080",
       gallery: Array.isArray(game.gallery) ? game.gallery : [],
-      videoUrl: game.videoUrl || "",
+      videoUrl: game.videoUrl || game.videourl || "",
       comments: Array.isArray(game.comments) ? game.comments : []
     };
   }
@@ -153,7 +153,11 @@ class GameModel {
 
       // Ordenar jogos de cada mês por nota (rating) decrescente
       for (const month in grouped) {
-        grouped[month].sort((a, b) => b.rating - a.rating);
+        grouped[month].sort((a, b) => {
+          const ratingA = typeof a.rating === "number" && !isNaN(a.rating) ? a.rating : -1;
+          const ratingB = typeof b.rating === "number" && !isNaN(b.rating) ? b.rating : -1;
+          return ratingB - ratingA;
+        });
       }
 
       return grouped;
