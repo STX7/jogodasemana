@@ -352,7 +352,11 @@ const GAMES_DATA = [
     developer: "Valve",
     description: "Deadlock é um jogo multijogador 6v6 de tiro em terceira pessoa com fortes elementos de MOBA (como rotas, tropas, torres, chefes e compra de itens), desenvolvido pela Valve. O jogo combina a ação rápida e o uso de habilidades dos hero shooters com a estratégia e a progressão de partidas de defesa de base, tudo ambientado em uma versão alternativa de Nova York com temática ocultista e fantasia urbana da década de 1930.",
     banner: "img/deadlock/banner.png",
-    gallery: [],
+    gallery: [
+        "img/deadlock/deadlock-1.jpeg",
+        "img/deadlock/deadlock-2.jpeg",
+        "img/deadlock/deadlock-3.jpeg"
+    ],
     videoUrl: "https://www.youtube.com/watch?v=-JtupkqFhuo&feature=youtu.be",
     comments: [
       {
