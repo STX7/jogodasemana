@@ -7,7 +7,7 @@
     <!-- Configuração de Tema Dinâmico (deve vir antes do Tailwind) -->
     <script src="js/theme.js"></script>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.js?v=1.0.1"></script>
     <!-- Font Awesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Folhas de Estilo CSS -->
@@ -30,30 +30,17 @@
             </div>
         </div>
         
-        <!-- HERO / APRESENTAÇÃO -->
-        <section class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
-            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
-            <div class="space-y-4 text-center md:text-left max-w-2xl">
-                <span class="inline-flex items-center gap-2 bg-brand-950/70 text-brand-300 text-xs font-bold uppercase px-3 py-1 rounded-full border border-brand-800/60 tracking-wider shadow-sm shadow-brand-500/10">
-                    <i class="fa-solid fa-circle-question text-[10px]"></i> Quem Somos
-                </span>
-                <h1 class="text-3xl sm:text-5xl font-black text-gray-100 leading-tight drop-shadow-sm">
-                    Sobre O Nosso <br class="hidden sm:inline"><span class="text-brand-300">Projeto Gamer</span>
-                </h1>
-                <p class="text-sm text-gray-400 leading-relaxed max-w-xl">
-                    Entenda como surgiu o Jogo da Semana, nossa missão de diminuir o backlog de jogos acumulados e as estatísticas gerais alcançadas pelo grupo até o momento.
-                </p>
-            </div>
-            <div class="hidden md:block shrink-0">
-                <i class="fa-solid fa-chart-pie text-8xl text-brand-400/30 transition-transform duration-300 group-hover:scale-105"></i>
-            </div>
-        </section>
+        <!-- TÍTULO DA PÁGINA -->
+        <div class="space-y-2 border-b border-gray-800 pb-6">
+            <h1 class="text-3xl sm:text-4xl font-black text-gray-100 tracking-tight">Sobre o Nosso <span class="text-brand-300">Projeto Gamer</span></h1>
+            <p class="text-sm text-gray-400 max-w-2xl">Entenda como surgiu o Jogo da Semana, nossa missão de diminuir o backlog de jogos acumulados e as estatísticas gerais alcançadas pelo grupo até o momento.</p>
+        </div>
 
         <!-- SOBRE E DASHBOARD DE ESTATÍSTICAS -->
-        <section id="about-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section id="about-container" class="grid grid-cols-1 lg:grid-cols-5 gap-8">
             
             <!-- Texto Descritivo -->
-            <div class="lg:col-span-2 bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
+            <div class="lg:col-span-3 bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
                 <h2 class="text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
                     <i class="fa-solid fa-book-open text-brand-400"></i> História e Objetivo
                 </h2>
@@ -63,7 +50,7 @@
             </div>
 
             <!-- Dashboard de Estatísticas Dinâmicas -->
-            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
+            <div class="lg:col-span-2 bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4 shadow-lg">
                 <h3 class="text-base font-bold text-white border-b border-gray-800 pb-3 uppercase tracking-wider flex items-center gap-2">
                     <i class="fa-solid fa-chart-simple text-brand-400"></i> Estatísticas
                 </h3>
@@ -96,32 +83,31 @@
                     <div class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 p-4 rounded-xl text-center space-y-1 transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10">
                         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
                         <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Gênero Mais Jogado</p>
-                        <p id="stat-top-genre" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                        <p id="stat-top-genre" class="text-xs font-bold text-white uppercase tracking-wide break-words whitespace-normal">Nenhum</p>
                     </div>
 
                     <!-- Jogo Mais Jogado (Frequência) -->
                     <div class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 p-4 rounded-xl text-center space-y-1 transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10">
                         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
                         <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Mais Escolhido</p>
-                        <p id="stat-most-played" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                        <p id="stat-most-played" class="text-xs font-bold text-white uppercase tracking-wide break-words whitespace-normal">Nenhum</p>
                     </div>
 
                     <!-- Jogo com Mais Pessoas -->
                     <div class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 p-4 rounded-xl text-center space-y-1 transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10">
                         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
                         <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Mais Pessoas</p>
-                        <p id="stat-most-players" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                        <p id="stat-most-players" class="text-xs font-bold text-white uppercase tracking-wide break-words whitespace-normal">Nenhum</p>
                     </div>
 
                     <!-- Pior Jogo Já Jogado -->
                     <div class="group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 p-4 rounded-xl text-center space-y-1 transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10 col-span-2">
                         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
                         <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Pior Jogo Já Jogado</p>
-                        <p id="stat-worst-game" class="text-xs font-bold text-white uppercase tracking-wide truncate">Nenhum</p>
+                        <p id="stat-worst-game" class="text-xs font-bold text-white uppercase tracking-wide break-words whitespace-normal">Nenhum</p>
                     </div>
                 </div>
             </div>
-
         </section>
 
     </main>
