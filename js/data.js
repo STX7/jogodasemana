@@ -390,6 +390,60 @@ const GAMES_DATA = [
         text: "O que tá acontecendo?"
       }
     ]
+  },
+  {
+    id: "battlefield-1-revolution",
+    title: "Battlefield 1 Revolution",
+    genre: "FPS / Multiplayer / Primeira Guerra",
+    date: "2026-07-25",
+    chooser: "gatólico",
+    participants: ["STX7", "gatólico", "BuChuDin", "mamaco gelado", "Gustvbr", "Chicão da Massa"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.5,
+    developer: "DICE",
+    description: "A ação épica da Primeira Guerra Mundial em 64 jogadores. Destrua ambientes, pilotem veículos e use gadgets militares clássicos em mapas massivos. Comentário marcante: Até parece que eu tô na guerra mesmo",
+    banner: "img/bf1/battlefield-1-banner.png",
+    gallery: ["img/bf1/bf1-1.jpeg", "img/bf1/bf1-2.jpeg"],
+    videoUrl: "",
+    comments: [
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "Até parece que eu tô na guerra mesmo"
+      },
+      {
+        author: "gatólico",
+        avatarSeed: "gatolico",
+        time: "Final da Semana",
+        text: "Até parece que é a guerra"
+      },
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "Até parece que eu tô na guerra"
+      },
+      {
+        author: "mamaco gelado",
+        avatarSeed: "mamaco gelado",
+        time: "Final da Semana",
+        text: "Até parece que tamo na guerra"
+      },
+      {
+        author: "Gustvbr",
+        avatarSeed: "Gustvbr",
+        time: "Final da Semana",
+        text: "Até parece que eu tô lá na guerra"
+      },
+      {
+        author: "Chicão da Massa",
+        avatarSeed: "Chicão da Massa",
+        time: "Final da Semana",
+        text: "Até parece que tô na guerra, irmão"
+      }
+    ]
   }
 ];
 
