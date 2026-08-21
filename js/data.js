@@ -395,7 +395,7 @@ const GAMES_DATA = [
     id: "battlefield-1-revolution",
     title: "Battlefield 1 Revolution",
     genre: "FPS / Multiplayer / Primeira Guerra",
-    date: "2026-07-25",
+    date: "2026-07-20",
     chooser: "gatólico",
     participants: ["STX7", "gatólico", "BuChuDin", "mamaco gelado", "Gustvbr", "Chicão da Massa"],
     specialParticipants: [],
@@ -444,6 +444,112 @@ const GAMES_DATA = [
         text: "Até parece que tô na guerra, irmão"
       }
     ]
+  },
+  {
+    id: "minecraft-vanilla",
+    title: "Minecraft Vanilla",
+    genre: "Sandbox / Sobrevivência",
+    date: "2026-07-27",
+    chooser: "STX7",
+    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr", "pekonino", "pamonhadesal"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.0,
+    developer: "Mojang",
+    description: "Uma jornada clássica de sobrevivência no Minecraft em sua versão padrão, construindo abrigo, minerando e explorando o mundo.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: [
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "porque tem um bloco de comando aqui?"
+      },
+      {
+        author: "pekonino",
+        avatarSeed: "pekonino",
+        time: "Final da Semana",
+        text: "Odeio concreto branco."
+      },
+      {
+        author: "pamonhadesal",
+        avatarSeed: "pamonhadesal",
+        time: "Final da Semana",
+        text: "E essa vila aqui?"
+      },
+      {
+        author: "Gustvbr",
+        avatarSeed: "Gustvbr",
+        time: "Final da Semana",
+        text: "..."
+      },
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "desde a 1.5 bla bla bla ..."
+      }
+    ]
+  },
+  {
+    id: "deadlock-2",
+    title: "Deadlock (Sessão 2)",
+    genre: "Hero Shooter / MOBA",
+    date: "2026-08-03",
+    chooser: "BuChuDin",
+    participants: ["gatólico", "STX7", "mamaco gelado", "chico mete bala"],
+    specialParticipants: [],
+    platform: "PC (Steam)",
+    rating: 4.0,
+    developer: "Valve",
+    description: "Gabriel foi viajar e o grupo aproveitou para disputar partidas de Deadlock.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: []
+  },
+  {
+    id: "valorant",
+    title: "Valorant",
+    genre: "FPS / Competitivo / Hero Shooter",
+    date: "2026-08-10",
+    chooser: "gatólico",
+    participants: ["BuChuDin", "mamaco gelado", "gatólico", "STX7", "pamonhadesal"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 3.7,
+    developer: "Riot Games",
+    description: "Disputa tática de tiro em primeira pessoa 5v5 focado em personagens e habilidades.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: [
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "a melhor parte é a de desinstalar."
+      }
+    ]
+  },
+  {
+    id: "minecraft-all-the-mods-11",
+    title: "Minecraft: All The Mods 11",
+    genre: "Sandbox / Modded / RPG",
+    date: "2026-08-17",
+    chooser: "STX7",
+    participants: [],
+    specialParticipants: [],
+    platform: "PC",
+    rating: null,
+    developer: "Comunidade ATM",
+    description: "Mais nova iteração do pacote All The Mods para Minecraft, trazendo as modificações mais recentes e atualizadas da comunidade.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: []
   }
 ];
 
