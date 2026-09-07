@@ -550,6 +550,48 @@ const GAMES_DATA = [
     gallery: [],
     videoUrl: "",
     comments: []
+  },
+  {
+    id: "deadlock-3",
+    title: "Deadlock (Sessão 3)",
+    genre: "Hero Shooter / MOBA",
+    date: "2026-08-24",
+    chooser: "BuChuDin",
+    participants: ["gatólico", "STX7", "mamaco gelado", "BuChuDin"],
+    specialParticipants: [],
+    platform: "PC (Steam)",
+    rating: 4.1,
+    developer: "Valve",
+    description: "BuChuDin tava sem ideias, mas dessa vez sabemos jogar.",
+    banner: "img/deadlock/banner.png",
+    gallery: ["img/deadlock/deadlock-sessao3.png"],
+    videoUrl: "",
+    comments: [
+      {
+        author: "Gatolico",
+        avatarSeed: "gatolico",
+        time: "Final da Semana",
+        text: "De novo não"
+      },
+      {
+        author: "mamaco gelado",
+        avatarSeed: "mamaco gelado",
+        time: "Final da Semana",
+        text: "Meu porteiro"
+      },
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "Ahhhhhhhhh"
+      },
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "é o deads é o locks"
+      }
+    ]
   }
 ];
 
