@@ -774,15 +774,15 @@ class GameView {
       return;
     }
 
-    // Lógica para empates
+    // Lógica para empates (Ranking Denso)
     let currentRank = 1;
     let currentScore = ranking[0].count;
 
     const html = ranking.map((p, index) => {
-      // Se a pontuação (count) atual for menor que a do cara de cima, o rank vira o índice dele
-      // Dessa forma, se três tiverem 20 pontos, todos ficam no Top 1. O próximo com 15 pontos será o Top 4.
+      // Se a pontuação for menor que a do anterior, aumenta o rank em apenas 1 (Top 2, Top 3, etc)
+      // Independentemente de quantas pessoas estão empatadas no rank anterior.
       if (p.count < currentScore) {
-        currentRank = index + 1;
+        currentRank++;
         currentScore = p.count;
       }
 
