@@ -168,6 +168,31 @@ class GameModel {
   }
 
   /**
+   * Retorna o ranking de participantes e o número de vezes que jogaram
+   * @returns {Array} Array de objetos { name, count } ordenados por count
+   */
+  getParticipantsRanking() {
+    const stats = {};
+    this.games.forEach(game => {
+      // Ignorar semanas que ainda não têm participantes se for array vazio
+      if (!game.participants) return;
+      const allPlayers = [...new Set([
+        ...game.participants,
+        ...(game.specialParticipants || [])
+      ])];
+      
+      allPlayers.forEach(player => {
+        if (!stats[player]) stats[player] = 0;
+        stats[player]++;
+      });
+    });
+
+    return Object.entries(stats)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count);
+  }
+
+  /**
    * Retorna as regras do site
    */
   getRules() {

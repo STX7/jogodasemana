@@ -130,7 +130,7 @@ const GAMES_DATA = [
     genre: "Esporte / Futebol de Carros",
     date: "2026-05-25",
     chooser: "STX7",
-    participants: ["STX34", "edisontoptop", "BuChuDin", "Gustvbr", "Mistake"],
+    participants: ["STX7", "gatólico", "BuChuDin", "Gustvbr", "Mistake"],
     specialParticipants: [],
     platform: "PC / Consoles",
     rating: 5.0,
@@ -260,7 +260,7 @@ const GAMES_DATA = [
     genre: "Sandbox / Modded / RPG",
     date: "2026-06-22",
     chooser: "BuChuDin",
-    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr", "pekonino", "pamonhadesal"],
+    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
@@ -324,7 +324,7 @@ const GAMES_DATA = [
     genre: "Coop / Terror / Sobrevivência",
     date: "2026-07-06",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "gatólico","Gustvbr"],
+    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.7,
@@ -451,7 +451,7 @@ const GAMES_DATA = [
     genre: "Sandbox / Sobrevivência",
     date: "2026-07-27",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr", "pekonino", "pamonhadesal"],
+    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
@@ -499,7 +499,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-08-03",
     chooser: "BuChuDin",
-    participants: ["gatólico", "STX7", "mamaco gelado", "chico mete bala"],
+    participants: ["gatólico", "STX7", "mamaco gelado", "Chicão da Massa", "BuChuDin"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.0,
@@ -540,7 +540,7 @@ const GAMES_DATA = [
     genre: "Sandbox / Modded / RPG",
     date: "2026-08-17",
     chooser: "STX7",
-    participants: [],
+    participants: ["STX7", "gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: null,
@@ -599,7 +599,7 @@ const GAMES_DATA = [
     genre: "Não informado",
     date: "2026-08-31",
     chooser: "gatólico",
-    participants: [],
+    participants: ["STX7", "gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: null,
@@ -788,6 +788,9 @@ const ABOUT_INFO = {
         }
       });
       return bestGame ? `${bestGame.title} (${maxCount} pessoas)` : "Nenhum";
+    },
+    get platinados() {
+      return GAMES_DATA.filter(g => g.isPlatinado === true).length;
     },
     get worstGame() {
       const ratedGames = GAMES_DATA.filter(g => typeof g.rating === "number" && !isNaN(g.rating));

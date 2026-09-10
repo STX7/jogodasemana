@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participantes - Jogo da Semana</title>
+    
+    <!-- Tailwind CSS (Offline Local) -->
+    <script src="js/tailwind.js?v=1.0.1"></script>
+    <script src="js/theme.js"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilo Global -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-950 text-gray-200 min-h-screen flex flex-col antialiased selection:bg-brand-500/30">
+
+    <!-- CABEÇALHO INJETADO DINAMICAMENTE -->
+    <div id="header-container"></div>
+
+    <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-12">
+        <!-- Título da Página -->
+        <div class="mb-10 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-400 mb-4 shadow-[0_0_30px_rgba(var(--brand-color),0.2)]">
+                <i class="fa-solid fa-users text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
+                Ranking de Jogadores
+            </h1>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
+                Lista de membros oficiais e convidados ordenados pela quantidade de vezes que já participaram da jogatina semanal.
+            </p>
+        </div>
+
+        <!-- Skeleton Loader (Removido pelo JS quando carrega) -->
+        <div id="skeleton-loader" class="space-y-4 animate-pulse">
+            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
+            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
+            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
+        </div>
+
+        <!-- Lista de Participantes Injetada Dinamicamente -->
+        <div id="participants-container" class="space-y-4">
+            <!-- Ranking HTML Injetado Aqui -->
+        </div>
+    </main>
+
+    <!-- RODAPÉ INJETADO DINAMICAMENTE -->
+    <div id="footer-container"></div>
+
+    <!-- SCRIPTS MVC EM ORDEM -->
+    <script src="js/data.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>

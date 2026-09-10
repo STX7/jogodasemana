@@ -58,6 +58,7 @@ class GameView {
               <a href="index.html" class="${getActive("index.html") || (!currentPath.includes(".html") ? "text-brand-400 font-bold border-b-2 border-brand-500 pb-1" : "")}">Jogos</a>
               <a href="melhores.html" class="${getActive("melhores.html")}">Melhores do Mês</a>
               <a href="regras.html" class="${getActive("regras.html")}">Regras</a>
+              <a href="participantes.html" class="${getActive("participantes.html")}">Participantes</a>
               <a href="sobre.html" class="${getActive("sobre.html")}">Sobre</a>
             </nav>
           </div>
@@ -81,6 +82,8 @@ class GameView {
               <a href="melhores.html" class="hover:text-brand-400 transition-colors">Melhores</a>
               <span>&bull;</span>
               <a href="regras.html" class="hover:text-brand-400 transition-colors">Regras</a>
+              <span>&bull;</span>
+              <a href="participantes.html" class="hover:text-brand-400 transition-colors">Participantes</a>
               <span>&bull;</span>
               <a href="sobre.html" class="hover:text-brand-400 transition-colors">Sobre</a>
             </div>
@@ -740,6 +743,7 @@ class GameView {
     const mostPlayedEl = document.getElementById("stat-most-played");
     const mostPlayersEl = document.getElementById("stat-most-players");
     const worstGameEl = document.getElementById("stat-worst-game");
+    const platinadosEl = document.querySelector("#stat-platinados span");
 
     if (aboutInfo.stats) {
       if (totalGamesEl) totalGamesEl.textContent = aboutInfo.stats.totalGames;
@@ -749,6 +753,75 @@ class GameView {
       if (mostPlayedEl) mostPlayedEl.textContent = aboutInfo.stats.mostPlayedGame;
       if (mostPlayersEl) mostPlayersEl.textContent = aboutInfo.stats.gameWithMostPlayers;
       if (worstGameEl) worstGameEl.textContent = aboutInfo.stats.worstGame;
+      if (platinadosEl) platinadosEl.textContent = aboutInfo.stats.platinados;
     }
+  }
+
+  /**
+   * Renderiza a página de Participantes
+   * @param {Array} ranking Array de {name, count}
+   */
+  renderParticipantsPage(ranking) {
+    const container = document.getElementById("participants-container");
+    if (!container) return;
+
+    if (!ranking || ranking.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-16 text-center">
+          <p class="text-gray-500 font-medium">Nenhum participante encontrado.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Lógica para empates
+    let currentRank = 1;
+    let currentScore = ranking[0].count;
+
+    const html = ranking.map((p, index) => {
+      // Se a pontuação (count) atual for menor que a do cara de cima, o rank vira o índice dele
+      // Dessa forma, se três tiverem 20 pontos, todos ficam no Top 1. O próximo com 15 pontos será o Top 4.
+      if (p.count < currentScore) {
+        currentRank = index + 1;
+        currentScore = p.count;
+      }
+
+      // Diferenciar visualmente o pódio
+      let rankColor = "text-gray-500";
+      let rankBg = "bg-gray-800/50";
+      let icon = "";
+
+      if (currentRank === 1) {
+        rankColor = "text-yellow-400";
+        rankBg = "bg-yellow-400/10 border border-yellow-400/20";
+        icon = '<i class="fa-solid fa-crown text-yellow-400 ml-2"></i>';
+      } else if (currentRank === 2) {
+        rankColor = "text-gray-300";
+        rankBg = "bg-gray-300/10 border border-gray-300/20";
+      } else if (currentRank === 3) {
+        rankColor = "text-amber-600";
+        rankBg = "bg-amber-600/10 border border-amber-600/20";
+      }
+
+      return `
+        <div class="flex items-center justify-between p-4 rounded-xl transition-all duration-300 hover:shadow-lg ${rankBg} ${currentRank > 3 ? 'bg-gray-900 border border-gray-800' : ''}">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-700 bg-gray-800 flex items-center justify-center shrink-0">
+              <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(p.name)}&backgroundColor=1f2937" alt="${p.name}" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-100 flex items-center">${p.name} ${icon}</h3>
+              <p class="text-xs text-brand-400 font-semibold uppercase tracking-wider">Top ${currentRank}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-black text-white">${p.count}</span>
+            <span class="text-xs text-gray-500 block uppercase font-bold tracking-widest">Jogos</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = html;
   }
 }

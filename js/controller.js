@@ -39,6 +39,8 @@ class GameController {
         this.initRulesPage();
       } else if (document.getElementById("about-container")) {
         this.initAboutPage();
+      } else if (document.getElementById("participants-container")) {
+        this.initParticipantsPage();
       }
 
       // 3. Esconde o skeleton loader após o conteúdo estar pronto
@@ -168,6 +170,14 @@ class GameController {
   initAboutPage() {
     const aboutInfo = this.model.getAboutInfo();
     this.view.renderAbout(aboutInfo);
+  }
+
+  /**
+   * Inicializa a Página de Participantes
+   */
+  initParticipantsPage() {
+    const ranking = this.model.getParticipantsRanking();
+    this.view.renderParticipantsPage(ranking);
   }
 }
 
