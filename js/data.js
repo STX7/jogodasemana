@@ -629,19 +629,38 @@ const GAMES_DATA = [
   {
     id: "how-to-fish",
     title: "How to Fish",
-    genre: "Não informado",
+    genre: "Ação, Casual, Indie, Simulação",
     date: "2026-08-31",
     chooser: "gatólico",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    participants: ["STX7", "gatólico", "BuChuDin", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
-    rating: null,
-    developer: "Não informado",
-    description: "Semana em andamento ou sem informações registradas.",
+    rating: 5.0,
+    developer: "Dazed Games",
+    description: "How to Fish é um simulador de pesca baseado em física para 1-4 jogadores. Enquanto bebia e navegava, você acaba batendo em uma pequena ilha. Para conseguir voltar para casa, você precisa aprender a pescar.",
     banner: "",
-    gallery: [],
+    gallery: ["img/how-to-fish/How-to-fish.jpg","img/how-to-fish/How-to-fish-1.jpg","img/how-to-fish/How-to-fish-2.jpg","img/how-to-fish/How-to-fish-3.jpg","img/how-to-fish/How-to-fish-4.jpg","img/how-to-fish/How-to-fish-5.jpg","img/how-to-fish/How-to-fish-6.jpg","img/how-to-fish/How-to-fish-7.jpg","img/how-to-fish/How-to-fish-8.jpg"],
     videoUrl: "",
-    comments: []
+    comments: [
+      {
+        author: "Gatolico",
+        avatarSeed: "gatolico",
+        time: "Final da Semana",
+        text: "Atiraram em mim de novo"
+      },
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "Depois de fazer tudo n tem mais oq fazer"
+      },
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "Aposta tudo no verde"
+      },
+    ],
   }
 ];
 
