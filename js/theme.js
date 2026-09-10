@@ -72,6 +72,16 @@ const COLOR_THEMES = {
   // Define a paleta do Tailwind de forma dinâmica sob a chave 'brand'
   window.tailwind.config.theme.extend.colors.brand = COLOR_THEMES[selectedThemeName];
 
+  // Força o Tailwind a gerar as classes dinâmicas que são injetadas pelo view.js
+  window.tailwind.config.safelist = [
+    'text-brand-300', 'text-brand-400', 'text-brand-500', 'text-brand-600',
+    'bg-brand-500', 'bg-brand-600', 'bg-brand-950', 'bg-brand-400/10',
+    'border-brand-500', 'border-t-brand-500', 'border-brand-800',
+    'hover:text-brand-400', 'hover:bg-brand-500', 'hover:border-brand-500',
+    'group-hover:bg-brand-500', 'group-hover:text-brand-400',
+    'shadow-brand-500/20', 'shadow-brand-500/10'
+  ];
+
   // Injeta variáveis de cor CSS para customizações no style.css (como barra de rolagem e seleção)
   const root = document.documentElement;
   root.style.setProperty('--brand-color-400', COLOR_THEMES[selectedThemeName][400]);
