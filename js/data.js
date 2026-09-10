@@ -592,6 +592,23 @@ const GAMES_DATA = [
         text: "é o deads é o locks"
       }
     ]
+  },
+  {
+    id: "how-to-fish",
+    title: "How to Fish",
+    genre: "Não informado",
+    date: "2026-08-31",
+    chooser: "gatólico",
+    participants: [],
+    specialParticipants: [],
+    platform: "PC",
+    rating: null,
+    developer: "Não informado",
+    description: "Semana em andamento ou sem informações registradas.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: []
   }
 ];
 
