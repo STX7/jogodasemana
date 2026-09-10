@@ -516,7 +516,32 @@ const GAMES_DATA = [
       "img/deadlock/sessao2-7.jpg"
     ],
     videoUrl: "",
-    comments: []
+    comments: [
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da Semana",
+        text: "peteco peteco peteco"
+      },
+      {
+        author: "Mamaco Gelado",
+        avatarSeed: "Mamaco Gelado",
+        time: "Final da Semana",
+        text: "Uiiiiihhh,Iupiiiiiiii!!!"
+      },
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da Semana",
+        text: "O cara instalou hoje"
+      },
+      {
+        author: "gatólico",
+        avatarSeed: "gatólico",
+        time: "Final da Semana",
+        text: "até semana que vem"
+      }
+    ]
   },
   {
     id: "valorant",
