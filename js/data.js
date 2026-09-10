@@ -506,7 +506,15 @@ const GAMES_DATA = [
     developer: "Valve",
     description: "Gabriel foi viajar e o grupo aproveitou para disputar partidas de Deadlock.",
     banner: "",
-    gallery: [],
+    gallery: [
+      "img/deadlock/sessao2-1.jpg",
+      "img/deadlock/sessao2-2.jpg",
+      "img/deadlock/sessao2-3.jpg",
+      "img/deadlock/sessao2-4.jpg",
+      "img/deadlock/sessao2-5.jpg",
+      "img/deadlock/sessao2-6.jpg",
+      "img/deadlock/sessao2-7.jpg"
+    ],
     videoUrl: "",
     comments: []
   },
