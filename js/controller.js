@@ -58,10 +58,23 @@ class GameController {
     const searchInput = document.getElementById("search-input");
     const sortSelect = document.getElementById("sort-select");
 
-    // Lógica de busca instantânea (ao digitar)
+    // Lógica de busca instantânea (ao digitar) com Proteção Anti-XSS
     if (searchInput) {
       searchInput.addEventListener("input", (e) => {
-        this.listState.search = e.target.value;
+        // Sanitização do input para evitar injeção de scripts (XSS)
+        const rawInput = e.target.value;
+        const sanitizedInput = rawInput.replace(/[<>"'&]/g, (match) => {
+          const map = {
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#x27;',
+            '&': '&amp;'
+          };
+          return map[match];
+        });
+
+        this.listState.search = sanitizedInput;
         this.listState.page = 1; // Reseta para a primeira página
         this.refreshGamesList();
       });
