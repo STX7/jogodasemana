@@ -52,7 +52,7 @@ const COLOR_THEMES = {
   const navigation = window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType("navigation")[0];
   const isReload = navigation && navigation.type === "reload";
 
-  let selectedThemeName = sessionStorage.getItem("sessionColor");
+  let selectedThemeName = localStorage.getItem("sessionColor");
 
   // Se recarregar a página ou se for o primeiro acesso na sessão, sorteamos uma cor
   if (isReload || !selectedThemeName || !COLOR_THEMES[selectedThemeName]) {
@@ -66,7 +66,7 @@ const COLOR_THEMES = {
     }
 
     selectedThemeName = newThemeName;
-    sessionStorage.setItem("sessionColor", selectedThemeName);
+    localStorage.setItem("sessionColor", selectedThemeName);
   }
 
   // Define a paleta do Tailwind de forma dinâmica sob a chave 'brand'
