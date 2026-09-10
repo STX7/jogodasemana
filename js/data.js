@@ -505,7 +505,7 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Valve",
     description: "Gabriel foi viajar e o grupo aproveitou para disputar partidas de Deadlock.",
-    banner: "",
+    banner: "img/deadlock/sessao2-1.jpg",
     gallery: [
       "img/deadlock/sessao2-1.jpg",
       "img/deadlock/sessao2-2.jpg",
