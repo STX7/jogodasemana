@@ -72,15 +72,20 @@ const COLOR_THEMES = {
   // Define a paleta do Tailwind de forma dinâmica sob a chave 'brand'
   window.tailwind.config.theme.extend.colors.brand = COLOR_THEMES[selectedThemeName];
 
-  // Força o Tailwind a gerar as classes dinâmicas que são injetadas pelo view.js
-  window.tailwind.config.safelist = [
-    'text-brand-300', 'text-brand-400', 'text-brand-500', 'text-brand-600',
-    'bg-brand-500', 'bg-brand-600', 'bg-brand-950', 'bg-brand-400/10',
-    'border-brand-500', 'border-t-brand-500', 'border-brand-800',
-    'hover:text-brand-400', 'hover:bg-brand-500', 'hover:border-brand-500',
-    'group-hover:bg-brand-500', 'group-hover:text-brand-400',
-    'shadow-brand-500/20', 'shadow-brand-500/10'
-  ];
+  // Força o Tailwind CDN a compilar todas as classes do tema instantaneamente injetando-as no DOM
+  const forceClassesDiv = document.createElement('div');
+  forceClassesDiv.style.display = 'none';
+  forceClassesDiv.className = 'text-brand-300 text-brand-400 text-brand-500 text-brand-600 bg-brand-500 bg-brand-600 bg-brand-900 bg-brand-950 border-brand-500 border-t-brand-500 border-brand-800 border-brand-500/50 hover:text-brand-400 hover:bg-brand-500 hover:border-brand-500 hover:border-brand-500/50 group-hover:bg-brand-500 group-hover:text-brand-400 shadow-brand-500/20 shadow-brand-500/10 shadow-[0_0_30px_rgba(var(--brand-color),0.2)] text-brand-400/30 border-brand-800/60 bg-brand-400/10 bg-brand-950/60 bg-brand-950/70 border-t-brand-500';
+  
+  // Anexa ao body quando ele estiver disponível, ou ao documentElement (html)
+  if (document.body) {
+      document.body.appendChild(forceClassesDiv);
+  } else {
+      document.documentElement.appendChild(forceClassesDiv);
+      window.addEventListener('DOMContentLoaded', () => {
+          document.body.appendChild(forceClassesDiv);
+      });
+  }
 
   // Injeta variáveis de cor CSS para customizações no style.css (como barra de rolagem e seleção)
   const root = document.documentElement;
