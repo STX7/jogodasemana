@@ -5,9 +5,18 @@
 
 class GameModel {
   constructor() {
-    this.games = GAMES_DATA || [];
+    this.rawGames = GAMES_DATA || [];
     this.rules = SITE_RULES || [];
     this.about = ABOUT_INFO || {};
+
+    // Pré-validação e higienização dos jogos no momento da instanciação do Model
+    this.games = this.rawGames
+      .map(g => this.validateGame(g))
+      .filter(g => g !== null);
+
+    // Cache interno de dados processados
+    this._bestGamesCache = null;
+    this._participantsRankingCache = null;
   }
 
   /**
@@ -60,9 +69,8 @@ class GameModel {
    */
   getGameById(id) {
     try {
-      const game = this.games.find(g => g.id === id);
-      if (!game) return null;
-      return this.validateGame(game);
+      if (!id) return null;
+      return this.games.find(g => g.id === id) || null;
     } catch (error) {
       console.error("Erro ao recuperar jogo por ID:", error);
       return null;
@@ -76,7 +84,7 @@ class GameModel {
    * @param {string} options.sort Critério de ordenação ('mais_recente' | 'mais_antigo')
    * @param {number} options.page Número da página (1-based)
    * @param {number} options.limit Limite por página (padrão: 10)
-   * @returns {Object} { items: Array, totalItems: number, totalPages: number }
+   * @returns {Object} { items: Array, totalItems: number, totalPages: number, currentPage: number }
    */
   getGamesList({ search = "", sort = "mais_recente", page = 1, limit = 10 } = {}) {
     try {
@@ -91,15 +99,12 @@ class GameModel {
         );
       }
 
-      // 2. Ordenação por data
+      // 2. Ordenação por data (utilizando ordenação léxica ISO YYYY-MM-DD para velocidade sem instanciar new Date())
       if (sort === "mais_recente") {
-        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+        filtered.sort((a, b) => b.date.localeCompare(a.date));
       } else if (sort === "mais_antigo") {
-        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+        filtered.sort((a, b) => a.date.localeCompare(b.date));
       }
-
-      // Validação de segurança nos itens filtrados
-      filtered = filtered.map(g => this.validateGame(g)).filter(g => g !== null);
 
       // 3. Paginação
       const totalItems = filtered.length;
@@ -126,6 +131,8 @@ class GameModel {
    * @returns {Object} Objeto com chaves no formato 'Mês Ano' e valores como arrays de jogos ordenados
    */
   getBestGamesByMonth() {
+    if (this._bestGamesCache) return this._bestGamesCache;
+
     try {
       const grouped = {};
       const monthsBr = [
@@ -133,11 +140,10 @@ class GameModel {
         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
       ];
 
-      // Ordenar todos os jogos por data decrescente primeiro
-      const sortedGames = [...this.games]
-        .map(g => this.validateGame(g))
-        .filter(g => g !== null && g.date !== "Data inválida")
-        .sort((a, b) => new Date(b.date) - new Date(a.date));
+      // Filtrar e ordenar jogos válidos por data recente primeiro
+      const sortedGames = this.games
+        .filter(g => g.date !== "Data inválida")
+        .sort((a, b) => b.date.localeCompare(a.date));
 
       sortedGames.forEach(game => {
         const dateObj = new Date(game.date + 'T00:00:00'); // Evita timezone offset shift
@@ -160,6 +166,7 @@ class GameModel {
         });
       }
 
+      this._bestGamesCache = grouped;
       return grouped;
     } catch (error) {
       console.error("Erro ao agrupar melhores do mês no Model:", error);
@@ -172,9 +179,10 @@ class GameModel {
    * @returns {Array} Array de objetos { name, count } ordenados por count
    */
   getParticipantsRanking() {
+    if (this._participantsRankingCache) return this._participantsRankingCache;
+
     const stats = {};
     this.games.forEach(game => {
-      // Ignorar semanas que ainda não têm participantes se for array vazio
       if (!game.participants) return;
       const allPlayers = [...new Set([
         ...game.participants,
@@ -187,9 +195,11 @@ class GameModel {
       });
     });
 
-    return Object.entries(stats)
+    this._participantsRankingCache = Object.entries(stats)
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count);
+
+    return this._participantsRankingCache;
   }
 
   /**

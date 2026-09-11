@@ -156,7 +156,7 @@ class GameView {
           </td>
           <td class="h-16 py-4 px-6 text-gray-300 font-medium align-middle overflow-hidden">
             <span class="inline-flex items-center gap-1.5 max-w-full truncate align-middle">
-              <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${game.chooser}" class="w-5 h-5 rounded-md bg-brand-900/30 p-0.5" alt="Avatar">
+              <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${game.chooser}" loading="lazy" decoding="async" class="w-5 h-5 rounded-md bg-brand-900/30 p-0.5" alt="Avatar de ${game.chooser}">
               <span class="truncate">${game.chooser}</span>
             </span>
           </td>
@@ -254,15 +254,15 @@ class GameView {
     html += `</div>`;
     container.innerHTML = html;
 
-    // Adiciona escuta aos botões
-    container.querySelectorAll("button[data-page]").forEach(button => {
-      button.addEventListener("click", (e) => {
-        const page = parseInt(e.currentTarget.getAttribute("data-page"));
-        if (!isNaN(page) && page !== currentPage && page >= 1 && page <= totalPages) {
-          onPageClick(page);
-        }
-      });
-    });
+    // Adiciona escuta aos botões utilizando Delegação de Eventos no container pai
+    container.onclick = (e) => {
+      const button = e.target.closest("button[data-page]");
+      if (!button || button.disabled) return;
+      const page = parseInt(button.getAttribute("data-page"), 10);
+      if (!isNaN(page) && page !== currentPage && page >= 1 && page <= totalPages) {
+        onPageClick(page);
+      }
+    };
   }
 
   /**
@@ -354,7 +354,7 @@ class GameView {
           const div = document.createElement("div");
           div.className = "flex items-center gap-1.5 bg-gray-950/60 px-2 py-1 rounded-lg border border-gray-800";
           div.innerHTML = `
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${p}" class="w-5 h-5 rounded-md bg-brand-500/20" alt="Avatar">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${p}" loading="lazy" decoding="async" class="w-5 h-5 rounded-md bg-brand-500/20" alt="Avatar de ${p}">
             <span class="text-white font-semibold text-xs">${p}</span>
           `;
           participantsContainer.appendChild(div);
@@ -442,7 +442,7 @@ class GameView {
         const slide = document.createElement("div");
         slide.className = "min-w-full aspect-video cursor-pointer overflow-hidden";
         slide.innerHTML = `
-          <img src="${imgUrl}" class="w-full h-full object-cover hover:scale-105 transition duration-500" alt="Captura de Tela" onerror="this.src='https://picsum.photos/id/1067/800/450'">
+          <img src="${imgUrl}" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition duration-500" alt="Captura de Tela" onerror="this.src='https://picsum.photos/id/1067/800/450'">
         `;
         slide.addEventListener("click", () => this.openLightbox(imgUrl));
         track.appendChild(slide);
@@ -451,7 +451,7 @@ class GameView {
       track.style.transform = `translateX(0%)`;
     }
 
-    // Configura os botões do carrossel
+    // Configura os botões do carrossel sem reconstruir/clonar nós do DOM
     const prevBtn = document.getElementById("carousel-prev");
     const nextBtn = document.getElementById("carousel-next");
     const totalSlides = gallery.length;
@@ -463,17 +463,11 @@ class GameView {
     } else {
       if (prevBtn) {
         prevBtn.classList.remove("hidden");
-        // Clone para limpar event listeners antigos
-        const newPrev = prevBtn.cloneNode(true);
-        prevBtn.parentNode.replaceChild(newPrev, prevBtn);
-        newPrev.addEventListener("click", () => this.navigateCarousel(-1, totalSlides));
+        prevBtn.onclick = () => this.navigateCarousel(-1, totalSlides);
       }
       if (nextBtn) {
         nextBtn.classList.remove("hidden");
-        // Clone para limpar event listeners antigos
-        const newNext = nextBtn.cloneNode(true);
-        nextBtn.parentNode.replaceChild(newNext, nextBtn);
-        newNext.addEventListener("click", () => this.navigateCarousel(1, totalSlides));
+        nextBtn.onclick = () => this.navigateCarousel(1, totalSlides);
       }
     }
   }
@@ -587,6 +581,8 @@ class GameView {
       commentDiv.innerHTML = `
         <img 
           src="https://api.dicebear.com/7.x/bottts/svg?seed=${comment.avatarSeed || comment.author}" 
+          loading="lazy" 
+          decoding="async" 
           class="w-10 h-10 rounded-xl bg-brand-500/10 p-1 border border-gray-800" 
           alt="Avatar de ${comment.author}"
         >
@@ -807,7 +803,7 @@ class GameView {
         <div class="flex items-center justify-between p-4 rounded-xl transition-all duration-300 hover:shadow-lg ${rankBg} ${currentRank > 3 ? 'bg-gray-900 border border-gray-800' : ''}">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-700 bg-gray-800 flex items-center justify-center shrink-0">
-              <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(p.name)}&backgroundColor=1f2937" alt="${p.name}" class="w-full h-full object-cover">
+              <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(p.name)}&backgroundColor=1f2937" loading="lazy" decoding="async" alt="Avatar de ${p.name}" class="w-full h-full object-cover">
             </div>
             <div>
               <h3 class="text-lg font-bold text-gray-100 flex items-center">${p.name} ${icon}</h3>

@@ -52,16 +52,28 @@ class GameController {
   }
 
   /**
+   * Função utilitária de debounce para adiar execuções repetitivas de eventos
+   * @param {Function} func 
+   * @param {number} wait Tempo de espera em ms
+   */
+  debounce(func, wait = 150) {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  /**
    * Inicializa a Página Inicial (Listagem, Filtros, Busca, Paginação)
    */
   initHomePage() {
     const searchInput = document.getElementById("search-input");
     const sortSelect = document.getElementById("sort-select");
 
-    // Lógica de busca instantânea (ao digitar) com Proteção Anti-XSS
+    // Lógica de busca otimizada com Debounce e Proteção Anti-XSS
     if (searchInput) {
-      searchInput.addEventListener("input", (e) => {
-        // Sanitização do input para evitar injeção de scripts (XSS)
+      const handleSearch = this.debounce((e) => {
         const rawInput = e.target.value;
         const sanitizedInput = rawInput.replace(/[<>"'&]/g, (match) => {
           const map = {
@@ -77,7 +89,9 @@ class GameController {
         this.listState.search = sanitizedInput;
         this.listState.page = 1; // Reseta para a primeira página
         this.refreshGamesList();
-      });
+      }, 150);
+
+      searchInput.addEventListener("input", handleSearch);
     }
 
     // Lógica de ordenação (ao alterar select)

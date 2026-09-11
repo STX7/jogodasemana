@@ -3,12 +3,22 @@
    Contém estilos compartilhados por todas as páginas do projeto.
    ========================================================================== */
 
-/* Variáveis CSS padrão de fallback */
+/* Variáveis CSS padrão de fallback (Tema Roxo) */
 :root {
-  --brand-color-400: #c084fc;
-  --brand-color-500: #a855f7;
-  --brand-color-600: #9333ea;
-  --brand-color-950: #3b0764;
+  --brand-300: #e9d5ff;
+  --brand-400: #c084fc;
+  --brand-500: #a855f7;
+  --brand-600: #9333ea;
+  --brand-700: #7e22ce;
+  --brand-800: #6b21a8;
+  --brand-900: #581c87;
+  --brand-950: #3b0764;
+
+  /* Aliases para retrocompatibilidade */
+  --brand-color-400: var(--brand-400);
+  --brand-color-500: var(--brand-500);
+  --brand-color-600: var(--brand-600);
+  --brand-color-950: var(--brand-950);
 }
 
 /* Rolagem Suave Global */

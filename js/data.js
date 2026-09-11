@@ -10,7 +10,7 @@ const GAMES_DATA = [
     genre: "Ação / Sobrevivência",
     date: "2026-04-20",
     chooser: "BuChuDin",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    participants: ["STX7", "ediisu", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -34,7 +34,7 @@ const GAMES_DATA = [
     genre: "FPS / Coop / Zumbis",
     date: "2026-04-27",
     chooser: "STX7",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    participants: ["STX7", "ediisu", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.8,
@@ -57,8 +57,8 @@ const GAMES_DATA = [
     title: "Counter Strike 2",
     genre: "FPS / Competitivo",
     date: "2026-05-04",
-    chooser: "gatólico",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    chooser: "ediisu",
+    participants: ["STX7", "ediisu", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
@@ -69,8 +69,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da semana",
         text: "Perdemos para o Meu Pau, Microsoft Office Excel PRO 2003, Jalim Habei, Thilas Karu Otobah e JunimGameplay123"
       }
@@ -82,7 +82,7 @@ const GAMES_DATA = [
     genre: "Action RPG / Survival / Crafting",
     date: "2026-05-11",
     chooser: "BuChuDin",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    participants: ["STX7", "ediisu", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 2.0,
@@ -105,8 +105,8 @@ const GAMES_DATA = [
     title: "Rust (Sessão 2)",
     genre: "Ação / Sobrevivência",
     date: "2026-05-18",
-    chooser: "gatólico",
-    participants: ["STX7", "gatólico", "BuChuDin", "Mamaco Gelado"],
+    chooser: "ediisu",
+    participants: ["STX7", "ediisu", "BuChuDin", "Mamaco Gelado"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.5,
@@ -117,8 +117,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da semana",
         text: "Amanhã a gente raida denovo (spoiler: fomos raidados)"
       }
@@ -130,7 +130,7 @@ const GAMES_DATA = [
     genre: "Esporte / Futebol de Carros",
     date: "2026-05-25",
     chooser: "STX7",
-    participants: ["STX7", "gatólico", "BuChuDin", "Gustvbr", "Mistake"],
+    participants: ["STX7", "ediisu", "BuChuDin", "Gustvbr", "Mistake"],
     specialParticipants: [],
     platform: "PC / Consoles",
     rating: 5.0,
@@ -154,7 +154,7 @@ const GAMES_DATA = [
     genre: "Sandbox / Modded / RPG",
     date: "2026-06-01",
     chooser: "BuChuDin",
-    participants: ["STX7", "gatólico", "BuChuDin", "pekonino"],
+    participants: ["STX7", "ediisu", "BuChuDin", "pekonino"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.2,
@@ -177,8 +177,8 @@ const GAMES_DATA = [
     title: "The Forest",
     genre: "Ação / Sobrevivência / Horror",
     date: "2026-06-08",
-    chooser: "gatólico",
-    participants: ["gatólico", "BuChuDin", "STX7", "Gustvbr"],
+    chooser: "ediisu",
+    participants: ["ediisu", "BuChuDin", "STX7", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -201,8 +201,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da semana",
         text: "Viriginia e o Zé Felipe."
       },
@@ -220,7 +220,7 @@ const GAMES_DATA = [
     genre: "Ação / Sobrevivência",
     date: "2026-06-15",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "Mamaco Gelado", "gatólico", "Mistake"],
+    participants: ["BuChuDin", "STX7", "Mamaco Gelado", "ediisu", "Mistake"],
     specialParticipants: [],
     platform: "PC",
     rating: 3.5,
@@ -247,8 +247,8 @@ const GAMES_DATA = [
         text: "Lugar tranquilo e super seguro."
       },
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da semana",
         text: "Ótimos vizinhos."
       }
@@ -260,7 +260,7 @@ const GAMES_DATA = [
     genre: "Sandbox / Modded / RPG",
     date: "2026-06-22",
     chooser: "BuChuDin",
-    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr", "pekonino", "pamonhadesal"],
+    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
@@ -276,8 +276,8 @@ const GAMES_DATA = [
     title: "Mecha Chamelon",
     genre: "Ação / Cooperativo / Indie",
     date: "2026-06-29",
-    chooser: "gatólico",
-    participants: ["BuChuDin", "gatólico", "STX7", "Gustvbr", "pekonino", "pamonhadesal"],
+    chooser: "ediisu",
+    participants: ["BuChuDin", "ediisu", "STX7", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -311,8 +311,8 @@ const GAMES_DATA = [
         text: "Nunca vão me achar (estava fora do mapa)."
       },
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da semana",
         text: "Assobia se for macho."
       }
@@ -324,7 +324,7 @@ const GAMES_DATA = [
     genre: "Coop / Terror / Sobrevivência",
     date: "2026-07-06",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr"],
+    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.7,
@@ -345,7 +345,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-07-13",
     chooser: "BuChuDin",
-    participants: ["BuChuDin", "STX7", "Gustvbr", "gatólico", "Mamaco Gelado", "pekonino", "Chicão da Massa"],
+    participants: ["BuChuDin", "STX7", "Gustvbr", "ediisu", "Mamaco Gelado", "pekonino", "Chicão da Massa"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.7,
@@ -396,8 +396,8 @@ const GAMES_DATA = [
     title: "Battlefield 1 Revolution",
     genre: "FPS / Multiplayer / Primeira Guerra",
     date: "2026-07-20",
-    chooser: "gatólico",
-    participants: ["STX7", "gatólico", "BuChuDin", "Mamaco Gelado", "Gustvbr", "Chicão da Massa"],
+    chooser: "ediisu",
+    participants: ["STX7", "ediisu", "BuChuDin", "Mamaco Gelado", "Gustvbr", "Chicão da Massa"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.5,
@@ -414,8 +414,8 @@ const GAMES_DATA = [
         text: "Até parece que eu tô na guerra mesmo"
       },
       {
-        author: "gatólico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da Semana",
         text: "Até parece que é a guerra"
       },
@@ -451,14 +451,29 @@ const GAMES_DATA = [
     genre: "Sandbox / Sobrevivência",
     date: "2026-07-27",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "gatólico", "Gustvbr", "pekonino", "pamonhadesal"],
+    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
     developer: "Mojang",
     description: "Uma jornada clássica de sobrevivência no Minecraft em sua versão padrão, construindo abrigo, minerando e explorando o mundo.",
-    banner: "",
-    gallery: [],
+    banner: "img/minecraft-vanilla/2026-07-26_18.02.20.png",
+    gallery: [
+      "img/minecraft-vanilla/2026-07-26_18.02.20.png",
+      "img/minecraft-vanilla/2026-07-26_18.07.26.png",
+      "img/minecraft-vanilla/2026-07-26_18.10.50.png",
+      "img/minecraft-vanilla/2026-07-28_22.15.56.png",
+      "img/minecraft-vanilla/2026-07-28_22.15.57.png",
+      "img/minecraft-vanilla/2026-07-28_22.42.50.png",
+      "img/minecraft-vanilla/2026-07-29_20.32.32.png",
+      "img/minecraft-vanilla/2026-07-29_22.17.22.png",
+      "img/minecraft-vanilla/2026-08-02_13.06.34.png",
+      "img/minecraft-vanilla/2026-08-02_13.06.42.png",
+      "img/minecraft-vanilla/2026-08-02_14.01.18.png",
+      "img/minecraft-vanilla/2026-08-02_14.16.02.png",
+      "img/minecraft-vanilla/2026-08-02_14.27.14.png",
+      "img/minecraft-vanilla/2026-08-02_14.43.57.png"
+    ],
     videoUrl: "",
     comments: [
       {
@@ -499,7 +514,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-08-03",
     chooser: "BuChuDin",
-    participants: ["gatólico", "STX7", "Mamaco Gelado", "Chicão da Massa", "BuChuDin"],
+    participants: ["ediisu", "STX7", "Mamaco Gelado", "Chicão da Massa", "BuChuDin"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.0,
@@ -536,8 +551,8 @@ const GAMES_DATA = [
         text: "O cara instalou hoje"
       },
       {
-        author: "gatólico",
-        avatarSeed: "gatólico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da Semana",
         text: "até semana que vem"
       }
@@ -548,8 +563,8 @@ const GAMES_DATA = [
     title: "Valorant",
     genre: "FPS / Competitivo / Hero Shooter",
     date: "2026-08-10",
-    chooser: "gatólico",
-    participants: ["BuChuDin", "Mamaco Gelado", "gatólico", "STX7", "pamonhadesal"],
+    chooser: "ediisu",
+    participants: ["BuChuDin", "Mamaco Gelado", "ediisu", "STX7", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 3.7,
@@ -573,16 +588,48 @@ const GAMES_DATA = [
     genre: "Sandbox / Modded / RPG",
     date: "2026-08-17",
     chooser: "STX7",
-    participants: ["STX7", "gatólico", "BuChuDin"],
+    participants: ["STX7", "ediisu", "BuChuDin", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
-    rating: null,
+    rating: 4.2,
     developer: "Comunidade ATM",
     description: "Mais nova iteração do pacote All The Mods para Minecraft, trazendo as modificações mais recentes e atualizadas da comunidade.",
-    banner: "",
-    gallery: [],
+    banner: "img/atm11/2026-08-18_20.20.40.png",
+    gallery: [
+      "img/atm11/2026-08-18_20.20.40.png",
+      "img/atm11/2026-08-18_20.20.44.png",
+      "img/atm11/2026-08-20_21.08.41.png",
+      "img/atm11/2026-08-20_21.42.04.png",
+      "img/atm11/2026-08-22_22.34.01.png",
+      "img/atm11/2026-08-23_21.01.56.png",
+      "img/atm11/2026-09-10_20.49.20.png",
+      "img/atm11/2026-09-10_20.49.28.png",
+      "img/atm11/2026-09-10_20.49.41.png",
+      "img/atm11/2026-09-10_20.53.44.png",
+      "img/atm11/2026-09-10_20.53.48.png",
+      "img/atm11/2026-09-10_20.53.49.png"
+    ],
     videoUrl: "",
-    comments: []
+    comments: [
+      {
+        author: "BuChuDin",
+        avatarSeed: "BuChuDin",
+        time: "Final da semana",
+        text: "Ta no beta ainda"
+      },
+      {
+        author: "ediisu",
+        avatarSeed: "ediisu",
+        time: "Final da semana",
+        text: "Não tem Mekanism, não tem Mahou, não tem create, não tem iron spells, não tem ...."
+      },
+      {
+        author: "STX7",
+        avatarSeed: "STX7",
+        time: "Final da semana",
+        text: "SANGUE INFINITO FODA-SE KKKKKKKKK"
+      }
+    ]
   },
   {
     id: "deadlock-3",
@@ -590,7 +637,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-08-24",
     chooser: "BuChuDin",
-    participants: ["gatólico", "STX7", "Mamaco Gelado", "BuChuDin"],
+    participants: ["ediisu", "STX7", "Mamaco Gelado", "BuChuDin"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.1,
@@ -601,8 +648,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "Gatolico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da Semana",
         text: "De novo não"
       },
@@ -631,8 +678,8 @@ const GAMES_DATA = [
     title: "How to Fish",
     genre: "Ação, Casual, Indie, Simulação",
     date: "2026-08-31",
-    chooser: "gatólico",
-    participants: ["STX7", "gatólico", "BuChuDin", "Gustvbr"],
+    chooser: "ediisu",
+    participants: ["STX7", "ediisu", "BuChuDin", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -643,8 +690,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "Gatolico",
-        avatarSeed: "gatolico",
+        author: "ediisu",
+        avatarSeed: "ediisu",
         time: "Final da Semana",
         text: "Atiraram em mim de novo"
       },
@@ -784,7 +831,7 @@ const ABOUT_INFO = {
       return GAMES_DATA.length;
     },
     get activeMembers() {
-      const coreMembers = new Set(["STX7", "gatólico", "BuChuDin"]);
+      const coreMembers = new Set(["STX7", "ediisu", "BuChuDin"]);
       return coreMembers.size;
     },
     get averageRating() {
