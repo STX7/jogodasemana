@@ -570,8 +570,8 @@ const GAMES_DATA = [
     rating: 3.7,
     developer: "Riot Games",
     description: "Disputa tática de tiro em primeira pessoa 5v5 focado em personagens e habilidades.",
-    banner: "",
-    gallery: [],
+    banner: "img/valorant/images.jpg",
+    gallery: ["img/valorant/valorant.jpeg"],
     videoUrl: "",
     comments: [
       {
