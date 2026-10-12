@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias - Jogo da Semana</title>
+
+    <!-- Configuração de Tema Dinâmico (deve vir antes do Tailwind) -->
+    <script src="js/theme.js"></script>
+    <script src="js/tailwind.js?v=1.0.1"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilo Global -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-950 text-gray-200 min-h-screen flex flex-col antialiased selection:bg-brand-500/30">
+
+    <!-- CABEÇALHO INJETADO DINAMICAMENTE -->
+    <div id="header-container"></div>
+
+    <main id="categories-container" class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        <!-- Título da Página -->
+        <div class="mb-10 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-400 mb-4 shadow-[0_0_30px_rgba(var(--brand-color),0.2)]">
+                <i class="fa-solid fa-tags text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
+                Categorias
+            </h1>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
+                Categorias de jogos que já foram jogadas e as que ainda não foram e podem ser escolhidas, considerando as regras do site.
+            </p>
+            <p id="categories-summary" class="text-xs text-brand-400 font-semibold mt-3"></p>
+        </div>
+
+        <!-- Nuvem de palavras -->
+        <div id="categories-cloud" class="relative w-full min-h-[320px] overflow-hidden mb-10"></div>
+
+        <!-- Tabela -->
+        <section class="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden shadow-lg">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-gray-950/60 text-xs uppercase tracking-wider text-gray-400">
+                        <tr>
+                            <th class="px-4 py-3">Categoria</th>
+                            <th class="px-4 py-3 text-center">Vezes escolhida</th>
+                            <th class="px-4 py-3">Situação</th>
+                            <th class="px-4 py-3 hidden md:table-cell">Jogos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categories-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <p class="text-xs text-gray-600 mt-4 text-center">
+            Bloqueadas pelas regras: somente singleplayer (regras 12 e 13), conteúdo adulto/hentai (regra 5), jogos de navegador (regra 6) e jogos de celular (regra 16).
+        </p>
+    </main>
+
+    <!-- RODAPÉ INJETADO DINAMICAMENTE -->
+    <div id="footer-container"></div>
+
+    <!-- SCRIPTS MVC EM ORDEM -->
+    <script src="js/data.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+
+</body>
+</html>

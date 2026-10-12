@@ -184,10 +184,11 @@ class GameModel {
     const stats = {};
     this.games.forEach(game => {
       if (!game.participants) return;
-      const allPlayers = [...new Set([
-        ...game.participants,
-        ...(game.specialParticipants || [])
-      ])];
+      // Normaliza para o nome canônico antes de deduplicar (mesma pessoa conta 1x por jogo)
+      const allPlayers = [...new Set(
+        [...game.participants, ...(game.specialParticipants || [])]
+          .map(p => GameModel.canonicalName(p))
+      )];
       
       allPlayers.forEach(player => {
         if (!stats[player]) stats[player] = 0;
@@ -200,6 +201,67 @@ class GameModel {
       .sort((a, b) => b.count - a.count);
 
     return this._participantsRankingCache;
+  }
+
+  /**
+   * Chave de comparação: minúsculas, sem acentos e sem espaços nas pontas.
+   */
+  static normalizeKey(name) {
+    return String(name || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  /**
+   * Retorna o nome canônico (usado no placar) de um nick.
+   * Regras: Gatólico/Ediisu/Edisontoptop => "Gatólico". Demais nomes: case-insensitive,
+   * exibindo a grafia canônica conhecida (ex.: "mamaco gelado" => "Mamaco Gelado").
+   */
+  static canonicalName(name) {
+    const key = GameModel.normalizeKey(name);
+    if (!key) return name;
+    if (PLAYER_ALIASES[key]) return PLAYER_ALIASES[key];
+    return String(name).trim();
+  }
+
+
+  /**
+   * Estatísticas de categorias (estilo Steam): quantas vezes cada uma foi jogada
+   * e se as ainda não jogadas são permitidas pelas regras.
+   * @returns {Array} { name, count, games, status: 'played'|'available'|'blocked', rule }
+   */
+  getCategoriesStats() {
+    const stats = new Map();
+    const ensure = (name) => {
+      if (!stats.has(name)) stats.set(name, { name, count: 0, games: [], status: "available", rule: null });
+      return stats.get(name);
+    };
+
+    // Catálogo completo (inclui categorias ainda não jogadas e as proibidas pelas regras)
+    (typeof STEAM_CATEGORIES !== "undefined" ? STEAM_CATEGORIES : []).forEach(c => {
+      const s = ensure(c.name);
+      if (c.blocked) { s.status = "blocked"; s.rule = c.rule; }
+    });
+
+    // Contagem por jogo (cada categoria conta 1x por jogo/semana)
+    this.games.forEach(game => {
+      const cats = (typeof GAME_CATEGORIES !== "undefined" && GAME_CATEGORIES[game.id])
+        || String(game.genre || "").split(/\s*[\/,]\s*/).filter(Boolean);
+      [...new Set(cats)].forEach(name => {
+        const s = ensure(name);
+        s.count++;
+        s.games.push(game.title);
+      });
+    });
+
+    const order = { played: 0, available: 1, blocked: 2 };
+    const list = [...stats.values()].map(s => ({ ...s, status: s.count > 0 ? "played" : s.status }));
+    return list.sort((a, b) =>
+      order[a.status] - order[b.status] || b.count - a.count || a.name.localeCompare(b.name, "pt-BR")
+    ).map(s => (s.count > 0 ? { ...s, status: "played" } : s));
   }
 
   /**

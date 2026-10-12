@@ -59,6 +59,7 @@ class GameView {
               <a href="melhores.html" class="${getActive("melhores.html")}">Melhores do Mês</a>
               <a href="regras.html" class="${getActive("regras.html")}">Regras</a>
               <a href="participantes.html" class="${getActive("participantes.html")}">Participantes</a>
+              <a href="categorias.html" class="${getActive("categorias.html")}">Categorias</a>
               <a href="sobre.html" class="${getActive("sobre.html")}">Sobre</a>
             </nav>
           </div>
@@ -73,9 +74,6 @@ class GameView {
             <div class="flex items-center justify-center gap-2 text-gray-400 font-semibold">
               <i class="fa-solid fa-gamepad text-brand-500"></i> Jogo da Semana &copy; ${new Date().getFullYear()}
             </div>
-            <p class="text-xs max-w-md mx-auto text-gray-600">
-              Site estático para registrar o histórico de jogos jogados semanalmente. Desenvolvido para funcionar no GitHub Pages.
-            </p>
             <div class="flex justify-center gap-4 text-xs font-semibold">
               <a href="index.html" class="hover:text-brand-400 transition-colors">Jogos</a>
               <span>&bull;</span>
@@ -84,6 +82,8 @@ class GameView {
               <a href="regras.html" class="hover:text-brand-400 transition-colors">Regras</a>
               <span>&bull;</span>
               <a href="participantes.html" class="hover:text-brand-400 transition-colors">Participantes</a>
+              <span>&bull;</span>
+              <a href="categorias.html" class="hover:text-brand-400 transition-colors">Categorias</a>
               <span>&bull;</span>
               <a href="sobre.html" class="hover:text-brand-400 transition-colors">Sobre</a>
             </div>
@@ -706,8 +706,21 @@ class GameView {
     
     rules.forEach(rule => {
       const card = document.createElement("div");
-      card.className = "group relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-5 hover:border-brand-500/30 transition-all duration-300 flex gap-4 shadow-lg";
+      const note = rule.hoverNote;
+      card.className = "group relative " + (note ? "" : "overflow-hidden ") + "bg-gradient-to-br from-gray-900 via-gray-900/95 to-brand-950/40 border border-gray-800/80 rounded-3xl p-5 hover:border-brand-500/30 transition-all duration-300 flex gap-4 shadow-lg";
+      const bubble = note ? `
+        <div class="pointer-events-none absolute left-6 bottom-full mb-3 w-72 max-w-[85vw] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 z-20">
+          <div class="relative bg-gray-800 border border-brand-500/40 rounded-2xl p-3 shadow-xl flex gap-3 items-start">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(note.author)}" alt="Avatar de ${note.author}" class="w-9 h-9 rounded-lg bg-brand-500/20 shrink-0">
+            <div>
+              <p class="text-xs font-bold text-brand-400">${note.author}</p>
+              <p class="text-sm text-gray-200 leading-snug">${note.text}</p>
+            </div>
+            <span class="absolute left-6 -bottom-1.5 w-3 h-3 bg-gray-800 border-r border-b border-brand-500/40 rotate-45"></span>
+          </div>
+        </div>` : "";
       card.innerHTML = `
+        ${bubble}
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
         <div class="w-10 h-10 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 font-black text-sm shrink-0">
           0${rule.number}
@@ -751,6 +764,134 @@ class GameView {
       if (worstGameEl) worstGameEl.textContent = aboutInfo.stats.worstGame;
       if (platinadosEl) platinadosEl.textContent = aboutInfo.stats.platinados;
     }
+  }
+
+  /**
+   * Posiciona as palavras da nuvem de forma aleatória, sem sobreposição.
+   * Usa espiral a partir de um ponto aleatório + checagem de colisão entre retângulos.
+   * @param {HTMLElement} cloud Container
+   * @param {Array} words Array de {name, count}
+   */
+  _layoutWordCloud(cloud, words) {
+    const colors = ["text-brand-400", "text-yellow-400", "text-emerald-400", "text-sky-400", "text-pink-400", "text-orange-400", "text-violet-400"];
+    const max = Math.max(...words.map(s => s.count));
+    const min = Math.min(...words.map(s => s.count));
+    const minPx = 14, maxPx = 64, pad = 6;
+
+    const width = Math.max(cloud.clientWidth || cloud.parentElement.clientWidth - 64, 280);
+    let height = Math.max(320, Math.round(width * 0.5));
+
+    // Medição de texto
+    const ctx = document.createElement("canvas").getContext("2d");
+    const items = [...words]
+      .sort((a, b) => b.count - a.count)
+      .map(s => {
+        const ratio = max === min ? 1 : (s.count - min) / (max - min);
+        const size = Math.round(minPx + ratio * (maxPx - minPx));
+        ctx.font = `900 ${size}px sans-serif`;
+        const textW = ctx.measureText(s.name).width;
+        const rotated = ratio < 0.5 && Math.random() < 0.25; // palavras menores às vezes na vertical
+        return {
+          ...s, size, ratio, rotated,
+          w: (rotated ? size : textW) + pad,
+          h: (rotated ? textW : size) + pad,
+          tilt: rotated ? 0 : (Math.random() * 16 - 8)
+        };
+      });
+
+    const placed = [];
+    const hits = (x, y, it) => placed.some(p =>
+      x < p.x + p.w && x + it.w > p.x && y < p.y + p.h && y + it.h > p.y);
+
+    const place = (it) => {
+      const cx = width / 2, cy = height / 2;
+      // Ponto de partida aleatório; espiral expande até achar espaço livre
+      const startAngle = Math.random() * Math.PI * 2;
+      const jitterX = (Math.random() - 0.5) * width * 0.5;
+      const jitterY = (Math.random() - 0.5) * height * 0.5;
+      for (let step = 0; step < 4000; step++) {
+        const angle = startAngle + step * 0.35;
+        const r = step * 0.6;
+        const x = cx + jitterX + Math.cos(angle) * r * 1.6 - it.w / 2;
+        const y = cy + jitterY + Math.sin(angle) * r - it.h / 2;
+        if (x < 0 || y < 0 || x + it.w > width || y + it.h > height) continue;
+        if (!hits(x, y, it)) { it.x = x; it.y = y; placed.push(it); return true; }
+      }
+      return false;
+    };
+
+    // Se não couber, aumenta a altura e tenta de novo
+    let ok = false;
+    for (let attempt = 0; attempt < 6 && !ok; attempt++) {
+      placed.length = 0;
+      ok = items.every(place);
+      if (!ok) height = Math.round(height * 1.2);
+    }
+
+    cloud.style.position = "relative";
+    cloud.style.display = "block";
+    cloud.style.width = "100%";
+    cloud.style.height = height + "px";
+    cloud.innerHTML = items.map((it, i) => {
+      if (it.x === undefined) return "";
+      const weight = it.ratio > 0.5 ? "font-black" : "font-bold";
+      const transform = it.rotated ? "writing-mode:vertical-rl;" : `transform:rotate(${it.tilt.toFixed(1)}deg);`;
+      return `<span class="${colors[Math.floor(Math.random() * colors.length)]} ${weight} cursor-default hover:brightness-125 transition-all" style="position:absolute;left:${Math.round(it.x)}px;top:${Math.round(it.y)}px;font-size:${it.size}px;line-height:1;white-space:nowrap;padding:${pad / 2}px;${transform}" title="${it.name}: ${it.count}x">${it.name}</span>`;
+    }).join("");
+  }
+
+  /**
+   * Renderiza a página de Categorias (nuvem de palavras + tabela)
+   * @param {Array} stats Array de {name, count, games, status, rule}
+   */
+  renderCategoriesPage(stats) {
+    const cloud = document.getElementById("categories-cloud");
+    const tbody = document.getElementById("categories-table-body");
+    const summary = document.getElementById("categories-summary");
+    if (!cloud || !tbody) return;
+
+    const played = stats.filter(s => s.count > 0);
+    const available = stats.filter(s => s.status === "available").length;
+
+    if (summary) {
+      summary.textContent = `${played.length} jogadas • ${available} ainda não jogadas e permitidas • ${stats.filter(s => s.status === "blocked").length} bloqueadas pelas regras`;
+    }
+
+    // Nuvem de palavras: tamanho proporcional à frequência, posições aleatórias
+    if (played.length === 0) {
+      cloud.innerHTML = `<p class="text-gray-500 text-sm">Nenhuma categoria jogada ainda.</p>`;
+    } else {
+      const layoutCloud = () => this._layoutWordCloud(cloud, played);
+      layoutCloud();
+      if (!this._cloudResizeBound) {
+        this._cloudResizeBound = true;
+        let t;
+        window.addEventListener("resize", () => {
+          clearTimeout(t);
+          t = setTimeout(layoutCloud, 200);
+        });
+      }
+    }
+
+    // Tabela completa
+    tbody.innerHTML = stats.map(s => {
+      let badge;
+      if (s.count > 0) {
+        badge = `<span class="text-xs font-bold px-2 py-1 rounded-md bg-brand-500/10 text-brand-400 border border-brand-500/20">Já jogada</span>`;
+      } else if (s.status === "blocked") {
+        badge = `<span class="text-xs font-bold px-2 py-1 rounded-md bg-red-500/10 text-red-400 border border-red-500/20">Bloqueada (regra ${s.rule})</span>`;
+      } else {
+        badge = `<span class="text-xs font-bold px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Disponível</span>`;
+      }
+      const games = s.games.length ? s.games.join(", ") : "—";
+      return `
+        <tr class="border-t border-gray-800 hover:bg-gray-800/40">
+          <td class="px-4 py-3 font-semibold text-white">${s.name}</td>
+          <td class="px-4 py-3 text-center font-black ${s.count > 0 ? "text-brand-400" : "text-gray-600"}">${s.count}</td>
+          <td class="px-4 py-3">${badge}</td>
+          <td class="px-4 py-3 text-xs text-gray-500 hidden md:table-cell">${games}</td>
+        </tr>`;
+    }).join("");
   }
 
   /**

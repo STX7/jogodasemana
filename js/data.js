@@ -10,7 +10,7 @@ const GAMES_DATA = [
     genre: "Ação / Sobrevivência",
     date: "2026-04-20",
     chooser: "BuChuDin",
-    participants: ["STX7", "ediisu", "BuChuDin"],
+    participants: ["STX7", "Gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -34,7 +34,7 @@ const GAMES_DATA = [
     genre: "FPS / Coop / Zumbis",
     date: "2026-04-27",
     chooser: "STX7",
-    participants: ["STX7", "ediisu", "BuChuDin"],
+    participants: ["STX7", "Gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.8,
@@ -57,8 +57,8 @@ const GAMES_DATA = [
     title: "Counter Strike 2",
     genre: "FPS / Competitivo",
     date: "2026-05-04",
-    chooser: "ediisu",
-    participants: ["STX7", "ediisu", "BuChuDin"],
+    chooser: "Gatólico",
+    participants: ["STX7", "Gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.0,
@@ -69,8 +69,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da semana",
         text: "Perdemos para o Meu Pau, Microsoft Office Excel PRO 2003, Jalim Habei, Thilas Karu Otobah e JunimGameplay123"
       }
@@ -82,7 +82,7 @@ const GAMES_DATA = [
     genre: "Action RPG / Survival / Crafting",
     date: "2026-05-11",
     chooser: "BuChuDin",
-    participants: ["STX7", "ediisu", "BuChuDin"],
+    participants: ["STX7", "Gatólico", "BuChuDin"],
     specialParticipants: [],
     platform: "PC",
     rating: 2.0,
@@ -105,8 +105,8 @@ const GAMES_DATA = [
     title: "Rust (Sessão 2)",
     genre: "Ação / Sobrevivência",
     date: "2026-05-18",
-    chooser: "ediisu",
-    participants: ["STX7", "ediisu", "BuChuDin", "Mamaco Gelado"],
+    chooser: "Gatólico",
+    participants: ["STX7", "Gatólico", "BuChuDin", "Mamaco Gelado"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.5,
@@ -117,8 +117,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da semana",
         text: "Amanhã a gente raida denovo (spoiler: fomos raidados)"
       }
@@ -130,7 +130,7 @@ const GAMES_DATA = [
     genre: "Esporte / Futebol de Carros",
     date: "2026-05-25",
     chooser: "STX7",
-    participants: ["STX7", "ediisu", "BuChuDin", "Gustvbr", "Mistake"],
+    participants: ["STX7", "Gatólico", "BuChuDin", "Gustvbr", "Mistake"],
     specialParticipants: [],
     platform: "PC / Consoles",
     rating: 5.0,
@@ -177,8 +177,8 @@ const GAMES_DATA = [
     title: "The Forest",
     genre: "Ação / Sobrevivência / Horror",
     date: "2026-06-08",
-    chooser: "ediisu",
-    participants: ["ediisu", "BuChuDin", "STX7", "Gustvbr"],
+    chooser: "Gatólico",
+    participants: ["Gatólico", "BuChuDin", "STX7", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -201,8 +201,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da semana",
         text: "Viriginia e o Zé Felipe."
       },
@@ -220,7 +220,7 @@ const GAMES_DATA = [
     genre: "Ação / Sobrevivência",
     date: "2026-06-15",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "Mamaco Gelado", "ediisu", "Mistake"],
+    participants: ["BuChuDin", "STX7", "Mamaco Gelado", "Gatólico", "Mistake"],
     specialParticipants: [],
     platform: "PC",
     rating: 3.5,
@@ -247,8 +247,8 @@ const GAMES_DATA = [
         text: "Lugar tranquilo e super seguro."
       },
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da semana",
         text: "Ótimos vizinhos."
       }
@@ -276,8 +276,8 @@ const GAMES_DATA = [
     title: "Mecha Chamelon",
     genre: "Ação / Cooperativo / Indie",
     date: "2026-06-29",
-    chooser: "ediisu",
-    participants: ["BuChuDin", "ediisu", "STX7", "Gustvbr", "pekonino", "pamonhadesal"],
+    chooser: "Gatólico",
+    participants: ["BuChuDin", "Gatólico", "STX7", "Gustvbr", "pekonino", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
@@ -311,8 +311,8 @@ const GAMES_DATA = [
         text: "Nunca vão me achar (estava fora do mapa)."
       },
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da semana",
         text: "Assobia se for macho."
       }
@@ -324,7 +324,7 @@ const GAMES_DATA = [
     genre: "Coop / Terror / Sobrevivência",
     date: "2026-07-06",
     chooser: "STX7",
-    participants: ["BuChuDin", "STX7", "ediisu", "Gustvbr"],
+    participants: ["BuChuDin", "STX7", "Gatólico", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.7,
@@ -345,7 +345,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-07-13",
     chooser: "BuChuDin",
-    participants: ["BuChuDin", "STX7", "Gustvbr", "ediisu", "Mamaco Gelado", "pekonino", "Chicão da Massa"],
+    participants: ["BuChuDin", "STX7", "Gustvbr", "Gatólico", "Mamaco Gelado", "pekonino", "Chicão da Massa"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.7,
@@ -396,15 +396,15 @@ const GAMES_DATA = [
     title: "Battlefield 1 Revolution",
     genre: "FPS / Multiplayer / Primeira Guerra",
     date: "2026-07-20",
-    chooser: "ediisu",
-    participants: ["STX7", "ediisu", "BuChuDin", "Mamaco Gelado", "Gustvbr", "Chicão da Massa"],
+    chooser: "Edisontoptop",
+    participants: ["STX7", "Edisontoptop", "BuChuDin", "Mamaco Gelado", "Gustvbr", "Chicão da Massa"],
     specialParticipants: [],
     platform: "PC",
     rating: 4.5,
     developer: "DICE",
     description: "A ação épica da Primeira Guerra Mundial em 64 jogadores. Destrua ambientes, pilotem veículos e use gadgets militares clássicos em mapas massivos. Comentário marcante: Até parece que eu tô na guerra mesmo",
-    banner: "img/bf1/battlefield-1-banner.png",
-    gallery: ["img/bf1/bf1-1.jpeg", "img/bf1/bf1-2.jpeg"],
+    banner: "img/battlefield-1-revolution/20260721215954_1.jpg",
+    gallery: ["img/battlefield-1-revolution/20260721215954_1.jpg","img/battlefield-1-revolution/20260724210419_1.jpg","img/battlefield-1-revolution/20260724215217_1.jpg","img/battlefield-1-revolution/20260724230744_1.jpg","img/battlefield-1-revolution/20260725212936_1.jpg","img/battlefield-1-revolution/20260725212939_1.jpg","img/battlefield-1-revolution/20260726215454_1.jpg","img/battlefield-1-revolution/20260726215505_1.jpg","img/battlefield-1-revolution/20260726215508_1.jpg","img/bf1/bf1-1.jpeg","img/bf1/bf1-2.jpeg"],
     videoUrl: "",
     comments: [
       {
@@ -414,8 +414,8 @@ const GAMES_DATA = [
         text: "Até parece que eu tô na guerra mesmo"
       },
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Edisontoptop",
+        avatarSeed: "Edisontoptop",
         time: "Final da Semana",
         text: "Até parece que é a guerra"
       },
@@ -514,7 +514,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-08-03",
     chooser: "BuChuDin",
-    participants: ["ediisu", "STX7", "Mamaco Gelado", "Chicão da Massa", "BuChuDin"],
+    participants: ["Gatólico", "STX7", "Mamaco Gelado", "Chicão da Massa", "BuChuDin"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.0,
@@ -551,8 +551,8 @@ const GAMES_DATA = [
         text: "O cara instalou hoje"
       },
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da Semana",
         text: "até semana que vem"
       }
@@ -563,8 +563,8 @@ const GAMES_DATA = [
     title: "Valorant",
     genre: "FPS / Competitivo / Hero Shooter",
     date: "2026-08-10",
-    chooser: "ediisu",
-    participants: ["BuChuDin", "Mamaco Gelado", "ediisu", "STX7", "pamonhadesal"],
+    chooser: "Gatólico",
+    participants: ["BuChuDin", "Mamaco Gelado", "Gatólico", "STX7", "pamonhadesal"],
     specialParticipants: [],
     platform: "PC",
     rating: 3.7,
@@ -637,7 +637,7 @@ const GAMES_DATA = [
     genre: "Hero Shooter / MOBA",
     date: "2026-08-24",
     chooser: "BuChuDin",
-    participants: ["ediisu", "STX7", "Mamaco Gelado", "BuChuDin"],
+    participants: ["Gatólico", "STX7", "Mamaco Gelado", "BuChuDin"],
     specialParticipants: [],
     platform: "PC (Steam)",
     rating: 4.1,
@@ -648,8 +648,8 @@ const GAMES_DATA = [
     videoUrl: "",
     comments: [
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da Semana",
         text: "De novo não"
       },
@@ -678,20 +678,20 @@ const GAMES_DATA = [
     title: "How to Fish",
     genre: "Ação, Casual, Indie, Simulação",
     date: "2026-08-31",
-    chooser: "ediisu",
-    participants: ["STX7", "ediisu", "BuChuDin", "Gustvbr"],
+    chooser: "Gatólico",
+    participants: ["STX7", "Gatólico", "BuChuDin", "Gustvbr"],
     specialParticipants: [],
     platform: "PC",
     rating: 5.0,
     developer: "Dazed Games",
     description: "How to Fish é um simulador de pesca baseado em física para 1-4 jogadores. Enquanto bebia e navegava, você acaba batendo em uma pequena ilha. Para conseguir voltar para casa, você precisa aprender a pescar.",
-    banner: "",
+    banner: "img/how-to-fish/How-to-fish.jpg",
     gallery: ["img/how-to-fish/How-to-fish.jpg","img/how-to-fish/How-to-fish-1.jpg","img/how-to-fish/How-to-fish-2.jpg","img/how-to-fish/How-to-fish-3.jpg","img/how-to-fish/How-to-fish-4.jpg","img/how-to-fish/How-to-fish-5.jpg","img/how-to-fish/How-to-fish-6.jpg","img/how-to-fish/How-to-fish-7.jpg","img/how-to-fish/How-to-fish-8.jpg"],
     videoUrl: "",
     comments: [
       {
-        author: "ediisu",
-        avatarSeed: "ediisu",
+        author: "Gatólico",
+        avatarSeed: "Gatólico",
         time: "Final da Semana",
         text: "Atiraram em mim de novo"
       },
@@ -708,8 +708,190 @@ const GAMES_DATA = [
         text: "Aposta tudo no verde"
       },
     ],
+  },
+  {
+    id: "7-days-to-die-1",
+    title: "7 Days to Die",
+    genre: "Sobrevivência / Zumbis",
+    date: "2026-09-07",
+    chooser: "STX7",
+    participants: ["STX7", "Mamaco gelado", "Gatólico", "BuChuDin"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.5,
+    developer: "The Fun Pimps",
+    description: "Sobrevivência em um mundo apocalíptico repleto de zumbis, com construção de bases e hordas a cada sete dias.",
+    banner: "img/7-days-to-die-1/2021C01.JPG",
+    gallery: ["img/7-days-to-die-1/2021C01.JPG","img/7-days-to-die-1/20260907202220_1.jpg","img/7-days-to-die-1/20260907221153_1.jpg","img/7-days-to-die-1/20260908234025_1.jpg","img/7-days-to-die-1/20260910225521_1.jpg","img/7-days-to-die-1/20260911223904_1.jpg","img/7-days-to-die-1/20260912011640_1.jpg","img/7-days-to-die-1/2026092.JPG","img/7-days-to-die-1/20AC0F1.JPG","img/7-days-to-die-1/20BA651.JPG","img/7-days-to-die-1/20BC5A1.JPG","img/7-days-to-die-1/image.png"],
+    videoUrl: "",
+    comments: [
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "A vagabunda que grita me odeia >:(" },
+      { author: "Gatólico", avatarSeed: "Gatólico", time: "Final da Semana", text: "Não da pra mais de um abrir bau ao mesmo tempo?" }
+    ]
+  },
+  {
+    id: "valheim",
+    title: "Valheim",
+    genre: "Sobrevivência / Exploração",
+    date: "2026-09-14",
+    chooser: "Mistake",
+    participants: ["STX7", "Mistake", "BuChuDin", "Gatólico", "Mamaco Gelado"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.0,
+    developer: "Iron Gate Studio",
+    description: "Sobrevivência cooperativa inspirada na mitologia nórdica. Escolha de Mistake (convidado).",
+    banner: "img/valheim/20260914195007_1.jpg",
+    gallery: ["img/valheim/2026091.JPG","img/valheim/20260914192416_1.jpg","img/valheim/20260914195007_1.jpg","img/valheim/20260914205018_1.jpg","img/valheim/20260915220239_1.jpg","img/valheim/2026092.JPG","img/valheim/image.png","img/valheim/image3.png","img/valheim/image4.png","img/valheim/image5.png"],
+    videoUrl: "",
+    comments: [
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "MADEIRAAAAAAAAAAAAA!!!!" },
+      { author: "Mistake", avatarSeed: "Mistake", time: "Final da Semana", text: "Mano, oque ele ta fazendo" },
+      { author: "Mamaco Gelado", avatarSeed: "Mamaco Gelado", time: "Final da Semana", text: "É fazenda de Ogro, tem que ter Ogro lá fora" }
+    ]
+  },
+  {
+    id: "dont-starve-together",
+    title: "Don't Starve Together",
+    genre: "Sobrevivência / Cooperativo",
+    date: "2026-09-21",
+    chooser: "BuChuDin",
+    participants: ["STX7", "BuChuDin", "Mamaco Gelado", "Gustvbr", "Gatólico"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.2,
+    developer: "Klei Entertainment",
+    description: "Sobrevivência em um mundo sombrio e peculiar, agora em cooperativo.",
+    banner: "",
+    gallery: [],
+    videoUrl: "",
+    comments: [
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "Don't Starve não é muito together assim" },
+      { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Cadê as carnes?" },
+      { author: "Gatólico", avatarSeed: "Gatólico", time: "Final da Semana", text: "Gente, não deixa carne no chão, as aranhas comem" },
+      { author: "Mamaco Gelado", avatarSeed: "Mamaco Gelado", time: "Final da Semana", text: "500 madeiras e um sonho" }
+    ]
+  },
+  {
+    id: "minecraft-vanilla-2",
+    title: "Minecraft Vanilla (Sessão 2)",
+    genre: "Sandbox / Sobrevivência",
+    date: "2026-09-28",
+    chooser: "Ediisu",
+    participants: ["BuChuDin", "Ediisu", "STX7", "Gustvbr", "Pekonino"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.0,
+    developer: "Mojang Studios",
+    description: "Mais uma semana no mundo de blocos. Escolha de Ediisu.",
+    banner: "img/minecraft-vanilla-2/2026-10-02_23.50.10_2.png",
+    gallery: ["img/minecraft-vanilla-2/2026-10-02_23.50.10_2.png","img/minecraft-vanilla-2/2026-10-02_23.52.46.png","img/minecraft-vanilla-2/2026-10-02_23.55.10.png"],
+    videoUrl: "",
+    comments: [
+      { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Ja ta melhor que os biomas do ATM 11" },
+      { author: "Ediisu", avatarSeed: "Ediisu", time: "Final da Semana", text: "A composteira emite 8 de carga de redstone?" },
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "Porque o Enderman é o unico mob que rouba blocos?" },
+      { author: "Gustvbr", avatarSeed: "Gustvbr", time: "Final da Semana", text: "..." }
+    ]
+  },
+  {
+    id: "7-days-to-die-2",
+    title: "7 Days to Die (Sessão 2)",
+    genre: "Sobrevivência / Zumbis",
+    date: "2026-10-05",
+    chooser: "STX7",
+    participants: ["STX7", "Mamaco gelado", "Gatólico", "BuChuDin"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.7,
+    developer: "The Fun Pimps",
+    description: "A volta do apocalipse zumbi com mais construção, hordas e muitas armas improvisadas.",
+    banner: "img/7-days-to-die-2/image2.png",
+    gallery: ["img/7-days-to-die-2/20261009195536_1.jpg","img/7-days-to-die-2/20261009220642_1.jpg","img/7-days-to-die-2/20261010165123_1.jpg","img/7-days-to-die-2/image.png","img/7-days-to-die-2/image2.png","img/7-days-to-die-2/image3.png","img/7-days-to-die-2/image4.png","img/7-days-to-die-2/image5.png"],
+    videoUrl: "",
+    comments: [
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "A volta dos que não foram" },
+      { author: "Mamaco Gelado", avatarSeed: "Mamaco Gelado", time: "Final da Semana", text: "É fazenda de zumbi, tem que ter zumbi lá fora" },
+      { author: "Gatólico", avatarSeed: "Gatólico", time: "Final da Semana", text: "Faca ak47, a arma perfeita pro combate" },
+      { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Não vão pegar meu drone >:( , pegaram meu drone :'(" }
+    ]
   }
 ];
+
+/**
+ * Aliases de jogadores para o placar (chave: minúscula, sem acento).
+ * Gatólico = Ediisu = Edisontoptop (nick da conta EA no Battlefield 1).
+ * Nas páginas dos jogos continua sendo exibido o nick usado naquele jogo;
+ * apenas o placar de participantes unifica tudo no nome canônico.
+ * Obs.: no Minecraft, "Ediisu" não pode usar o nick "Gatólico".
+ */
+const PLAYER_ALIASES = {
+  "gatolico": "Gatólico",
+  "ediisu": "Gatólico",
+  "edisontoptop": "Gatólico",
+  "mamaco gelado": "Mamaco Gelado",
+  "stx7": "STX7",
+  "buchudin": "BuChuDin",
+  "gustvbr": "Gustvbr",
+  "mistake": "Mistake",
+  "pekonino": "pekonino",
+  "pamonhadesal": "pamonhadesal"
+};
+
+/**
+ * Catálogo de categorias/gêneros/tags da Steam.
+ * `blocked` = categoria que não pode ser escolhida segundo as regras do site:
+ *  - Regra 5: sem conteúdo explícito (hentai); Regra 6: sem jogos de navegador;
+ *  - Regras 12/13: precisa ter multiplayer (só singleplayer é proibido); Regra 16: sem jogos de celular.
+ */
+const STEAM_CATEGORIES = [
+  { name: "Ação" }, { name: "Aventura" }, { name: "Casual" }, { name: "Indie" },
+  { name: "RPG" }, { name: "Simulação" }, { name: "Estratégia" }, { name: "Corrida" },
+  { name: "Esportes" }, { name: "Gratuito" }, { name: "Acesso Antecipado" },
+  { name: "Multijogador Massivo (MMO)" },
+  { name: "FPS" }, { name: "Hero Shooter" }, { name: "MOBA" }, { name: "Battle Royale" },
+  { name: "Luta" }, { name: "Plataforma" }, { name: "Quebra-cabeça" }, { name: "Party Game" },
+  { name: "Roguelike" }, { name: "Tower Defense" }, { name: "Construção de Cidades" },
+  { name: "Gerenciamento" }, { name: "Cartas" }, { name: "Ritmo" }, { name: "Furtividade" },
+  { name: "Mundo Aberto" }, { name: "Sandbox" }, { name: "Craft" }, { name: "Sobrevivência" },
+  { name: "Terror" }, { name: "Zumbis" }, { name: "Guerra" }, { name: "Espaço" },
+  { name: "Cooperativo" }, { name: "PvP" }, { name: "Competitivo" }, { name: "Dirigir/Pilotar" },
+  { name: "Single-player", blocked: true, rule: "12 e 13" },
+  { name: "Conteúdo Adulto / Hentai", blocked: true, rule: 5 },
+  { name: "Jogo de Navegador", blocked: true, rule: 6 },
+  { name: "Mobile", blocked: true, rule: 16 }
+];
+
+/**
+ * Categorias (Steam) de cada jogo já jogado, por id.
+ */
+const GAME_CATEGORIES = {
+  "rust-1": ["Ação", "Sobrevivência", "Mundo Aberto", "Craft", "PvP"],
+  "rust-2": ["Ação", "Sobrevivência", "Mundo Aberto", "Craft", "PvP"],
+  "rust-3": ["Ação", "Sobrevivência", "Mundo Aberto", "Craft", "PvP"],
+  "left-4-dead-2": ["Ação", "FPS", "Cooperativo", "Zumbis"],
+  "counter-strike-2": ["Ação", "FPS", "PvP", "Competitivo", "Gratuito"],
+  "enshrouded": ["Ação", "RPG", "Sobrevivência", "Mundo Aberto", "Craft", "Cooperativo"],
+  "rocket-league": ["Esportes", "Corrida", "PvP", "Competitivo", "Gratuito"],
+  "minecraft-cobbleverse": ["Sandbox", "Aventura", "RPG", "Craft", "Mundo Aberto"],
+  "minecraft-all-the-mods-10": ["Sandbox", "Aventura", "RPG", "Craft", "Mundo Aberto"],
+  "minecraft-all-the-mods-11": ["Sandbox", "Aventura", "RPG", "Craft", "Mundo Aberto"],
+  "the-forest": ["Ação", "Aventura", "Sobrevivência", "Terror", "Mundo Aberto", "Craft", "Cooperativo"],
+  "mecha-chamelon": ["Ação", "Indie", "Cooperativo"],
+  "devour": ["Terror", "Cooperativo", "Sobrevivência", "Indie"],
+  "deadlock": ["Ação", "Hero Shooter", "MOBA", "PvP", "Gratuito"],
+  "deadlock-2": ["Ação", "Hero Shooter", "MOBA", "PvP", "Gratuito"],
+  "deadlock-3": ["Ação", "Hero Shooter", "MOBA", "PvP", "Gratuito"],
+  "battlefield-1-revolution": ["Ação", "FPS", "PvP", "Guerra"],
+  "minecraft-vanilla": ["Sandbox", "Sobrevivência", "Craft", "Mundo Aberto"],
+  "minecraft-vanilla-2": ["Sandbox", "Sobrevivência", "Craft", "Mundo Aberto"],
+  "valorant": ["Ação", "FPS", "Hero Shooter", "PvP", "Competitivo", "Gratuito"],
+  "how-to-fish": ["Ação", "Casual", "Indie", "Simulação", "Cooperativo"],
+  "7-days-to-die-1": ["Ação", "Sobrevivência", "Zumbis", "Mundo Aberto", "Craft", "Cooperativo"],
+  "7-days-to-die-2": ["Ação", "Sobrevivência", "Zumbis", "Mundo Aberto", "Craft", "Cooperativo"],
+  "valheim": ["Ação", "Aventura", "Sobrevivência", "Mundo Aberto", "Craft", "Cooperativo"],
+  "dont-starve-together": ["Aventura", "Indie", "Sobrevivência", "Craft", "Cooperativo"]
+};
 
 const SITE_RULES = [
   {
@@ -720,7 +902,7 @@ const SITE_RULES = [
   {
     number: 2,
     title: "Tempo de Espera para Escolha",
-    description: "Deve-se esperar 2 semanas para escolher novamente o mesmo jogo."
+    description: "Deve-se esperar 2 semanas a partir do último dia jogado para escolher o mesmo jogo novamente."
   },
   {
     number: 3,
@@ -735,7 +917,11 @@ const SITE_RULES = [
   {
     number: 5,
     title: "Restrição de Conteúdo Explícito",
-    description: "Não são permitidos jogos hentai (todo jogo que mostrar um mamilozinho ou xerequinha explícita)."
+    description: "Não são permitidos jogos hentai (todo jogo que mostrar um mamilozinho ou xerequinha explícita).",
+    hoverNote: {
+      author: "BuChuDin",
+      text: "Rust não se aplica a essa regra! Por padrão o jogo já vem com censura, e quem desabilita é o usuário."
+    }
   },
   {
     number: 6,
@@ -804,23 +990,23 @@ const SITE_RULES = [
   },
   {
     number: 19,
-    title: "Período para Repetir Título",
-    description: "Deve-se esperar 2 semanas a partir do último dia jogado para escolher o mesmo jogo novamente."
-  },
-  {
-    number: 20,
     title: "Tempo Mínimo Juntos",
     description: "Todos os membros devem obrigatoriamente jogar o jogo escolhido naquela semana por pelo menos cinco horas juntos."
   },
   {
-    number: 21,
+    number: 20,
     title: "Jogabilidade Inviável",
     description: "Se o jogo se provar impossível de ser jogado em grupo, então deverá ser escolhido outro jogo."
   },
   {
-    number: 22,
+    number: 21,
     title: "Unanimidade para Alterações",
     description: "Uma regra só pode ser alterada se todos os membros concordarem."
+  },
+  {
+    number: 22,
+    title: "Escolha por Convidados",
+    description: "Convidados podem escolher uma semana mediante aprovação dos membros. Naquela semana ele estará sujeito às regras, mas somente durante aquela semana."
   }
 ];
 
@@ -831,7 +1017,7 @@ const ABOUT_INFO = {
       return GAMES_DATA.length;
     },
     get activeMembers() {
-      const coreMembers = new Set(["STX7", "ediisu", "BuChuDin"]);
+      const coreMembers = new Set(["STX7", "Gatólico", "BuChuDin"]);
       return coreMembers.size;
     },
     get averageRating() {

@@ -41,6 +41,8 @@ class GameController {
         this.initAboutPage();
       } else if (document.getElementById("participants-container")) {
         this.initParticipantsPage();
+      } else if (document.getElementById("categories-container")) {
+        this.initCategoriesPage();
       }
 
       // 3. Esconde o skeleton loader após o conteúdo estar pronto
@@ -205,6 +207,14 @@ class GameController {
   initParticipantsPage() {
     const ranking = this.model.getParticipantsRanking();
     this.view.renderParticipantsPage(ranking);
+  }
+
+  /**
+   * Inicializa a Página de Categorias
+   */
+  initCategoriesPage() {
+    const stats = this.model.getCategoriesStats();
+    this.view.renderCategoriesPage(stats);
   }
 }
 
