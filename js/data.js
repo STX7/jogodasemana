@@ -807,7 +807,7 @@ const GAMES_DATA = [
     developer: "The Fun Pimps",
     description: "A volta do apocalipse zumbi com mais construção, hordas e muitas armas improvisadas.",
     banner: "img/7-days-to-die-2/image2.png",
-    gallery: ["img/7-days-to-die-2/20261009195536_1.jpg","img/7-days-to-die-2/20261009220642_1.jpg","img/7-days-to-die-2/20261010165123_1.jpg","img/7-days-to-die-2/image.png","img/7-days-to-die-2/image2.png","img/7-days-to-die-2/image3.png","img/7-days-to-die-2/image4.png","img/7-days-to-die-2/image5.png","img/7-days-to-die-2/image6.png", "img/7-days-to-die-2/20261010162724_1.jpg"],
+    gallery: ["img/7-days-to-die-2/20261009195536_1.jpg","img/7-days-to-die-2/20261009220642_1.jpg","img/7-days-to-die-2/20261010165123_1.jpg","img/7-days-to-die-2/image.png","img/7-days-to-die-2/image2.png","img/7-days-to-die-2/image3.png","img/7-days-to-die-2/image4.png","img/7-days-to-die-2/image5.png","img/7-days-to-die-2/image6.jpg", "img/7-days-to-die-2/20261010162724_1.jpg"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "A volta dos que não foram" },
