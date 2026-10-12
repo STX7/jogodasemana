@@ -762,8 +762,8 @@ const GAMES_DATA = [
     rating: 4.2,
     developer: "Klei Entertainment",
     description: "Sobrevivência em um mundo sombrio e peculiar, agora em cooperativo.",
-    banner: "",
-    gallery: [],
+    banner: "img/dont-starve-togheter/dont-banner.webp",
+    gallery: ["img/dont-starve-togheter/dont1.jpg", "img/dont-starve-togheter/dont2.jpg", "img/dont-starve-togheter/dont3.jpg", "img/dont-starve-togheter/dont4.jpg"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "Don't Starve não é muito together assim" },
