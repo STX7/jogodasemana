@@ -910,7 +910,7 @@ const SITE_RULES = [
     description: "A semana de jogos só pode começar após os 5 primeiros dias úteis do mês. Se passar desses 5 dias, não serão aceitos jogos pagos.",
     hoverNote: {
       author: "Gatólico",
-      text: "Se os membros quiserem, o jogo pago pode ser jogado depois dos 5 dias úteis."
+      text: "Se os membros quiserem, o jogo pago pode ser jogado em outro momento, jogos pagos que todos ja tiverem podem ser jogados a qualquer momento"
     }
   },
   {
