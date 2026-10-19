@@ -907,7 +907,11 @@ const SITE_RULES = [
   {
     number: 3,
     title: "Escolha de Jogos Pagos",
-    description: "Jogo pago que os membros ainda não possuam só pode ser escolhido em início de mês."
+    description: "A semana de jogos só pode começar após os 5 primeiros dias úteis do mês. Se passar desses 5 dias, não serão aceitos jogos pagos.",
+    hoverNote: {
+      author: "Gatólico",
+      text: "Se os membros quiserem, o jogo pago pode ser jogado depois dos 5 dias úteis."
+    }
   },
   {
     number: 4,
