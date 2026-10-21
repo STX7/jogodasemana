@@ -58,8 +58,9 @@ class GameView {
               <a href="index.html" class="${getActive("index.html") || (!currentPath.includes(".html") ? "text-brand-400 font-bold border-b-2 border-brand-500 pb-1" : "")}">Jogos</a>
               <a href="melhores.html" class="${getActive("melhores.html")}">Melhores do Mês</a>
               <a href="regras.html" class="${getActive("regras.html")}">Regras</a>
-              <a href="participantes.html" class="${getActive("participantes.html")}">Participantes</a>
+              <a href="participantes.html" class="${getActive("participantes.html")} inline-flex items-center gap-1"><span>Participantes</span><span class="text-[9px] px-1.5 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-bold uppercase tracking-wider">Vergonha</span></a>
               <a href="categorias.html" class="${getActive("categorias.html")}">Categorias</a>
+              <a href="sorteio.html" class="${getActive("sorteio.html")}">Sorteio</a>
               <a href="sobre.html" class="${getActive("sobre.html")}">Sobre</a>
             </nav>
           </div>
@@ -84,6 +85,8 @@ class GameView {
               <a href="participantes.html" class="hover:text-brand-400 transition-colors">Participantes</a>
               <span>&bull;</span>
               <a href="categorias.html" class="hover:text-brand-400 transition-colors">Categorias</a>
+              <span>&bull;</span>
+              <a href="sorteio.html" class="hover:text-brand-400 transition-colors">Sorteio</a>
               <span>&bull;</span>
               <a href="sobre.html" class="hover:text-brand-400 transition-colors">Sobre</a>
             </div>
@@ -960,5 +963,526 @@ class GameView {
     }).join('');
 
     container.innerHTML = html;
+  }
+
+  /**
+   * Renderiza o Quadro da Vergonha na página de Participantes
+   * @param {Array} shameList 
+   */
+  renderShameBoard(shameList) {
+    const container = document.getElementById("shame-board-container");
+    if (!container) return;
+
+    if (!shameList || shameList.length === 0) {
+      container.innerHTML = `
+        <div class="py-12 px-6 text-center rounded-2xl bg-gray-900/40 border border-gray-800">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-400 mb-3 border border-emerald-500/20">
+            <i class="fa-solid fa-shield-halved text-2xl"></i>
+          </div>
+          <h3 class="text-base font-bold text-gray-200">Nenhum infrator registrado</h3>
+          <p class="text-xs text-gray-500 mt-1 max-w-md mx-auto">
+            Todos os participantes estão cumprindo rigorosamente as regras da jogatina... por enquanto.
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    const html = shameList.map(item => {
+      let formattedDate = item.date || "";
+      if (item.date && item.date.includes("-")) {
+        const parts = item.date.split("-");
+        formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+      }
+
+      const isGrave = item.severity === "grave";
+      const isCleanPenalty = (item.penalty || "").toLowerCase().includes("sem penalidade");
+
+      let severityBadge = "";
+      if (isGrave) {
+        severityBadge = `<span class="text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 shadow-[0_0_10px_rgba(239,68,68,0.2)]">Infração Grave</span>`;
+      } else if (item.severity === "media") {
+        severityBadge = `<span class="text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40">Infração Média</span>`;
+      } else {
+        severityBadge = `<span class="text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/40">Advertência</span>`;
+      }
+
+      const penaltyIcon = isCleanPenalty ? "fa-circle-info text-yellow-400" : "fa-gavel text-red-400";
+      const penaltyBg = isCleanPenalty ? "bg-yellow-950/20 border-yellow-900/30" : "bg-red-950/40 border-red-900/50";
+      const penaltyHeaderColor = isCleanPenalty ? "text-yellow-300" : "text-red-300";
+      const penaltyTextColor = isCleanPenalty ? "text-gray-400 italic" : "text-red-200 font-semibold";
+
+      return `
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-950/30 via-gray-900/80 to-gray-900/80 border ${isGrave ? 'border-red-600/50 shadow-[0_0_20px_rgba(239,68,68,0.15)]' : 'border-red-900/40 hover:border-red-600/50'} p-5 transition-all duration-300 shadow-lg group">
+          <!-- Faixa lateral de destaque -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${isGrave ? 'from-red-500 via-rose-600 to-red-800' : 'from-yellow-500 via-amber-600 to-red-700'}"></div>
+
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-gray-800/80">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full overflow-hidden border-2 ${isGrave ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.35)]' : 'border-red-600/50'} bg-red-950/60 flex items-center justify-center shrink-0">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(item.participant)}&backgroundColor=450a0a" loading="lazy" decoding="async" alt="Avatar de ${item.participant}" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="text-xl font-black text-white tracking-tight">${item.participant}</h3>
+                  ${severityBadge}
+                </div>
+                <div class="flex items-center gap-3 mt-1 text-xs text-gray-400 flex-wrap">
+                  <span class="inline-flex items-center gap-1.5 text-red-400 font-semibold">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Regra #${item.ruleNumber}: ${item.ruleTitle}
+                  </span>
+                  <span>&bull;</span>
+                  <span class="inline-flex items-center gap-1 text-gray-400">
+                    <i class="fa-solid fa-gamepad text-gray-500"></i> ${item.game}
+                  </span>
+                  <span>&bull;</span>
+                  <span class="inline-flex items-center gap-1 text-gray-400">
+                    <i class="fa-regular fa-calendar text-gray-500"></i> ${formattedDate}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Descrição do Incidente -->
+          <div class="mt-3.5 bg-gray-950/70 rounded-xl p-3.5 border border-red-950/50">
+            <div class="text-xs font-bold uppercase tracking-wider text-red-400/90 mb-1 flex items-center gap-1.5">
+              <i class="fa-solid fa-file-circle-exclamation"></i> Motivo da Advertência
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed font-normal">
+              ${item.incident}
+            </p>
+          </div>
+
+          <!-- Punição / Sentença -->
+          <div class="mt-3 flex items-start gap-2.5 text-xs ${penaltyBg} px-3.5 py-2.5 rounded-xl border">
+            <i class="fa-solid ${penaltyIcon} text-sm mt-0.5 shrink-0"></i>
+            <div>
+              <strong class="font-bold ${penaltyHeaderColor} uppercase tracking-wider text-[11px] block">Penalidade / Situação:</strong>
+              <span class="${penaltyTextColor}">${item.penalty}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    container.innerHTML = html;
+  }
+
+  /**
+   * =========================================================================
+   * Métodos da Página de Sorteio (Loot Box / Roleta CS:GO)
+   * =========================================================================
+   */
+
+  /**
+   * Toca som sintético de tick/clique da roleta do CS:GO usando Web Audio API
+   */
+  playSorteioTickSound() {
+    try {
+      if (!this._audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) this._audioCtx = new AudioCtx();
+      }
+      if (!this._audioCtx) return;
+      if (this._audioCtx.state === 'suspended') {
+        this._audioCtx.resume();
+      }
+      const osc = this._audioCtx.createOscillator();
+      const gain = this._audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(650, this._audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(140, this._audioCtx.currentTime + 0.035);
+      gain.gain.setValueAtTime(0.08, this._audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this._audioCtx.currentTime + 0.035);
+      osc.connect(gain);
+      gain.connect(this._audioCtx.destination);
+      osc.start();
+      osc.stop(this._audioCtx.currentTime + 0.035);
+    } catch (e) {
+      // Ignora falhas de áudio silenciosamente
+    }
+  }
+
+  /**
+   * Renderiza a lista de chances e probabilidades dos jogos ativos
+   * @param {Array} itemsWithChances 
+   * @param {number} totalTickets 
+   * @param {boolean} allEqual 
+   */
+  renderSorteioChancesList(itemsWithChances, totalTickets, allEqual) {
+    const container = document.getElementById("chances-list-container");
+    const totalEl = document.getElementById("total-tickets-display");
+    if (!container) return;
+
+    if (totalEl) {
+      totalEl.textContent = `${itemsWithChances.length} jogo(s) ativo(s) • ${totalTickets} chance(s) total`;
+    }
+
+    if (itemsWithChances.length === 0) {
+      container.innerHTML = `
+        <div class="py-12 text-center text-gray-500 text-sm">
+          <i class="fa-solid fa-triangle-exclamation text-2xl mb-2 text-yellow-500/50 block"></i>
+          Nenhum jogo selecionado para o sorteio. Adicione jogos ou marque títulos da lista.
+        </div>
+      `;
+      return;
+    }
+
+    const html = itemsWithChances.map(item => {
+      let badgeColor = "bg-gray-800 text-gray-300 border-gray-700";
+      let barColor = "bg-gray-500";
+      let rarityLabel = "50% - 99% (Comum)";
+
+      if (allEqual) {
+        badgeColor = "bg-brand-950/60 text-brand-300 border-brand-800/40";
+        barColor = "bg-brand-500";
+        rarityLabel = "Chances Iguais";
+      } else if (item.rarity === "legendary") {
+        badgeColor = "bg-yellow-500/10 text-yellow-400 border-yellow-500/30";
+        barColor = "bg-yellow-400 shadow-[0_0_10px_#facc15]";
+        rarityLabel = "< 9% (Lendário • Dourado)";
+      } else if (item.rarity === "epic") {
+        badgeColor = "bg-purple-500/10 text-purple-400 border-purple-500/30";
+        barColor = "bg-purple-400 shadow-[0_0_10px_#c084fc]";
+        rarityLabel = "10% - 29% (Épico • Roxo)";
+      } else if (item.rarity === "rare") {
+        badgeColor = "bg-blue-500/10 text-blue-400 border-blue-500/30";
+        barColor = "bg-blue-400 shadow-[0_0_10px_#60a5fa]";
+        rarityLabel = "30% - 49% (Raro • Azul)";
+      }
+
+      return `
+        <div class="p-3 rounded-2xl bg-gray-950/70 border border-gray-800/80 hover:border-gray-700 transition flex flex-col gap-2">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              ${item.banner ? `<img src="${item.banner}" alt="${item.title}" class="w-8 h-8 rounded-lg object-cover shrink-0 border border-gray-800" onerror="this.style.display='none'">` : `<div class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center shrink-0 text-gray-500 text-xs"><i class="fa-solid fa-gamepad"></i></div>`}
+              <div class="truncate">
+                <span class="font-bold text-sm text-white block truncate">${item.title}</span>
+                <span class="text-[11px] text-gray-500 block truncate">${item.genre || 'Sorteio'}</span>
+              </div>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="text-sm font-black text-white">${item.percentage}%</span>
+              <span class="text-[10px] text-gray-400 block font-semibold">${item.tickets} chance(s)</span>
+            </div>
+          </div>
+          <!-- Barra de probabilidade visual -->
+          <div class="w-full bg-gray-900 rounded-full h-1.5 overflow-hidden">
+            <div class="${barColor} h-full rounded-full transition-all duration-500" style="width: ${Math.min(100, Math.max(3, item.percentage))}%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[10px] text-gray-500">
+            <span>Raridade:</span>
+            <span class="font-semibold px-2 py-0.5 rounded-full border ${badgeColor}">${rarityLabel}</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    container.innerHTML = html;
+  }
+
+  /**
+   * Renderiza a grade de jogos já jogados com checkboxes e controles de peso (+/-)
+   * @param {Array} playedGames 
+   * @param {string} filterText 
+   */
+  renderSorteioPlayedGamesList(playedGames, filterText = "") {
+    const container = document.getElementById("played-games-list");
+    if (!container) return;
+
+    const query = (filterText || "").toLowerCase().trim();
+    const filtered = playedGames.filter(g => !query || g.title.toLowerCase().includes(query));
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-8 text-center text-gray-500 text-xs">
+          Nenhum jogo encontrado com o termo informado.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(game => {
+      const activeClass = game.active !== false ? "border-brand-500/40 bg-gray-950/80" : "border-gray-800/60 bg-gray-950/30 opacity-50";
+
+      return `
+        <div class="p-2.5 rounded-2xl border ${activeClass} transition flex items-center justify-between gap-2" data-game-id="${game.id}">
+          <label class="flex items-center gap-2.5 min-w-0 cursor-pointer flex-1">
+            <input type="checkbox" class="played-game-toggle rounded border-gray-700 text-brand-500 focus:ring-0 cursor-pointer bg-gray-900" data-game-id="${game.id}" ${game.active !== false ? 'checked' : ''}>
+            ${game.banner ? `<img src="${game.banner}" alt="${game.title}" class="w-8 h-8 rounded-lg object-cover shrink-0 border border-gray-800" onerror="this.style.display='none'">` : `<div class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center shrink-0 text-gray-500 text-xs"><i class="fa-solid fa-gamepad"></i></div>`}
+            <span class="text-xs font-bold text-gray-200 truncate select-none">${game.title}</span>
+          </label>
+          <!-- Controles de Tickets (+ / -) -->
+          <div class="flex items-center gap-1 shrink-0 bg-gray-900 px-1.5 py-1 rounded-xl border border-gray-800">
+            <button type="button" class="btn-ticket-minus w-5 h-5 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold transition disabled:opacity-30" data-game-id="${game.id}" ${(game.tickets || 1) <= 1 ? 'disabled' : ''}>
+              -
+            </button>
+            <span class="w-5 text-center text-xs font-black text-brand-400">${game.tickets || 1}</span>
+            <button type="button" class="btn-ticket-plus w-5 h-5 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold transition" data-game-id="${game.id}">
+              +
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  /**
+   * Preenche a esteira horizontal da roleta com itens
+   * @param {Array} itemsWithChances 
+   */
+  setupSorteioReel(itemsWithChances) {
+    const track = document.getElementById("csgo-roulette-track");
+    if (!track) return;
+
+    if (!itemsWithChances || itemsWithChances.length === 0) {
+      track.style.transition = "none";
+      track.style.transform = "translateX(0px)";
+      track.innerHTML = `
+        <div class="w-full flex items-center justify-center px-8 text-gray-500 text-sm italic">
+          Adicione jogos acima para montar a caixa de sorteio
+        </div>
+      `;
+      return;
+    }
+
+    // Preenche com uma prévia bonita de itens alternados
+    const previewItems = [];
+    for (let i = 0; i < 20; i++) {
+      previewItems.push(itemsWithChances[i % itemsWithChances.length]);
+    }
+
+    track.style.transition = "none";
+    track.style.transform = "translateX(0px)";
+    track.innerHTML = previewItems.map(item => this._createRouletteCardHtml(item)).join("");
+  }
+
+  /**
+   * Gera o HTML de um card na esteira da roleta CS:GO
+   */
+  _createRouletteCardHtml(item) {
+    let rarityBorder = "border-gray-800";
+    let bottomStrip = "bg-gray-700";
+
+    if (item.rarity === "legendary") {
+      rarityBorder = "border-yellow-500/80 bg-gradient-to-b from-gray-900 to-yellow-950/30";
+      bottomStrip = "bg-yellow-400 shadow-[0_0_12px_#facc15]";
+    } else if (item.rarity === "epic") {
+      rarityBorder = "border-purple-500/80 bg-gradient-to-b from-gray-900 to-purple-950/30";
+      bottomStrip = "bg-purple-500 shadow-[0_0_12px_#c084fc]";
+    } else if (item.rarity === "rare") {
+      rarityBorder = "border-blue-500/80 bg-gradient-to-b from-gray-900 to-blue-950/30";
+      bottomStrip = "bg-blue-500 shadow-[0_0_12px_#60a5fa]";
+    }
+
+    return `
+      <div class="csgo-card shrink-0 w-36 md:w-44 h-40 md:h-48 mx-1.5 rounded-2xl bg-gray-900 border-2 ${rarityBorder} overflow-hidden flex flex-col justify-between shadow-lg relative select-none">
+        <!-- Imagem / Arte do Jogo -->
+        <div class="relative w-full flex-grow overflow-hidden bg-gray-950 flex items-center justify-center">
+          ${item.banner ? `<img src="${item.banner}" alt="${item.title}" class="w-full h-full object-cover pointer-events-none" onerror="this.style.display='none'">` : `<i class="fa-solid fa-gamepad text-4xl text-gray-700"></i>`}
+          <span class="absolute top-2 right-2 text-[10px] font-black px-1.5 py-0.5 rounded bg-black/75 text-white backdrop-blur-sm border border-white/10">
+            ${item.percentage || item.tickets}x
+          </span>
+        </div>
+        <!-- Nome do Jogo -->
+        <div class="p-2 text-center bg-gray-900/95 border-t border-gray-800">
+          <p class="text-xs font-black text-white truncate">${item.title}</p>
+        </div>
+        <!-- Faixa inferior de raridade estilo CS:GO -->
+        <div class="w-full h-1.5 ${bottomStrip}"></div>
+      </div>
+    `;
+  }
+
+  /**
+   * Executa a animação de giro da esteira estilo abertura de caixa do CS:GO
+   * @param {Object} winner Jogo vencedor
+   * @param {Array} itemsWithChances 
+   * @param {boolean} allEqual 
+   * @param {Function} onComplete 
+   */
+  animateSorteioRoll(winner, itemsWithChances, allEqual, onComplete) {
+    const track = document.getElementById("csgo-roulette-track");
+    const container = track ? track.parentElement : null;
+    if (!track || !container) {
+      if (onComplete) onComplete(winner);
+      return;
+    }
+
+    // Configurações físicas da esteira
+    const totalCards = 80;
+    const winnerIndex = 65; // Card vencedor posicionado longe para uma corrida emocionante
+
+    // Gera lista de cards na fita com o vencedor exatamente na posição winnerIndex
+    const reelItems = [];
+    for (let i = 0; i < totalCards; i++) {
+      if (i === winnerIndex) {
+        reelItems.push(winner);
+      } else {
+        // Escolhe outros itens proporcionalmente
+        const randItem = itemsWithChances[Math.floor(Math.random() * itemsWithChances.length)];
+        reelItems.push(randItem);
+      }
+    }
+
+    track.innerHTML = reelItems.map(item => this._createRouletteCardHtml(item)).join("");
+
+    // Garante layout sincronizado
+    const cardElements = track.querySelectorAll(".csgo-card");
+    if (cardElements.length === 0) {
+      if (onComplete) onComplete(winner);
+      return;
+    }
+
+    const firstCard = cardElements[0];
+    const cardRect = firstCard.getBoundingClientRect();
+    const cardWidth = cardRect.width;
+    const cardMargin = 12; // mx-1.5 = 6px de cada lado = 12px
+    const stepWidth = cardWidth + cardMargin;
+
+    // Reseta posição da esteira instantaneamente
+    track.style.transition = "none";
+    track.style.transform = "translateX(0px)";
+
+    // Força reflow no navegador
+    void track.offsetWidth;
+
+    // Calcula onde a esteira precisa parar para o card vencedor ficar no centro exato da linha
+    const containerWidth = container.offsetWidth;
+    const targetCardCenter = (winnerIndex * stepWidth) + (stepWidth / 2);
+    const containerCenter = containerWidth / 2;
+
+    // Jitter aleatório realista dentro do card (ex: +/- 35% da largura do card)
+    const jitter = (Math.random() - 0.5) * (cardWidth * 0.7);
+    const targetTranslateX = -(targetCardCenter - containerCenter + jitter);
+
+    // Easing de abertura de caixa: arranque rápido e desaceleração suave estilo CS:GO
+    const durationMs = 7500;
+    track.style.transition = `transform ${durationMs}ms cubic-bezier(0.08, 0.9, 0.12, 1)`;
+    track.style.transform = `translateX(${targetTranslateX}px)`;
+
+    // Sistema de som a cada card que passa pelo ponteiro central
+    let lastCardIndexPassed = -1;
+    let animRunning = true;
+    const startTime = performance.now();
+
+    const checkPointerCross = () => {
+      if (!animRunning) return;
+      const computedMatrix = window.getComputedStyle(track).transform;
+      if (computedMatrix && computedMatrix !== 'none') {
+        const matrixValues = computedMatrix.match(/matrix.*((.+))/);
+        if (matrixValues) {
+          const parts = matrixValues[1].split(', ');
+          const currentX = Math.abs(parseFloat(parts[4]) || 0);
+          const currentCardPassed = Math.floor((currentX + containerCenter) / stepWidth);
+          if (currentCardPassed !== lastCardIndexPassed) {
+            lastCardIndexPassed = currentCardPassed;
+            this.playSorteioTickSound();
+          }
+        }
+      }
+
+      if (performance.now() - startTime < durationMs + 200) {
+        requestAnimationFrame(checkPointerCross);
+      }
+    };
+
+    requestAnimationFrame(checkPointerCross);
+
+    // Conclusão do giro
+    setTimeout(() => {
+      animRunning = false;
+      if (onComplete) onComplete(winner);
+    }, durationMs + 250);
+  }
+
+  /**
+   * Abre o Modal de Vitória configurado com os efeitos visuais das regras
+   * @param {Object} winner 
+   * @param {boolean} allEqual 
+   */
+  openWinnerModal(winner, allEqual) {
+    const modal = document.getElementById("winner-modal");
+    const card = document.getElementById("modal-winner-card");
+    const rays = document.getElementById("modal-gold-rays");
+    const titleEl = document.getElementById("modal-winner-title");
+    const imgEl = document.getElementById("modal-winner-img");
+    const placeholderEl = document.getElementById("modal-winner-placeholder");
+    const chanceEl = document.getElementById("modal-winner-chance");
+    const badgeEl = document.getElementById("modal-rarity-badge");
+    
+    if (!modal || !card) return;
+
+    // Reseta classes de animações anteriores
+    card.classList.remove("victory-blue-card", "victory-purple-card", "victory-gold-card");
+    if (rays) rays.classList.add("hidden");
+
+    // Preenche informações do jogo
+    if (titleEl) titleEl.textContent = winner.title;
+    if (chanceEl) chanceEl.textContent = `Chance de vitória: ${winner.percentage}% (${winner.tickets} chance(s))`;
+
+    if (winner.banner && imgEl) {
+      imgEl.src = winner.banner;
+      imgEl.classList.remove("hidden");
+      if (placeholderEl) placeholderEl.classList.add("hidden");
+    } else {
+      if (imgEl) imgEl.classList.add("hidden");
+      if (placeholderEl) placeholderEl.classList.remove("hidden");
+    }
+
+    // Regras de Animação de Vitória:
+    // 1. "se todos os jogos tiverem a mesma chance, não tem animação, somente o giro"
+    // 2. "Se o jogo tiver chance de 99% até 50%, não tem animação"
+    // 3. "Se o jogo tiver chance de 49% até 30%, ele tem uma animação azul de vitória"
+    // 4. "Se o jogo tiver chance de 29% até 10%, ele tem uma animação Roxa e pulsante de vitória"
+    // 5. "Se o jogo tiver chance menor que 9% ele tem uma animação Dourada e pulsante e com efeitos de blur de vitória"
+
+    if (allEqual) {
+      if (badgeEl) {
+        badgeEl.textContent = "Chances Iguais";
+        badgeEl.className = "inline-block text-xs uppercase font-extrabold px-3 py-1 rounded-full bg-brand-950/70 text-brand-300 border border-brand-800 tracking-wider";
+      }
+          } else if (winner.rarity === "legendary" || winner.percentage < 10) {
+      // Dourada e pulsante com efeitos de blur de vitória
+      card.classList.add("victory-gold-card");
+      if (rays) rays.classList.remove("hidden");
+      if (badgeEl) {
+        badgeEl.textContent = "★ Lendário (Menor que 9%) ★";
+        badgeEl.className = "inline-block text-xs uppercase font-black px-3.5 py-1.5 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.5)] tracking-wider";
+      }
+          } else if (winner.rarity === "epic" || (winner.percentage >= 10 && winner.percentage < 30)) {
+      // Roxa e pulsante de vitória
+      card.classList.add("victory-purple-card");
+      if (badgeEl) {
+        badgeEl.textContent = "✦ Épico (10% até 29%) ✦";
+        badgeEl.className = "inline-block text-xs uppercase font-extrabold px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400 shadow-[0_0_15px_rgba(192,132,252,0.4)] tracking-wider";
+      }
+          } else if (winner.rarity === "rare" || (winner.percentage >= 30 && winner.percentage < 50)) {
+      // Azul de vitória
+      card.classList.add("victory-blue-card");
+      if (badgeEl) {
+        badgeEl.textContent = "◆ Raro (30% até 49%) ◆";
+        badgeEl.className = "inline-block text-xs uppercase font-bold px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400 tracking-wider";
+      }
+          } else {
+      // 50% até 99%: sem animação
+      if (badgeEl) {
+        badgeEl.textContent = "Comum (50% até 99%)";
+        badgeEl.className = "inline-block text-xs uppercase font-bold px-3 py-1 rounded-full bg-gray-800 text-gray-300 border border-gray-700 tracking-wider";
+      }
+          }
+
+    modal.classList.remove("hidden");
+  }
+
+  /**
+   * Fecha o modal de vitória
+   */
+  closeWinnerModal() {
+    const modal = document.getElementById("winner-modal");
+    if (modal) {
+      modal.classList.add("hidden");
+    }
   }
 }

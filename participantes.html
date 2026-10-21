@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Participantes - Jogo da Semana</title>
+    <title>Participantes & Quadro da Vergonha - Jogo da Semana</title>
     
     <!-- Tema dinâmico (define as variáveis de cor da marca) -->
     <script src="js/theme.js"></script>
@@ -20,31 +20,89 @@
     <!-- CABEÇALHO INJETADO DINAMICAMENTE -->
     <div id="header-container"></div>
 
-    <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-12">
-        <!-- Título da Página -->
-        <div class="mb-10 text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-400 mb-4 shadow-[0_0_30px_rgba(var(--brand-color),0.2)]">
-                <i class="fa-solid fa-users text-3xl"></i>
+    <main class="flex-grow max-w-6xl mx-auto w-full px-4 py-10 space-y-10">
+        
+        <!-- CABEÇALHO DA PÁGINA (HERO) -->
+        <div class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-brand-950/70 text-brand-300 text-xs font-bold uppercase px-3.5 py-1 rounded-full border border-brand-800/60 tracking-wider shadow-sm">
+                <i class="fa-solid fa-users text-[11px]"></i> Comunidade & Estatísticas
             </div>
-            <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
-                Ranking de Jogadores
+            <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">
+                Participantes & <span class="text-red-400">Quadro da Vergonha</span>
             </h1>
-            <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
-                Lista de membros oficiais e convidados ordenados pela quantidade de vezes que já participaram da jogatina semanal.
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                Acompanhe o ranking oficial de frequência das jogatinas semanais lado a lado com o mural público de infratores das regras.
             </p>
+
+            <!-- CONTROLE DE VISUALIZAÇÃO / ABAS RESPONSIVAS (MUITO PRÁTICO NO MOBILE) -->
+            <div class="pt-2">
+                <div class="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl bg-gray-900 border border-gray-800 shadow-xl max-w-lg w-full">
+                    <button id="tab-btn-all" type="button" class="flex-1 min-w-[100px] py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-brand-600 text-white shadow-md">
+                        <i class="fa-solid fa-table-columns"></i>
+                        <span>Lado a Lado</span>
+                    </button>
+                    <button id="tab-btn-ranking" type="button" class="flex-1 min-w-[100px] py-2 px-3 rounded-xl text-xs font-semibold transition-all text-gray-400 hover:text-white flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-trophy text-yellow-400"></i>
+                        <span>Ranking</span>
+                        <span id="badge-count-ranking" class="text-[10px] px-1.5 py-0.2 rounded-full bg-gray-800 text-gray-300 border border-gray-700">0</span>
+                    </button>
+                    <button id="tab-btn-shame" type="button" class="flex-1 min-w-[130px] py-2 px-3 rounded-xl text-xs font-semibold transition-all text-gray-400 hover:text-white flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-handcuffs text-red-400"></i>
+                        <span>Vergonha</span>
+                        <span id="badge-count-shame" class="text-[10px] px-1.5 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-bold">0</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Skeleton Loader (Removido pelo JS quando carrega) -->
-        <div id="skeleton-loader" class="space-y-4 animate-pulse">
-            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
-            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
-            <div class="h-24 bg-gray-900 rounded-xl w-full"></div>
+        <!-- GRID PRINCIPAL: RANKING E QUADRO DA VERGONHA LADO A LADO NO DESKTOP -->
+        <div id="participants-grid-wrapper" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            
+            <!-- COLUNA 1: RANKING DE JOGADORES -->
+            <section id="section-ranking" class="space-y-5 transition-all duration-300">
+                <div class="flex items-center justify-between pb-3.5 border-b border-gray-800">
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase tracking-tight flex items-center gap-2.5">
+                        <i class="fa-solid fa-trophy text-yellow-400 text-lg"></i>
+                        <span>Ranking de Presença</span>
+                    </h2>
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                        Presenças
+                    </span>
+                </div>
+
+                <!-- Skeleton Loader (Removido pelo JS quando carrega) -->
+                <div id="skeleton-loader" class="space-y-4 animate-pulse">
+                    <div class="h-20 bg-gray-900 rounded-xl w-full"></div>
+                    <div class="h-20 bg-gray-900 rounded-xl w-full"></div>
+                    <div class="h-20 bg-gray-900 rounded-xl w-full"></div>
+                </div>
+
+                <!-- Lista de Participantes Injetada Dinamicamente -->
+                <div id="participants-container" class="space-y-3.5">
+                    <!-- Cards de Ranking injetados via JS -->
+                </div>
+            </section>
+
+            <!-- COLUNA 2: QUADRO DA VERGONHA -->
+            <section id="section-shame" class="space-y-5 transition-all duration-300">
+                <div class="flex items-center justify-between pb-3.5 border-b border-red-900/50">
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase tracking-tight flex items-center gap-2.5">
+                        <i class="fa-solid fa-handcuffs text-red-400 text-lg"></i>
+                        <span class="text-red-400">Quadro da Vergonha</span>
+                    </h2>
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-red-500/15 text-red-400 border border-red-500/30 uppercase tracking-wider">
+                        Infratores
+                    </span>
+                </div>
+
+                <!-- Lista do Quadro da Vergonha Injetada Dinamicamente -->
+                <div id="shame-board-container" class="space-y-3.5">
+                    <!-- Cards de Infratores injetados via JS -->
+                </div>
+            </section>
+
         </div>
 
-        <!-- Lista de Participantes Injetada Dinamicamente -->
-        <div id="participants-container" class="space-y-4">
-            <!-- Ranking HTML Injetado Aqui -->
-        </div>
     </main>
 
     <!-- RODAPÉ INJETADO DINAMICAMENTE -->

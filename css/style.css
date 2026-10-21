@@ -108,3 +108,126 @@ main {
 section {
   animation: fadeIn 0.5s ease-out;
 }
+
+
+/* ==========================================================================
+   Sorteio de Jogos - Estilo CS:GO Loot Box & Animações de Vitória
+   ========================================================================== */
+
+/* Linha central da esteira (marcador do CS:GO) */
+.csgo-pointer-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.9), 0 0 24px rgba(217, 119, 6, 0.6);
+  z-index: 30;
+  pointer-events: none;
+}
+.csgo-pointer-triangle-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 14px solid #f59e0b;
+  filter: drop-shadow(0 2px 6px rgba(245, 158, 11, 0.9));
+  z-index: 31;
+}
+.csgo-pointer-triangle-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 14px solid #f59e0b;
+  filter: drop-shadow(0 -2px 6px rgba(245, 158, 11, 0.9));
+  z-index: 31;
+}
+
+/* Sombreamento lateral da roleta (efeito fade nas pontas) */
+.csgo-fade-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0) 15%, rgba(3, 7, 18, 0) 85%, rgba(3, 7, 18, 0.95) 100%);
+  z-index: 20;
+}
+
+/* Animação Azul de Vitória (Chances entre 30% e 49%) - Lenta e Suave */
+@keyframes victoryBlueGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.35), inset 0 0 12px rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(96, 165, 250, 0.7), inset 0 0 22px rgba(96, 165, 250, 0.4);
+    border-color: #60a5fa;
+  }
+}
+.victory-blue-card {
+  animation: victoryBlueGlow 4.5s ease-in-out infinite;
+  border-color: #3b82f6 !important;
+}
+
+/* Animação Roxa Pulsante de Vitória (Chances entre 10% e 29%) - Lenta e Suave */
+@keyframes victoryPurplePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4), inset 0 0 15px rgba(168, 85, 247, 0.25);
+    border-color: #a855f7;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 52px rgba(192, 132, 252, 0.75), 0 0 75px rgba(147, 51, 234, 0.35), inset 0 0 25px rgba(192, 132, 252, 0.4);
+    border-color: #c084fc;
+  }
+}
+.victory-purple-card {
+  animation: victoryPurplePulse 5s ease-in-out infinite;
+  border-color: #a855f7 !important;
+}
+
+/* Animação Dourada Pulsante com Blur de Vitória (Chances menores que 9%) - Lenta e Suave */
+@keyframes victoryGoldPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 35px rgba(234, 179, 8, 0.45), 0 0 65px rgba(245, 158, 11, 0.3), inset 0 0 20px rgba(234, 179, 8, 0.3);
+    border-color: #eab308;
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 0 68px rgba(250, 204, 21, 0.85), 0 0 110px rgba(234, 179, 8, 0.55), inset 0 0 35px rgba(250, 204, 21, 0.5);
+    border-color: #fde047;
+  }
+}
+@keyframes victoryRaysSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.victory-gold-card {
+  animation: victoryGoldPulse 5.5s ease-in-out infinite;
+  border-color: #eab308 !important;
+}
+
+/* Raios dourados giratórios em blur de fundo - Giro bem lento e suave */
+.victory-gold-rays {
+  position: absolute;
+  inset: -60px;
+  background: conic-gradient(from 0deg, rgba(234, 179, 8, 0.25) 0deg, transparent 30deg, rgba(245, 158, 11, 0.3) 60deg, transparent 90deg, rgba(234, 179, 8, 0.25) 120deg, transparent 150deg, rgba(245, 158, 11, 0.3) 180deg, transparent 210deg, rgba(234, 179, 8, 0.25) 240deg, transparent 270deg, rgba(245, 158, 11, 0.3) 300deg, transparent 330deg, rgba(234, 179, 8, 0.25) 360deg);
+  animation: victoryRaysSpin 30s linear infinite;
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+}

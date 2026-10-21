@@ -1014,6 +1014,79 @@ const SITE_RULES = [
   }
 ];
 
+
+/**
+ * Quadro da Vergonha - Registro de Participantes que Descumpriram as Regras
+ */
+const SHAME_BOARD = [
+  {
+    id: "shame-1",
+    participant: "BuChuDin",
+    ruleNumber: 3,
+    ruleTitle: "Escolha de Jogos Pagos",
+    incident: "Escolheu jogo pago depois do tempo (semana 11/05/2026).",
+    game: "Enshrouded",
+    date: "2026-05-11",
+    penalty: "Sem penalidades até o momento",
+    severity: "advertencia"
+  },
+  {
+    id: "shame-2",
+    participant: "Gatólico",
+    ruleNumber: 3,
+    ruleTitle: "Escolha de Jogos Pagos",
+    incident: "Escolheu jogo pago depois do tempo (semana 08/06/2026).",
+    game: "The Forest",
+    date: "2026-06-08",
+    penalty: "Sem penalidades até o momento",
+    severity: "advertencia"
+  },
+  {
+    id: "shame-3",
+    participant: "Gatólico",
+    ruleNumber: 3,
+    ruleTitle: "Escolha de Jogos Pagos",
+    incident: "Escolheu jogo pago depois do tempo (semana 29/06/2026).",
+    game: "Mecha Chamelon",
+    date: "2026-06-29",
+    penalty: "Sem penalidades até o momento",
+    severity: "advertencia"
+  },
+  {
+    id: "shame-4",
+    participant: "STX7",
+    ruleNumber: 10,
+    ruleTitle: "Sem Desculpas Subjetivas",
+    incident: "Ficou dando desculpas na semana do Valorant e não conseguiu jogar durante a semana (semana 10/08/2026).",
+    game: "Valorant",
+    date: "2026-08-10",
+    penalty: "Sem penalidades até o momento",
+    severity: "advertencia"
+  },
+  {
+    id: "shame-5",
+    participant: "Gatólico",
+    ruleNumber: 3,
+    ruleTitle: "Escolha de Jogos Pagos",
+    incident: "Escolheu jogo pago depois do tempo (semana 31/08/2026).",
+    game: "How to Fish",
+    date: "2026-08-31",
+    penalty: "Sem penalidades até o momento",
+    severity: "advertencia"
+  },
+  {
+    id: "shame-6",
+    participant: "Mistake",
+    ruleNumber: 10,
+    ruleTitle: "Sem Desculpas Subjetivas",
+    incident: "Passou mais de uma semana sem jogar e ficou dando desculpas (não conseguiu jogar na semana 21/09/2026 e nunca mais fez presença nas jogatinas).",
+    game: "Don't Starve Together",
+    date: "2026-09-21",
+    penalty: "Expulsão como membro, participação como convidado somente",
+    severity: "grave"
+  }
+];
+
 const ABOUT_INFO = {
   description: "O projeto 'Jogo da Semana' nasceu da necessidade de um grupo de amigos de combater o famoso 'backlog' (a lista de jogos comprados e nunca jogados) e criar uma rotina divertida para manter a jogatina conjunta ativa. A cada semana, um membro é sorteado ou segue a fila para escolher um título. Todos jogam e se reúnem para discutir, avaliar e registrar as memórias no site oficial.",
   stats: {

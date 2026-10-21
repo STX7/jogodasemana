@@ -1,110 +1,124 @@
 # Jogo da Semana (GameWeek)
 
-O **Jogo da Semana** (anteriormente chamado *GameWeek*) é um site estático e responsivo desenvolvido sob a arquitetura **Model-View-Controller (MVC)**. O projeto serve para registrar o histórico de jogos semanais decididos por um grupo de amigos, listando quem escolheu o jogo, quem participou das sessões, as notas médias, capturas de tela e comentários semanais. 
+O **Jogo da Semana** é um portal web estático, responsivo e de alta performance desenvolvido sob a arquitetura **Model-View-Controller (MVC)**. O projeto registra e celebra todo o histórico de jogatinas de um grupo de amigos: quem escolheu cada jogo, quem participou das sessões, avaliações, estatísticas, regras oficiais, rankings da comunidade, o temido mural de infratores e um sistema de sorteio de jogos estilo *loot box*.
 
-O site foi construído para ser altamente portável e compatível diretamente com o **GitHub Pages**, funcionando 100% offline (abrindo localmente do navegador) sem necessidade de servidores de banco de dados ou requisições que quebrem as políticas de CORS do navegador.
+O site foi construído para ser 100% estático, ultra-rápido e compatível diretamente com o **GitHub Pages**, funcionando perfeitamente sem necessidade de servidores backend ou bancos de dados externos.
 
 ---
 
-## 🎨 Principais Recursos Visuais e Funcionalidades
+## 🎨 Principais Recursos e Funcionalidades
 
-1. **Arquitetura MVC no Frontend**:
-   * **Model** (`js/model.js`): Controla as regras de negócios, ordenação de dados, busca textual e paginação dinâmica.
-   * **View** (`js/view.js`): Controla a injeção do DOM, criação de elementos, componentes compartilhados (cabeçalho/rodapé), o modal lightbox de imagens e alertas.
-   * **Controller** (`js/controller.js`): Coordena os eventos da página inicial, navegação, inputs de digitação e roteamento por parâmetros da URL.
+### 1. Arquitetura MVC no Frontend
+* **Model (`js/model.js`)**: Centraliza as regras de negócio, ordenação, busca textual, deduplicação canônica de participantes, cálculo de probabilidades de sorteio e registros do Quadro da Vergonha.
+* **View (`js/view.js`)**: Gerencia o DOM, componentes compartilhados (header dinâmico com navegação e rodapé), carrossel de fotos, animações da roleta CS:GO, modal lightbox e renderização de cards.
+* **Controller (`js/controller.js`)**: Coordena eventos, abas responsivas, inputs de busca, filtros, acionamento da roleta e roteamento por parâmetros de URL.
 
-2. **Tema de Cores Dinâmico e Persistente (`js/theme.js`)**:
-   * O site sorteia aleatoriamente um dos **8 temas de destaque vibrantes** (Roxo, Ciano, Esmeralda, Rosa, Índigo, Laranja, Violeta, Verde-Azulado) no primeiro acesso ou ao **recarregar a página (F5)**.
-   * O tema de cores sorteado persiste na navegação entre as páginas do menu através de gravação no **`sessionStorage`**, garantindo transições harmoniosas.
-   * Configura o **Tailwind CSS** dinamicamente sob o namespace `brand` e injeta variáveis CSS nativas no documento (`--brand-color-500`, etc.) para colorir a barra de rolagem e cores de seleção de texto que acompanham o tema sorteado.
+### 2. Sorteio de Jogos Estilo CS:GO Loot Box (`sorteio.html`)
+* **Dois Modos de Sorteio**:
+  * **Modo Personalizado**: Campo de texto para digitar jogos separados por vírgula. Nomes repetidos aumentam proporcionalmente as chances do jogo ser sorteado.
+  * **Modo Jogos Já Jogados**: Catálogo deduplicado de jogos já jogados pelo grupo (desconsiderando semanas/sessões para que cada título apareça uma única vez), com filtros de ativação/desativação e ajuste de chances (tickets).
+* **Roleta Dinâmica**: Esteira horizontal com ponteiro centralizador e efeitos sonoros sintéticos (*tick*) em tempo real via **Web Audio API**.
+* **Animações de Vitória e Raridades (Lentas e Suaves)**:
+  * **Chances Iguais ou Alta Probabilidade (50% a 99%)**: Vitória padrão com giro suave.
+  * **Raro (30% até 49%)**: Animação azul contínua com glow envolvente.
+  * **Épico (10% até 29%)**: Animação roxa pulsante suave.
+  * **Lendário (< 9%)**: Pulso dourado suave com raios rotativos em blur hipnótico.
+* **Modal de Vitória**: Exibição limpa e direta do jogo contemplado, sua probabilidade e opções para girar novamente.
 
-3. **Lista de Jogos Dinâmica com Filtro e Paginação**:
-   * A página inicial exibe uma listagem limpa (em formato de tabela) com o nome do jogo, badge de notas, selector e data.
-   * Possui **busca em tempo real** integrada por título, seletor ou jogadores e **ordenação de data** (mais recentes ou mais antigos).
-   * **Paginação de 10 jogos por página** criada e gerenciada dinamicamente via JS.
+### 3. Ranking de Jogadores & Quadro da Vergonha (`participantes.html`)
+* **Visão Lado a Lado no Desktop (`lg:grid-cols-2`)**: O ranking oficial de presença dos membros e o mural público de infratores ficam visíveis simultaneamente.
+* **Controle de Abas Responsivo para Mobile**: Botões interativos (`Lado a Lado`, `Ranking`, `Vergonha`) com contadores dinâmicos para alternar o foco no celular com um único toque, sem necessidade de rolagem excessiva.
+* **Mural de Infrações**: Registro com avatar, identificação da regra oficial violada, jogo, data, motivo da advertência e penalidade aplicada.
+* **Menções Integradas**: Tag de alerta no menu de navegação, link no rodapé e banner informativo de conscientização em `regras.html`.
 
-4. **Página de Detalhes Completa (`jogo.html`)**:
-   * Identifica o jogo selecionado através do parâmetro `?id=slug-do-jogo` na URL.
-   * **Carrossel de Imagens Interativo**: Navegue pelas screenshots da semana e clique em qualquer foto para abrir o modal **Lightbox** em tela cheia.
-   * **Seção de Vídeo e Galeria Resilientes**: Se o jogo não possuir vídeo ou screenshots associadas (como o *All themods*), exibe-se um aviso visual com cara triste (`😞 Não foi gravado`) em vez de quebrar a página.
-   * **Ficha Técnica & Feed de Comentários**: Lista dados do jogo (desenvolvedor, plataforma, nota) e renderiza avatares dinâmicos para cada comentário da semana.
+### 4. Melhores do Mês & Pódio (`melhores.html`)
+* Agrupa os jogos jogados por mês de início e ordena-os em um pódio de 1º, 2º e 3º lugar com efeito neon pulse na coroa dourada do campeão mensal.
 
-5. **Melhores do Mês (`melhores.html`)**:
-   * Agrupa os jogos jogados por mês de início e ordena-os em um pódio de 1º, 2º e 3º lugar.
-   * Destaque com efeito de **brilho neon elétrico (pulsação animada por CSS)** na coroa dourada do primeiro colocado do mês.
+### 5. Catálogo de Categorias (`categorias.html`)
+* Estatísticas completas dos gêneros e categorias Steam já jogadas pelo grupo, categorias ainda disponíveis para escolha e categorias proibidas pelas regras do site (com citação da regra correspondente).
 
-6. **Regras da Comunidade (`regras.html`)**:
-   * Painel de visualização das 22 regras fundamentais seguidas pelos membros oficiais do grupo.
+### 6. Regras da Comunidade (`regras.html`)
+* Painel com as 22 regras oficiais acordadas pelo grupo para escolha, frequência, limites de conteúdo e convivência.
 
-7. **Painel de Estatísticas (`sobre.html`)**:
-   * Dashboard interativo com dados consolidados da comunidade:
-     * Total de Jogos Registrados.
-     * Membros Ativos Oficiais (Fixo em 3 jogadores core: `STX7`, `gatólico` e `BuChuDin`).
-     * Média Geral de Notas de todo o histórico.
-     * Gênero Mais Jogado no grupo.
-     * Jogo Mais Escolhido (frequência de repetição do título no banco).
-     * Jogo com Mais Pessoas (total de membros e convidados em uma única sessão).
-     * Pior Jogo Já Jogado (com menor nota histórica, destacado com design de alerta em vermelho).
+### 7. Detalhes de Cada Jogo (`jogo.html`)
+* Rota dinâmica por ID (`?id=slug-do-jogo`), carrossel de fotos, visualização expandida em Lightbox, notas, ficha técnica e feed de comentários semanais com avatares dinâmicos.
+
+### 8. Painel de Estatísticas (`sobre.html`)
+* Métricas consolidadas: total de jogos jogados, membros oficiais, média de notas, gêneros predominantes, jogo mais escolhido, recorde de jogadores em sessão e pior jogo já jogado.
+
+### 9. Tema de Cores Dinâmico (`js/theme.js`)
+* Sorteia aleatoriamente um dos **8 temas vibrantes** (Roxo, Ciano, Esmeralda, Rosa, Índigo, Laranja, Violeta, Verde-Azulado) persistidos no `sessionStorage` para navegação harmoniosa.
+
+---
+
+## ⚡ Otimização e Performance
+
+* **Imagens em WebP**: Todas as imagens e capturas de tela do repositório foram convertidas para o formato `.webp`, reduzindo o peso total em mais de 70% mantendo alta fidelidade visual.
+* **Tailwind CSS Compilado**: O Tailwind CSS não roda mais em runtime via CDN; os estilos são previamente compilados e minificados em `css/tailwind.css` (`npm run build:css`), garantindo carregamento instantâneo.
 
 ---
 
 ## 📂 Estrutura de Diretórios do Projeto
 
 ```text
-Site JOGO/
+jogodasemana/
 │
-├── css/                     # Estilização estática e páginas específicas
-│   ├── style.css            # Estilos globais (rolagem suave, scrollbars e seleção)
-│   ├── index.css            # Efeitos hover e transições da Home
-│   ├── jogo.css             # Transições do modal lightbox e do carrossel
-│   ├── melhores.css         # Animação neon glow da coroa de destaque
-│   ├── regras.css           # Micro-interações dos cartões de regras
-│   └── sobre.css            # Efeitos hover dos cartões de estatísticas
+├── css/                     # Folhas de estilo compiladas e customizadas
+│   ├── tailwind.css         # Tailwind CSS compilado e minificado
+│   ├── style.css            # Estilos globais e animações da roleta CS:GO
+│   ├── index.css            # Micro-interações da Home
+│   ├── jogo.css             # Lightbox e carrossel
+│   ├── melhores.css         # Efeito neon da coroa de campeão
+│   ├── regras.css           # Estilos dos cartões de regras
+│   └── sobre.css            # Estilos dos cartões de métricas
 │
 ├── js/                      # Lógica do projeto estruturado em MVC
-│   ├── data.js              # Banco de dados centralizado (jogos, regras, estatísticas)
-│   ├── theme.js             # Gerenciador de cores aleatórias e Tailwind dinâmico
-│   ├── model.js             # Algoritmos de ordenação, paginação e filtros
-│   ├── view.js              # Manipulador de DOM, injeção de HTML e carrossel
-│   └── controller.js        # Roteamento de URLs e escuta de eventos/inputs
+│   ├── data.js              # Banco de dados centralizado (GAMES_DATA, SITE_RULES, SHAME_BOARD, etc.)
+│   ├── theme.js             # Gerenciador de cores randômicas e persistência de sessão
+│   ├── model.js             # Lógica de negócio, estatísticas, probabilidades e filtros
+│   ├── view.js              # Injeção no DOM, componentes, roleta e modal de vitória
+│   └── controller.js        # Orquestrador de eventos, inputs e abas responsivas
 │
-├── img/                     # Repositório de capturas e banners dos jogos
-│   ├── rust/                # Screenshots de Rust (Semana 1, Semana 5 e Semana 9)
-│   ├── left-4-dead-2/       # Screenshot de Left 4 Dead 2
-│   ├── counter-strike-2/    # Screenshot de Counter Strike 2
-│   ├── enshrouded/          # Screenshot de Enshrouded
-│   ├── rocket-league/       # Screenshot de Rocket League
-│   ├── minecraft-cobbleverse/ # Screenshot de Minecraft Cobbleverse
-│   ├── the-forest/          # 11 screenshots de The Forest
-│   ├── mecha-chamelon/      # 10 screenshots de Mecha Chamelon (novas inclusas)
-│   └── devour/              # 3 screenshots de Devour
+├── img/                     # Imagens e capturas dos jogos em formato .webp otimizado
 │
-├── index.html               # Página inicial (Listagem e Filtros)
-├── jogo.html                # Página de Detalhes de cada Jogo
+├── src/                     # Arquivos fonte do Tailwind CSS
+│   └── tailwind.css         # Configuração base de diretivas Tailwind
+│
+├── index.html               # Página inicial (Histórico de Jogos e Busca)
+├── jogo.html                # Detalhes do jogo selecionado (Carrossel e Comentários)
 ├── melhores.html            # Pódio mensal de melhores jogos
+├── participantes.html       # Ranking de Presença & Quadro da Vergonha
+├── categorias.html          # Categorias e tags Steam
 ├── regras.html              # Regras oficiais da jogatina
-├── sobre.html               # Informações e Estatísticas Dinâmicas
-└── README.md                # Este documento de referência
+├── sorteio.html             # Sistema de sorteio de jogos (Loot Box CS:GO)
+├── sobre.html               # Estatísticas globais do grupo
+├── package.json             # Scripts de build do Tailwind CSS
+└── README.md                # Documentação do projeto
 ```
 
 ---
 
 ## 🚀 Como Executar Localmente
 
-Como o projeto é construído exclusivamente com arquivos estáticos no frontend, ele funciona diretamente sem dependências no navegador:
+Como o projeto é construído exclusivamente com tecnologias web estáticas:
 
-1. Baixe os arquivos do projeto para o seu computador.
-2. Dê um duplo clique no arquivo index.html para abri-lo diretamente em qualquer navegador moderno.
-3. Para simular a experiência com caminhos limpos ou testar no servidor de forma síncrona, você pode usar qualquer ferramenta simples de servidor local (como a extensão Live Server do VS Code, ou rodar `npx serve .` no terminal).
+1. Clone ou baixe o repositório.
+2. Dê um duplo clique no arquivo `index.html` para abri-lo diretamente no navegador, ou use um servidor local simples:
+   ```bash
+   npx serve .
+   ```
+3. Para recompilar o Tailwind CSS após editar classes utilitárias:
+   ```bash
+   npm run build:css
+   ```
 
 ---
 
-## 🌐 Implantação (Deployment) no GitHub Pages
+## 🌐 Publicação no GitHub Pages
 
-O site é projetado especificamente para ser hospedado no GitHub Pages gratuitamente:
+O projeto está configurado para publicação automática e sem custos no **GitHub Pages**:
 
-1. Crie um repositório no seu GitHub.
-2. Envie todos os arquivos do diretório raiz do projeto para o repositório (mantendo os caminhos relativos de `js/`, `css/`, `img/` e dos arquivos `.html`).
-3. No GitHub, vá em **Settings** > **Pages**.
-4. Sob **Build and deployment**, selecione a branch `main` (ou `master`) e a pasta raiz `/ (root)`.
-5. Clique em **Save**. O GitHub fornecerá uma URL pública segura com HTTPS contendo o seu site totalmente funcional em instantes.
+1. Suba as alterações para a branch `main` do repositório no GitHub.
+2. No repositório, acesse **Settings** > **Pages**.
+3. Em **Build and deployment**, selecione a branch `main` e a pasta raiz `/ (root)`.
+4. O site estará disponível em instantes na URL fornecida pelo GitHub.

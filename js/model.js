@@ -8,6 +8,7 @@ class GameModel {
     this.rawGames = GAMES_DATA || [];
     this.rules = SITE_RULES || [];
     this.about = ABOUT_INFO || {};
+    this.shameBoard = (typeof SHAME_BOARD !== "undefined" && Array.isArray(SHAME_BOARD)) ? SHAME_BOARD : [];
 
     // Pré-validação e higienização dos jogos no momento da instanciação do Model
     this.games = this.rawGames
@@ -267,6 +268,14 @@ class GameModel {
   /**
    * Retorna as regras do site
    */
+  /**
+   * Retorna os registros do Quadro da Vergonha
+   * @returns {Array}
+   */
+  getShameBoard() {
+    return (typeof SHAME_BOARD !== "undefined" && Array.isArray(SHAME_BOARD)) ? SHAME_BOARD : (this.shameBoard || []);
+  }
+
   getRules() {
     return this.rules;
   }
@@ -276,5 +285,190 @@ class GameModel {
    */
   getAboutInfo() {
     return this.about;
+  }
+
+  /**
+   * =========================================================================
+   * Sistema de Sorteio de Jogos (Loot Box / Roleta CS:GO)
+   * =========================================================================
+   */
+
+  /**
+   * Normaliza o nome do jogo desconsiderando semanas/sessões (ex: "Rust (Sessão 2)" -> "Rust")
+   * @param {string} title
+   * @returns {string}
+   */
+  static cleanGameTitle(title) {
+    if (!title || typeof title !== 'string') return '';
+    return title.replace(/\s*\((?:sess[aã]o|parte|temporada|semana)\s*\d*\)/gi, '').trim();
+  }
+
+  /**
+   * Retorna os jogos únicos do histórico (sem repetição de semanas/sessões)
+   * @returns {Array} [{ id, title, banner, genre, tickets: 1, active: true }]
+   */
+  getRafflePlayedGames() {
+    const seenTitles = new Set();
+    const result = [];
+
+    this.games.forEach(g => {
+      // Normaliza o título para que jogos repetidos em semanas diferentes apareçam somente uma vez
+      const cleanTitle = GameModel.cleanGameTitle(g.title);
+      const key = cleanTitle.toLowerCase();
+
+      if (!seenTitles.has(key)) {
+        seenTitles.add(key);
+        result.push({
+          id: 'played-' + key.replace(/[^a-z0-9]/gi, '-'),
+          title: cleanTitle,
+          banner: g.banner || '',
+          genre: g.genre || 'Gênero não informado',
+          tickets: 1,
+          active: true
+        });
+      } else {
+        // Se a ocorrência anterior não tinha banner mas esta tem, aproveita o banner
+        const existing = result.find(r => r.title.toLowerCase() === key);
+        if (existing && !existing.banner && g.banner) {
+          existing.banner = g.banner;
+        }
+      }
+    });
+
+    // Ordena alfabeticamente para facilitar a seleção no filtro do sorteio
+    result.sort((a, b) => a.title.localeCompare(b.title, 'pt-BR'));
+
+    return result;
+  }
+
+  /**
+   * Processa texto com jogos separados por vírgula e calcula frequências
+   * Se um jogo se repete, a quantidade de tickets (chances) dele aumenta
+   * @param {string} text 
+   * @returns {Array} [{ id, title, banner, tickets, active: true }]
+   */
+  parseCommaSeparatedGames(text) {
+    if (!text || typeof text !== 'string') return [];
+
+    const rawNames = text.split(',')
+      .map(s => s.trim())
+      .filter(s => s.length > 0);
+
+    const counts = new Map();
+    rawNames.forEach(raw => {
+      const key = raw.toLowerCase();
+      if (!counts.has(key)) {
+        counts.set(key, { title: raw, count: 0 });
+      }
+      counts.get(key).count++;
+    });
+
+    const playedMap = new Map();
+    this.games.forEach(g => {
+      const cleanKey = GameModel.cleanGameTitle(g.title).toLowerCase();
+      if (g.banner && !playedMap.has(cleanKey)) {
+        playedMap.set(cleanKey, g.banner);
+      }
+      // Mantém também o título completo para match direto
+      const rawKey = g.title.toLowerCase().trim();
+      if (g.banner && !playedMap.has(rawKey)) {
+        playedMap.set(rawKey, g.banner);
+      }
+    });
+
+    return Array.from(counts.values()).map((item, idx) => {
+      const cleanItemKey = GameModel.cleanGameTitle(item.title).toLowerCase();
+      const rawItemKey = item.title.toLowerCase();
+      const banner = playedMap.get(cleanItemKey) || playedMap.get(rawItemKey) || '';
+      return {
+        id: 'custom-' + idx + '-' + encodeURIComponent(item.title),
+        title: item.title,
+        banner: banner,
+        genre: banner ? 'Jogo do histórico' : 'Jogo personalizado',
+        tickets: item.count,
+        active: true
+      };
+    });
+  }
+
+  /**
+   * Calcula as probabilidades, porcentagens e classificação de raridade de cada item
+   * @param {Array} items Lista de itens { tickets, active, ... }
+   * @returns {Object} { itemsWithChances: Array, totalTickets: number, allEqual: boolean }
+   */
+  calculateRaffleChances(items) {
+    const activeItems = (items || []).filter(it => it.active !== false && it.tickets > 0);
+    const totalTickets = activeItems.reduce((acc, it) => acc + (Number(it.tickets) || 0), 0);
+
+    if (activeItems.length === 0 || totalTickets === 0) {
+      return { itemsWithChances: [], totalTickets: 0, allEqual: false };
+    }
+
+    // Verifica se todos os itens têm a mesma quantidade de chances
+    const firstTickets = activeItems[0].tickets;
+    const allEqual = activeItems.every(it => it.tickets === firstTickets);
+
+    const itemsWithChances = activeItems.map(it => {
+      const tickets = Number(it.tickets) || 1;
+      const probability = tickets / totalTickets;
+      const percentage = Number((probability * 100).toFixed(1));
+
+      // Determina a raridade/efeito visual conforme as regras:
+      // - Se todos tiverem a mesma chance: 'equal' (sem animação, apenas giro)
+      // - 50% até 99%: 'common' (sem animação)
+      // - 30% até 49%: 'rare' (azul de vitória)
+      // - 10% até 29%: 'epic' (roxa e pulsante de vitória)
+      // - Menor que 10% (<= 9%): 'legendary' (dourada e pulsante com blur de vitória)
+      let rarity = 'common';
+      if (allEqual) {
+        rarity = 'equal';
+      } else if (percentage < 10) {
+        rarity = 'legendary';
+      } else if (percentage < 30) {
+        rarity = 'epic';
+      } else if (percentage < 50) {
+        rarity = 'rare';
+      } else {
+        rarity = 'common';
+      }
+
+      return {
+        ...it,
+        tickets,
+        probability,
+        percentage,
+        rarity
+      };
+    });
+
+    itemsWithChances.sort((a, b) => b.percentage - a.percentage || a.title.localeCompare(b.title));
+
+    return {
+      itemsWithChances,
+      totalTickets,
+      allEqual
+    };
+  }
+
+  /**
+   * Sorteia um vencedor com base nos tickets (probabilidade ponderada)
+   * @param {Array} itemsWithChances
+   * @returns {Object|null}
+   */
+  drawWeightedWinner(itemsWithChances) {
+    if (!itemsWithChances || itemsWithChances.length === 0) return null;
+
+    const totalTickets = itemsWithChances.reduce((acc, it) => acc + it.tickets, 0);
+    const randomTicket = Math.random() * totalTickets;
+
+    let cumulative = 0;
+    for (const item of itemsWithChances) {
+      cumulative += item.tickets;
+      if (randomTicket <= cumulative) {
+        return item;
+      }
+    }
+
+    return itemsWithChances[itemsWithChances.length - 1];
   }
 }
