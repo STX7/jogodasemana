@@ -1,27 +1,9 @@
 /**
  * Jogo da Semana - Tema Dinâmico
  * Sorteia uma cor base (paleta de marca) a cada acesso ou recarga de página.
- * Configura o Tailwind CSS dinamicamente sob o namespace 'brand' usando Variáveis CSS.
+ * As classes 'brand-*' do Tailwind (compiladas em css/tailwind.css, ver tailwind.config.js)
+ * apontam para as variáveis CSS definidas aqui.
  */
-
-// Define o objeto global do Tailwind antes de carregar o script do CDN
-window.tailwind = window.tailwind || {};
-window.tailwind.config = window.tailwind.config || {};
-window.tailwind.config.theme = window.tailwind.config.theme || {};
-window.tailwind.config.theme.extend = window.tailwind.config.theme.extend || {};
-
-// Mapeia a paleta 'brand' para Variáveis CSS Nativas no documento
-window.tailwind.config.theme.extend.colors = window.tailwind.config.theme.extend.colors || {};
-window.tailwind.config.theme.extend.colors.brand = {
-  300: 'var(--brand-300)',
-  400: 'var(--brand-400)',
-  500: 'var(--brand-500)',
-  600: 'var(--brand-600)',
-  700: 'var(--brand-700)',
-  800: 'var(--brand-800)',
-  900: 'var(--brand-900)',
-  950: 'var(--brand-950)'
-};
 
 // Temas vibrantes cuidadosamente selecionados com excelente contraste sobre fundo escuro
 const COLOR_THEMES = {

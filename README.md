@@ -91,7 +91,7 @@ Site JOGO/
 
 ## 🚀 Como Executar Localmente
 
-Como o projeto é construído exclusivamente com arquivos estáticos no frontend, **não é necessário realizar compilação ou instalar servidores de desenvolvimento**:
+Como o projeto é construído exclusivamente com arquivos estáticos no frontend, ele funciona diretamente sem dependências no navegador:
 
 1. Baixe os arquivos do projeto para o seu computador.
 2. Dê um duplo clique no arquivo index.html para abri-lo diretamente em qualquer navegador moderno.

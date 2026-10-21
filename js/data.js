@@ -16,8 +16,8 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Facepunch Studios",
     description: "A sobrevivência definitiva. Os jogadores precisam gerenciar recursos, construir bases e defender seus pertences contra invasões inimigas. Comentário marcante da semana: PQP!!!! RAIDARAM A BASE",
-    banner: "img/rust/1.jpeg",
-    gallery: ["img/rust/1.jpeg"],
+    banner: "img/rust/1.webp",
+    gallery: ["img/rust/1.webp"],
     videoUrl: "",
     comments: [
       {
@@ -40,8 +40,8 @@ const GAMES_DATA = [
     rating: 4.8,
     developer: "Valve",
     description: "Ação clássica cooperativa de tiro em primeira pessoa contra hordas de infectados. O trabalho em equipe é fundamental para a sobrevivência do grupo. Comentário marcante: Nunca deixe molotov na mão do BuChuDin",
-    banner: "img/left-4-dead-2/2.jpg",
-    gallery: ["img/left-4-dead-2/2.jpg"],
+    banner: "img/left-4-dead-2/2.webp",
+    gallery: ["img/left-4-dead-2/2.webp"],
     videoUrl: "",
     comments: [
       {
@@ -64,8 +64,8 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Valve",
     description: "O ápice do tiro tático competitivo 5v5. O clássico embate de terroristas contra contra-terroristas com gráficos e mecânicas atualizadas na Source 2. Comentário marcante: Perdemos para o Meu Pau, Microsoft Office Excel PRO 2003, Jalim Habei, Thilas Karu Otobah e JunimGameplay123",
-    banner: "img/counter-strike-2/3.jpeg",
-    gallery: ["img/counter-strike-2/3.jpeg"],
+    banner: "img/counter-strike-2/3.webp",
+    gallery: ["img/counter-strike-2/3.webp"],
     videoUrl: "",
     comments: [
       {
@@ -88,8 +88,8 @@ const GAMES_DATA = [
     rating: 2.0,
     developer: "Keen Games",
     description: "Desperte e enfrente a névoa corrompida neste RPG de ação e sobrevivência. Explore um reino vasto construindo bases monumentais e enfrentando chefes temíveis. Comentário marcante: Deu nem tempo de terminar a base e fui assediado",
-    banner: "img/enshrouded/4.jpeg",
-    gallery: ["img/enshrouded/4.jpeg"],
+    banner: "img/enshrouded/4.webp",
+    gallery: ["img/enshrouded/4.webp"],
     videoUrl: "",
     comments: [
       {
@@ -112,8 +112,8 @@ const GAMES_DATA = [
     rating: 4.5,
     developer: "Facepunch Studios",
     description: "Mais uma semana caótica de sobrevivência em Rust. Novas alianças, construções e tentativas frustradas de raidar bases inimigas. Comentário marcante: Amanhã a gente raida denovo (spoiler: fomos raidados)",
-    banner: "img/rust/5.jfif",
-    gallery: ["img/rust/5.jfif"],
+    banner: "img/rust/5.webp",
+    gallery: ["img/rust/5.webp"],
     videoUrl: "",
     comments: [
       {
@@ -136,8 +136,8 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Psyonix",
     description: "O esporte caótico definitivo. Partidas eletrizantes de futebol disputadas com carros movidos a jato. Acrobacias aéreas e competitividade de alto nível. Comentário marcante: Show de bola",
-    banner: "img/rocket-league/6.png",
-    gallery: ["img/rocket-league/6.png"],
+    banner: "img/rocket-league/6.webp",
+    gallery: ["img/rocket-league/6.webp"],
     videoUrl: "",
     comments: [
       {
@@ -160,8 +160,8 @@ const GAMES_DATA = [
     rating: 4.2,
     developer: "Mojang / Comunitário",
     description: "Uma jornada mágica onde Minecraft encontra o universo modificado de Pokémon. Capture, treine e enfrente criaturas fantásticas em um mundo infinito de blocos. Comentário marcante: Eu capturei um Pokemón Batman",
-    banner: "img/minecraft-cobbleverse/7.png",
-    gallery: ["img/minecraft-cobbleverse/7.png"],
+    banner: "img/minecraft-cobbleverse/7.webp",
+    gallery: ["img/minecraft-cobbleverse/7.webp"],
     videoUrl: "",
     comments: [
       {
@@ -184,19 +184,19 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Endnight Games",
     description: "Sobreviva em uma floresta misteriosa repleta de perigos, construindo abrigos e enfrentando uma sociedade de mutantes canibais. Comentário marcante: Viriginia e o Zé Felipe.",
-    banner: "img/the-forest/The Forest (1).jpeg",
+    banner: "img/the-forest/The Forest (1).webp",
     gallery: [
-      "img/the-forest/The Forest (1).jpeg",
-      "img/the-forest/The Forest (2).jpeg",
-      "img/the-forest/The Forest (3).jpeg",
-      "img/the-forest/The Forest (4).jpeg",
-      "img/the-forest/The Forest (5).jpeg",
-      "img/the-forest/The Forest (6).jpeg",
-      "img/the-forest/The Forest (7).jpeg",
-      "img/the-forest/The Forest (8).jpeg",
-      "img/the-forest/The Forest (9).jpeg",
-      "img/the-forest/The Forest (10).jpeg",
-      "img/the-forest/The Forest (11).jpeg"
+      "img/the-forest/The Forest (1).webp",
+      "img/the-forest/The Forest (2).webp",
+      "img/the-forest/The Forest (3).webp",
+      "img/the-forest/The Forest (4).webp",
+      "img/the-forest/The Forest (5).webp",
+      "img/the-forest/The Forest (6).webp",
+      "img/the-forest/The Forest (7).webp",
+      "img/the-forest/The Forest (8).webp",
+      "img/the-forest/The Forest (9).webp",
+      "img/the-forest/The Forest (10).webp",
+      "img/the-forest/The Forest (11).webp"
     ],
     videoUrl: "",
     comments: [
@@ -226,11 +226,11 @@ const GAMES_DATA = [
     rating: 3.5,
     developer: "Facepunch Studios",
     description: "Mais uma semana caótica no deserto impiedoso de Rust, repleta de combates armados e intrigas na vizinhança. Comentários marcantes: A bala aqui não é perdida / Lugar tranquilo e super seguro.",
-    banner: "img/rust/RustS3 (1).jpeg",
+    banner: "img/rust/RustS3 (1).webp",
     gallery: [
-      "img/rust/RustS3 (1).jpeg",
-      "img/rust/RustS3 (2).jpeg",
-      "img/rust/RustS3 (3).jpeg"
+      "img/rust/RustS3 (1).webp",
+      "img/rust/RustS3 (2).webp",
+      "img/rust/RustS3 (3).webp"
     ],
     videoUrl: "",
     comments: [
@@ -292,9 +292,9 @@ const GAMES_DATA = [
       "img/mecha-chamelon/image (4).webp",
       "img/mecha-chamelon/image (5).webp",
       "img/mecha-chamelon/image (6).webp",
-      "img/mecha-chamelon/Mecha Chameleon (1).jpeg",
-      "img/mecha-chamelon/Mecha Chameleon (2).jpeg",
-      "img/mecha-chamelon/Mecha Chameleon (3).jpeg"
+      "img/mecha-chamelon/Mecha Chameleon (1).webp",
+      "img/mecha-chamelon/Mecha Chameleon (2).webp",
+      "img/mecha-chamelon/Mecha Chameleon (3).webp"
     ],
     videoUrl: "",
     comments: [
@@ -330,11 +330,11 @@ const GAMES_DATA = [
     rating: 4.7,
     developer: "Straight Back Games",
     description: "Jogo cooperativo de sobrevivência e terror extremo. Trabalhe em equipe para impedir que sectários possuídos arrastem vocês para o inferno.",
-    banner: "img/devour/Devour (1).jpeg",
+    banner: "img/devour/Devour (1).webp",
     gallery: [
-      "img/devour/Devour (1).jpeg",
-      "img/devour/Devour (2).jpeg",
-      "img/devour/Devour (3).jpeg"
+      "img/devour/Devour (1).webp",
+      "img/devour/Devour (2).webp",
+      "img/devour/Devour (3).webp"
     ],
     videoUrl: "https://youtu.be/16OTjrPWUbQ",
     comments: []
@@ -351,11 +351,11 @@ const GAMES_DATA = [
     rating: 4.7,
     developer: "Valve",
     description: "Deadlock é um jogo multijogador 6v6 de tiro em terceira pessoa com fortes elementos de MOBA (como rotas, tropas, torres, chefes e compra de itens), desenvolvido pela Valve. O jogo combina a ação rápida e o uso de habilidades dos hero shooters com a estratégia e a progressão de partidas de defesa de base, tudo ambientado em uma versão alternativa de Nova York com temática ocultista e fantasia urbana da década de 1930.",
-    banner: "img/deadlock/banner.png",
+    banner: "img/deadlock/banner.webp",
     gallery: [
-        "img/deadlock/deadlock-1.jpeg",
-        "img/deadlock/deadlock-2.jpeg",
-        "img/deadlock/deadlock-3.jpeg"
+        "img/deadlock/deadlock-1.webp",
+        "img/deadlock/deadlock-2.webp",
+        "img/deadlock/deadlock-3.webp"
     ],
     videoUrl: "https://www.youtube.com/watch?v=-JtupkqFhuo&feature=youtu.be",
     comments: [
@@ -403,8 +403,8 @@ const GAMES_DATA = [
     rating: 4.5,
     developer: "DICE",
     description: "A ação épica da Primeira Guerra Mundial em 64 jogadores. Destrua ambientes, pilotem veículos e use gadgets militares clássicos em mapas massivos. Comentário marcante: Até parece que eu tô na guerra mesmo",
-    banner: "img/battlefield-1-revolution/20260721215954_1.jpg",
-    gallery: ["img/battlefield-1-revolution/20260721215954_1.jpg","img/battlefield-1-revolution/20260724210419_1.jpg","img/battlefield-1-revolution/20260724215217_1.jpg","img/battlefield-1-revolution/20260724230744_1.jpg","img/battlefield-1-revolution/20260725212936_1.jpg","img/battlefield-1-revolution/20260725212939_1.jpg","img/battlefield-1-revolution/20260726215454_1.jpg","img/battlefield-1-revolution/20260726215505_1.jpg","img/battlefield-1-revolution/20260726215508_1.jpg","img/bf1/bf1-1.jpeg","img/bf1/bf1-2.jpeg"],
+    banner: "img/battlefield-1-revolution/20260721215954_1.webp",
+    gallery: ["img/battlefield-1-revolution/20260721215954_1.webp","img/battlefield-1-revolution/20260724210419_1.webp","img/battlefield-1-revolution/20260724215217_1.webp","img/battlefield-1-revolution/20260724230744_1.webp","img/battlefield-1-revolution/20260725212936_1.webp","img/battlefield-1-revolution/20260725212939_1.webp","img/battlefield-1-revolution/20260726215454_1.webp","img/battlefield-1-revolution/20260726215505_1.webp","img/battlefield-1-revolution/20260726215508_1.webp","img/bf1/bf1-1.webp","img/bf1/bf1-2.webp"],
     videoUrl: "",
     comments: [
       {
@@ -457,22 +457,22 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Mojang",
     description: "Uma jornada clássica de sobrevivência no Minecraft em sua versão padrão, construindo abrigo, minerando e explorando o mundo.",
-    banner: "img/minecraft-vanilla/2026-07-26_18.02.20.png",
+    banner: "img/minecraft-vanilla/2026-07-26_18.02.20.webp",
     gallery: [
-      "img/minecraft-vanilla/2026-07-26_18.02.20.png",
-      "img/minecraft-vanilla/2026-07-26_18.07.26.png",
-      "img/minecraft-vanilla/2026-07-26_18.10.50.png",
-      "img/minecraft-vanilla/2026-07-28_22.15.56.png",
-      "img/minecraft-vanilla/2026-07-28_22.15.57.png",
-      "img/minecraft-vanilla/2026-07-28_22.42.50.png",
-      "img/minecraft-vanilla/2026-07-29_20.32.32.png",
-      "img/minecraft-vanilla/2026-07-29_22.17.22.png",
-      "img/minecraft-vanilla/2026-08-02_13.06.34.png",
-      "img/minecraft-vanilla/2026-08-02_13.06.42.png",
-      "img/minecraft-vanilla/2026-08-02_14.01.18.png",
-      "img/minecraft-vanilla/2026-08-02_14.16.02.png",
-      "img/minecraft-vanilla/2026-08-02_14.27.14.png",
-      "img/minecraft-vanilla/2026-08-02_14.43.57.png"
+      "img/minecraft-vanilla/2026-07-26_18.02.20.webp",
+      "img/minecraft-vanilla/2026-07-26_18.07.26.webp",
+      "img/minecraft-vanilla/2026-07-26_18.10.50.webp",
+      "img/minecraft-vanilla/2026-07-28_22.15.56.webp",
+      "img/minecraft-vanilla/2026-07-28_22.15.57.webp",
+      "img/minecraft-vanilla/2026-07-28_22.42.50.webp",
+      "img/minecraft-vanilla/2026-07-29_20.32.32.webp",
+      "img/minecraft-vanilla/2026-07-29_22.17.22.webp",
+      "img/minecraft-vanilla/2026-08-02_13.06.34.webp",
+      "img/minecraft-vanilla/2026-08-02_13.06.42.webp",
+      "img/minecraft-vanilla/2026-08-02_14.01.18.webp",
+      "img/minecraft-vanilla/2026-08-02_14.16.02.webp",
+      "img/minecraft-vanilla/2026-08-02_14.27.14.webp",
+      "img/minecraft-vanilla/2026-08-02_14.43.57.webp"
     ],
     videoUrl: "",
     comments: [
@@ -520,15 +520,15 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Valve",
     description: "Gabriel foi viajar e o grupo aproveitou para disputar partidas de Deadlock.",
-    banner: "img/deadlock/sessao2-1.jpg",
+    banner: "img/deadlock/sessao2-1.webp",
     gallery: [
-      "img/deadlock/sessao2-1.jpg",
-      "img/deadlock/sessao2-2.jpg",
-      "img/deadlock/sessao2-3.jpg",
-      "img/deadlock/sessao2-4.jpg",
-      "img/deadlock/sessao2-5.jpg",
-      "img/deadlock/sessao2-6.jpg",
-      "img/deadlock/sessao2-7.jpg"
+      "img/deadlock/sessao2-1.webp",
+      "img/deadlock/sessao2-2.webp",
+      "img/deadlock/sessao2-3.webp",
+      "img/deadlock/sessao2-4.webp",
+      "img/deadlock/sessao2-5.webp",
+      "img/deadlock/sessao2-6.webp",
+      "img/deadlock/sessao2-7.webp"
     ],
     videoUrl: "",
     comments: [
@@ -570,8 +570,8 @@ const GAMES_DATA = [
     rating: 3.7,
     developer: "Riot Games",
     description: "Disputa tática de tiro em primeira pessoa 5v5 focado em personagens e habilidades.",
-    banner: "img/valorant/images.jpg",
-    gallery: ["img/valorant/valorant.jpeg"],
+    banner: "img/valorant/images.webp",
+    gallery: ["img/valorant/valorant.webp"],
     videoUrl: "",
     comments: [
       {
@@ -594,20 +594,20 @@ const GAMES_DATA = [
     rating: 4.2,
     developer: "Comunidade ATM",
     description: "Mais nova iteração do pacote All The Mods para Minecraft, trazendo as modificações mais recentes e atualizadas da comunidade.",
-    banner: "img/atm11/2026-08-18_20.20.40.png",
+    banner: "img/atm11/2026-08-18_20.20.40.webp",
     gallery: [
-      "img/atm11/2026-08-18_20.20.40.png",
-      "img/atm11/2026-08-18_20.20.44.png",
-      "img/atm11/2026-08-20_21.08.41.png",
-      "img/atm11/2026-08-20_21.42.04.png",
-      "img/atm11/2026-08-22_22.34.01.png",
-      "img/atm11/2026-08-23_21.01.56.png",
-      "img/atm11/2026-09-10_20.49.20.png",
-      "img/atm11/2026-09-10_20.49.28.png",
-      "img/atm11/2026-09-10_20.49.41.png",
-      "img/atm11/2026-09-10_20.53.44.png",
-      "img/atm11/2026-09-10_20.53.48.png",
-      "img/atm11/2026-09-10_20.53.49.png"
+      "img/atm11/2026-08-18_20.20.40.webp",
+      "img/atm11/2026-08-18_20.20.44.webp",
+      "img/atm11/2026-08-20_21.08.41.webp",
+      "img/atm11/2026-08-20_21.42.04.webp",
+      "img/atm11/2026-08-22_22.34.01.webp",
+      "img/atm11/2026-08-23_21.01.56.webp",
+      "img/atm11/2026-09-10_20.49.20.webp",
+      "img/atm11/2026-09-10_20.49.28.webp",
+      "img/atm11/2026-09-10_20.49.41.webp",
+      "img/atm11/2026-09-10_20.53.44.webp",
+      "img/atm11/2026-09-10_20.53.48.webp",
+      "img/atm11/2026-09-10_20.53.49.webp"
     ],
     videoUrl: "",
     comments: [
@@ -643,8 +643,8 @@ const GAMES_DATA = [
     rating: 4.1,
     developer: "Valve",
     description: "BuChuDin tava sem ideias, mas dessa vez sabemos jogar.",
-    banner: "img/deadlock/banner.png",
-    gallery: ["img/deadlock/deadlock-sessao3.png"],
+    banner: "img/deadlock/banner.webp",
+    gallery: ["img/deadlock/deadlock-sessao3.webp"],
     videoUrl: "",
     comments: [
       {
@@ -685,8 +685,8 @@ const GAMES_DATA = [
     rating: 5.0,
     developer: "Dazed Games",
     description: "How to Fish é um simulador de pesca baseado em física para 1-4 jogadores. Enquanto bebia e navegava, você acaba batendo em uma pequena ilha. Para conseguir voltar para casa, você precisa aprender a pescar.",
-    banner: "img/how-to-fish/How-to-fish.jpg",
-    gallery: ["img/how-to-fish/How-to-fish.jpg","img/how-to-fish/How-to-fish-1.jpg","img/how-to-fish/How-to-fish-2.jpg","img/how-to-fish/How-to-fish-3.jpg","img/how-to-fish/How-to-fish-4.jpg","img/how-to-fish/How-to-fish-5.jpg","img/how-to-fish/How-to-fish-6.jpg","img/how-to-fish/How-to-fish-7.jpg","img/how-to-fish/How-to-fish-8.jpg"],
+    banner: "img/how-to-fish/How-to-fish.webp",
+    gallery: ["img/how-to-fish/How-to-fish.webp","img/how-to-fish/How-to-fish-1.webp","img/how-to-fish/How-to-fish-2.webp","img/how-to-fish/How-to-fish-3.webp","img/how-to-fish/How-to-fish-4.webp","img/how-to-fish/How-to-fish-5.webp","img/how-to-fish/How-to-fish-6.webp","img/how-to-fish/How-to-fish-7.webp","img/how-to-fish/How-to-fish-8.webp"],
     videoUrl: "",
     comments: [
       {
@@ -721,8 +721,8 @@ const GAMES_DATA = [
     rating: 4.5,
     developer: "The Fun Pimps",
     description: "Sobrevivência em um mundo apocalíptico repleto de zumbis, com construção de bases e hordas a cada sete dias.",
-    banner: "img/7-days-to-die-1/2021C01.JPG",
-    gallery: ["img/7-days-to-die-1/2021C01.JPG","img/7-days-to-die-1/20260907202220_1.jpg","img/7-days-to-die-1/20260907221153_1.jpg","img/7-days-to-die-1/20260908234025_1.jpg","img/7-days-to-die-1/20260910225521_1.jpg","img/7-days-to-die-1/20260911223904_1.jpg","img/7-days-to-die-1/20260912011640_1.jpg","img/7-days-to-die-1/2026092.JPG","img/7-days-to-die-1/20AC0F1.JPG","img/7-days-to-die-1/20BA651.JPG","img/7-days-to-die-1/20BC5A1.JPG","img/7-days-to-die-1/image.png"],
+    banner: "img/7-days-to-die-1/2021C01.webp",
+    gallery: ["img/7-days-to-die-1/2021C01.webp","img/7-days-to-die-1/20260907202220_1.webp","img/7-days-to-die-1/20260907221153_1.webp","img/7-days-to-die-1/20260908234025_1.webp","img/7-days-to-die-1/20260910225521_1.webp","img/7-days-to-die-1/20260911223904_1.webp","img/7-days-to-die-1/20260912011640_1.webp","img/7-days-to-die-1/2026092.webp","img/7-days-to-die-1/20AC0F1.webp","img/7-days-to-die-1/20BA651.webp","img/7-days-to-die-1/20BC5A1.webp","img/7-days-to-die-1/image.webp"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "A vagabunda que grita me odeia >:(" },
@@ -741,8 +741,8 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Iron Gate Studio",
     description: "Sobrevivência cooperativa inspirada na mitologia nórdica. Escolha de Mistake (convidado).",
-    banner: "img/valheim/20260914195007_1.jpg",
-    gallery: ["img/valheim/2026091.JPG","img/valheim/20260914192416_1.jpg","img/valheim/20260914195007_1.jpg","img/valheim/20260914205018_1.jpg","img/valheim/20260915220239_1.jpg","img/valheim/2026092.JPG","img/valheim/image.png","img/valheim/image3.png","img/valheim/image4.png","img/valheim/image5.png"],
+    banner: "img/valheim/20260914195007_1.webp",
+    gallery: ["img/valheim/2026091.webp","img/valheim/20260914192416_1.webp","img/valheim/20260914195007_1.webp","img/valheim/20260914205018_1.webp","img/valheim/20260915220239_1.webp","img/valheim/2026092.webp","img/valheim/image.webp","img/valheim/image3.webp","img/valheim/image4.webp","img/valheim/image5.webp"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "MADEIRAAAAAAAAAAAAA!!!!" },
@@ -763,7 +763,7 @@ const GAMES_DATA = [
     developer: "Klei Entertainment",
     description: "Sobrevivência em um mundo sombrio e peculiar, agora em cooperativo.",
     banner: "img/dont-starve-togheter/dont-banner.webp",
-    gallery: ["img/dont-starve-togheter/dont1.jpg", "img/dont-starve-togheter/dont2.jpg", "img/dont-starve-togheter/dont3.jpg", "img/dont-starve-togheter/dont4.jpg"],
+    gallery: ["img/dont-starve-togheter/dont1.webp", "img/dont-starve-togheter/dont2.webp", "img/dont-starve-togheter/dont3.webp", "img/dont-starve-togheter/dont4.webp"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "Don't Starve não é muito together assim" },
@@ -784,8 +784,8 @@ const GAMES_DATA = [
     rating: 4.0,
     developer: "Mojang Studios",
     description: "Mais uma semana no mundo de blocos. Escolha de Ediisu.",
-    banner: "img/minecraft-vanilla-2/2026-10-02_23.50.10_2.png",
-    gallery: ["img/minecraft-vanilla-2/2026-10-02_23.50.10_2.png","img/minecraft-vanilla-2/2026-10-02_23.52.46.png","img/minecraft-vanilla-2/2026-10-02_23.55.10.png"],
+    banner: "img/minecraft-vanilla-2/2026-10-02_23.50.10_2.webp",
+    gallery: ["img/minecraft-vanilla-2/2026-10-02_23.50.10_2.webp","img/minecraft-vanilla-2/2026-10-02_23.52.46.webp","img/minecraft-vanilla-2/2026-10-02_23.55.10.webp"],
     videoUrl: "",
     comments: [
       { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Ja ta melhor que os biomas do ATM 11" },
@@ -806,8 +806,8 @@ const GAMES_DATA = [
     rating: 4.7,
     developer: "The Fun Pimps",
     description: "A volta do apocalipse zumbi com mais construção, hordas e muitas armas improvisadas.",
-    banner: "img/7-days-to-die-2/image2.png",
-    gallery: ["img/7-days-to-die-2/20261009195536_1.jpg","img/7-days-to-die-2/20261009220642_1.jpg","img/7-days-to-die-2/20261010165123_1.jpg","img/7-days-to-die-2/image.png","img/7-days-to-die-2/image2.png","img/7-days-to-die-2/image3.png","img/7-days-to-die-2/image4.png","img/7-days-to-die-2/image5.png","img/7-days-to-die-2/image6.jpg", "img/7-days-to-die-2/20261010162724_1.jpg"],
+    banner: "img/7-days-to-die-2/image2.webp",
+    gallery: ["img/7-days-to-die-2/20261009195536_1.webp","img/7-days-to-die-2/20261009220642_1.webp","img/7-days-to-die-2/20261010165123_1.webp","img/7-days-to-die-2/image.webp","img/7-days-to-die-2/image2.webp","img/7-days-to-die-2/image3.webp","img/7-days-to-die-2/image4.webp","img/7-days-to-die-2/image5.webp","img/7-days-to-die-2/image6.webp", "img/7-days-to-die-2/20261010162724_1.webp"],
     videoUrl: "",
     comments: [
       { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "A volta dos que não foram" },
