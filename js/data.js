@@ -815,6 +815,25 @@ const GAMES_DATA = [
       { author: "Gatólico", avatarSeed: "Gatólico", time: "Final da Semana", text: "Faca ak47, a arma perfeita pro combate" },
       { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Não vão pegar meu drone >:( , pegaram meu drone :'(" }
     ]
+  },
+  {
+    id: "shifit-at-midnight",
+    title: "Shift At Midnight",
+    genre: "Terror / Co-op Online / Retro",
+    date: "2026-10-19",
+    chooser: "Gatólico",
+    participants: ["STX7", "Gatólico", "BuChuDin"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.0,
+    developer: "Bun Muen",
+    description: "Um jogo de terror policial cooperativo online para até 3 jogadores. Trabalhem juntos em turnos gerados aleatoriamente para investigar seus clientes, pois alguns estão apenas fingindo ser humanos. Cometa um erro e você será forçado a embarcar, montar armadilhas e se esconder.",
+    banner: "img/shift-at-midnight/banner.jpg",
+    gallery: ["img/shift-at-midnight/20261019212738_1.jpg","img/shift-at-midnight/20261019222947_1.jpg","img/shift-at-midnight/20261019222958_1.jpg","img/shift-at-midnight/20261019234610_1.jpg","img/shift-at-midnight/20261019234611_1.jpg","img/shift-at-midnight/20261020230402_1.jpg" ],
+    videoUrl: "",
+    comments: [
+    
+    ]
   }
 ];
 
