@@ -817,6 +817,49 @@ const GAMES_DATA = [
     ]
   },
   {
+    id: "necesse",
+    title: "Necesse",
+    genre: "Ação / Aventura / Sobrevivência / Sandbox",
+    date: "2026-10-12",
+    chooser: "BuChuDin",
+    participants: ["STX7", "Gatólico", "BuChuDin", "Gustvbr"],
+    specialParticipants: [],
+    platform: "PC",
+    rating: 4.2,
+    developer: "Fair Games ApS",
+    description: "Construa, explore e conquiste em um mundo infinito gerado proceduralmente. Estabeleça um assentamento, explore masmorras profundas, lute contra monstros e chefes, minere minérios raros, crie equipamentos mágicos e recrute especialistas para sua colônia.",
+    banner: "img/necesse/1169040_7.jpg",
+    gallery: [
+      "img/necesse/1169040_7.jpg",
+      "img/necesse/1169040_9.jpg",
+      "img/necesse/1169040_10.jpg",
+      "img/necesse/1169040_12.jpg",
+      "img/necesse/1169040_13.jpg",
+      "img/necesse/1169040_14.jpg",
+      "img/necesse/1169040_15.jpg",
+      "img/necesse/1169040_16.jpg",
+      "img/necesse/1169040_17.jpg",
+      "img/necesse/1169040_18.jpg",
+      "img/necesse/1169040_19.jpg",
+      "img/necesse/1169040_20.jpg",
+      "img/necesse/1169040_21.jpg",
+      "img/necesse/1169040_23.jpg",
+      "img/necesse/1169040_26.jpg",
+      "img/necesse/1169040_29.jpg",
+      "img/necesse/1169040_30.jpg",
+      "img/necesse/1169040_33.jpg",
+      "img/necesse/1169040_35.jpg",
+      "img/necesse/1169040_36.jpg",
+      "img/necesse/1169040_38.jpg"
+    ],
+    videoUrl: "",
+    comments: [
+      { author: "STX7", avatarSeed: "STX7", time: "Final da Semana", text: "Proibido fazer greve" },
+      { author: "Edisu", avatarSeed: "Edisu", time: "Final da Semana", text: "Quem invocou o boss?" },
+      { author: "BuChuDin", avatarSeed: "BuChuDin", time: "Final da Semana", text: "Vou fazer umas kitnet do governo" }
+    ]
+  },
+  {
     id: "shifit-at-midnight",
     title: "Shift At Midnight",
     genre: "Terror / Co-op Online / Retro",
@@ -909,7 +952,9 @@ const GAME_CATEGORIES = {
   "7-days-to-die-1": ["Ação", "Sobrevivência", "Zumbis", "Mundo Aberto", "Craft", "Cooperativo"],
   "7-days-to-die-2": ["Ação", "Sobrevivência", "Zumbis", "Mundo Aberto", "Craft", "Cooperativo"],
   "valheim": ["Ação", "Aventura", "Sobrevivência", "Mundo Aberto", "Craft", "Cooperativo"],
-  "dont-starve-together": ["Aventura", "Indie", "Sobrevivência", "Craft", "Cooperativo"]
+  "dont-starve-together": ["Aventura", "Indie", "Sobrevivência", "Craft", "Cooperativo"],
+  "necesse": ["Ação", "Aventura", "Indie", "RPG", "Sandbox", "Sobrevivência", "Mundo Aberto", "Craft", "Cooperativo"],
+  "shifit-at-midnight": ["Terror", "Cooperativo", "Indie"]
 };
 
 const SITE_RULES = [
